@@ -10,8 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_28_172129) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bookings", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.bigint "cover_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cover_id"], name: "index_bookings_on_cover_id"
+  end
+
+  create_table "covers", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_covers_on_restaurant_id"
+  end
+
+  create_table "favourite_restaurants", force: :cascade do |t|
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_favourite_restaurants_on_restaurant_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.integer "rating"
+    t.text "address"
+    t.integer "total_seats_available"
+    t.string "cuisine"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "bookings", "covers"
+  add_foreign_key "covers", "restaurants"
+  add_foreign_key "favourite_restaurants", "restaurants"
 end
