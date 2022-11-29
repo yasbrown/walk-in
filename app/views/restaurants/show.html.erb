@@ -4,6 +4,7 @@
       <%= @restaurant.photos.each do |photo| %>
       <div class="carousel-item">
         <img class="d-block w-100" src="<%= @restaurant.photo %>" alt="slide">
+       <%end%>
       </div>
     </div>
 </div>
@@ -17,7 +18,7 @@
       </div>
     </div>
     <div class="right-heading">
-      <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i> <%= restaurant.ratings.count %></p>
+      <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i> <%= restaurant.rating %></p>
       <p>Read reviews</p>
     </div>
   </div>
