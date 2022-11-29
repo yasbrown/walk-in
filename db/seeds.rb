@@ -28,7 +28,7 @@ Slot.destroy_all
 puts "DB clean"
 
 puts "Building new restaurants"
-150.times do
+30.times do
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     rating: rand(3.0...5.0).round(2),
