@@ -33,9 +33,15 @@ puts "Building new restaurants"
     cuisine: Faker::Restaurant.type,
     description: Faker::Restaurant.description,
     address: postcode.sample,
+<<<<<<< Updated upstream
     price: rand(1..3)
     opening_time:
     closing_time:
+=======
+    price: rand(1..3),
+    opening_time: rand(9..10),
+    closing_time: rand
+>>>>>>> Stashed changes
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
 end
