@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_28_172129) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_121358) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,13 +20,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_172129) do
     t.bigint "cover_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["cover_id"], name: "index_bookings_on_cover_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "covers", force: :cascade do |t|
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "seats"
     t.index ["restaurant_id"], name: "index_covers_on_restaurant_id"
   end
 
@@ -34,7 +37,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_172129) do
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["restaurant_id"], name: "index_favourite_restaurants_on_restaurant_id"
+    t.index ["user_id"], name: "index_favourite_restaurants_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -55,11 +60,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_28_172129) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "location"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "bookings", "covers"
+  add_foreign_key "bookings", "users"
   add_foreign_key "covers", "restaurants"
   add_foreign_key "favourite_restaurants", "restaurants"
+  add_foreign_key "favourite_restaurants", "users"
 end
