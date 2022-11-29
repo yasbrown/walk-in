@@ -1,4 +1,4 @@
-class CreateSlotsTable < ActiveRecord::Migration[7.0]
+class CreateSlots < ActiveRecord::Migration[7.0]
   def change
     create_table :slots do |t|
       t.datetime :date
