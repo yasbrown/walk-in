@@ -28,16 +28,31 @@ puts "Building new restaurants"
 150.times do
   restaurant = Restaurant.create(
     name: Faker::Restaurant.name,
-    rating: rand(3.0...5.0),
+    rating: rand(3.0...5.0).round(2),
     total_seats_available: rand(2..10),
     cuisine: Faker::Restaurant.type,
     description: Faker::Restaurant.description,
     address: postcode.sample,
-    price: rand(1..3),
-    opening_time: rand(9..10),
-    closing_time: rand
+    # price: rand(1..3),
+    # opening_time: rand(9..10),
+    # closing_time: rand(9..11)
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
+  8.times do
+    cover = Cover.create(
+      seats: rand(2..8)
+    )
+    puts "Cover with id: #{cover.id} has been created"
+    # 1.times do
+    #   slot = Slot.create(
+    #     date: Date.today,
+    #     available?: rand("true", "false")
+    #     # start_time:
+    #     # end_time:
+    #   )
+    #   puts "Slot with id: #{slot.id} has been created"
+    # end
+  end
 end
 
 puts "Finished!"
