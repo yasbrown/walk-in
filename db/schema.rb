@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_121358) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
-    t.bigint "cover_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
-    t.index ["cover_id"], name: "index_bookings_on_cover_id"
+    t.bigint "slot_id", null: false
+    t.index ["slot_id"], name: "index_bookings_on_slot_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_121358) do
     t.text "description"
   end
 
+  create_table "slots", force: :cascade do |t|
+    t.datetime "date"
+    t.boolean "available?", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "cover_id", null: false
+    t.index ["cover_id"], name: "index_slots_on_cover_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -68,9 +77,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_121358) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "covers"
+  add_foreign_key "bookings", "slots"
   add_foreign_key "bookings", "users"
   add_foreign_key "covers", "restaurants"
   add_foreign_key "favourite_restaurants", "restaurants"
   add_foreign_key "favourite_restaurants", "users"
+  add_foreign_key "slots", "covers"
 end
