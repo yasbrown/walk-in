@@ -50,8 +50,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_152425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price"
-    t.time "opening_time"
-    t.time "closing_time"
+    t.integer "opening_time"
+    t.integer "closing_time"
     t.text "description"
   end
 
@@ -61,8 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_152425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cover_id", null: false
-    t.time "start_time"
-    t.time "end_time"
+    t.integer "start_time"
+    t.integer "end_time"
     t.index ["cover_id"], name: "index_slots_on_cover_id"
   end
 

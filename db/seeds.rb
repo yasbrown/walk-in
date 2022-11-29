@@ -1,4 +1,5 @@
 require "faker"
+require "date"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -36,8 +37,8 @@ puts "Building new restaurants"
     description: Faker::Restaurant.description,
     address: postcode.sample,
     price: rand(1..3),
-    opening_time: Faker::Time.forward(days: 1, period: :evening, format: :long).to_datetime.strftime("%H"),
-    closing_time: Faker::Time.forward(days: 1, period: :evening, format: :long).to_datetime.strftime("%H")
+    opening_time: rand(9..11),
+    closing_time: rand(23..24)
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
   8.times do
@@ -48,7 +49,7 @@ puts "Building new restaurants"
     puts "Cover with id: #{cover.id} has been created"
     3.times do
       slot = Slot.create!(
-        date: Date.today,
+        date: Date.new(2022,12,10),
         available?: Faker::Boolean.boolean,
         start_time: rand(18..20),
         end_time: rand(21..23),
