@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.user_id = current_user
     @booking.save!
     redirect_to confirmation_path(@booking)
   end

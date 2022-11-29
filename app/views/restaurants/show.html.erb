@@ -1,0 +1,34 @@
+<div class="restaurant-images">
+    <div class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+      <%= @restaurant.photos.each do |photo| %>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="<%= @restaurant.photo %>" alt="slide">
+      </div>
+    </div>
+</div>
+<div class="restaurant-text">
+  <div class="restaurant-heading">
+    <div class="left-heading">
+      <h2><%= @restaurant.name %></h2>
+      <div class="map-link">
+        <img src="pin-purple" alt="pin">
+        <p>See on maps -></p>
+      </div>
+    </div>
+    <div class="right-heading">
+      <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i> <%= restaurant.ratings.count %></p>
+      <p>Read reviews</p>
+    </div>
+  </div>
+  <div class="restaurant-times">
+    <p>Time slots</p>
+  </div>
+  <div class="restaurant-description">
+    <p><%= @restaurant.description %></p>
+  </div>
+  <div class="more-restaurants">
+    <h2>More tables at</h2>
+    <div class="restaurant-cards-small row"></div>
+  </div>
+</div>
