@@ -4,7 +4,7 @@ class Booking < ApplicationRecord
 
   validates :start_time, presence: true
   validates :end_time, presence: true
-  validate time_cannot_be_in_the_past
+  validate :time_cannot_be_in_the_past
 
   def time_cannot_be_in_the_past
     if :start_time < Time.now
