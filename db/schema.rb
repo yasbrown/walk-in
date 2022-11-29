@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_152425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,10 +49,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
     t.string "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "description"
     t.integer "price"
     t.time "opening_time"
     t.time "closing_time"
+    t.text "description"
   end
 
   create_table "slots", force: :cascade do |t|
@@ -61,6 +61,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "cover_id", null: false
+    t.time "start_time"
+    t.time "end_time"
     t.index ["cover_id"], name: "index_slots_on_cover_id"
   end
 
@@ -72,9 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mobile_number"
     t.string "name"
     t.string "location"
-    t.string "mobile_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
