@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
+
+ActiveRecord::Schema[7.0].define(version: 2022_11_29_135949) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,11 +47,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
     t.string "name"
     t.float "rating"
     t.text "address"
-    t.integer "total_seats_available"
     t.string "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
     t.text "description"
+    t.time "opening_time"
+    t.time "closing_time"
   end
 
   create_table "slots", force: :cascade do |t|
@@ -70,9 +73,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_140345) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "mobile_number"
     t.string "name"
     t.string "location"
-    t.string "mobile_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
