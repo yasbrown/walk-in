@@ -36,9 +36,8 @@ puts "Building new restaurants"
     description: Faker::Restaurant.description,
     address: postcode.sample,
     price: rand(1..3),
-    opening_time: Faker::Time.forward(days: 1, period: :evening, format: :short),
-    # rand(8..10),
-    closing_time: rand(21..23)
+    opening_time: Faker::Time.forward(days: 1, period: :evening, format: :long).to_datetime.strftime("%H"),
+    closing_time: Faker::Time.forward(days: 1, period: :evening, format: :long).to_datetime.strftime("%H")
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
   8.times do
