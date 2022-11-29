@@ -1,0 +1,11 @@
+<div class="container">
+<h2>Your search</h2>
+
+  <% @restaurants.each do |restaurant| %>
+  <div>
+    <%= link_to restaurant.name, restaurant_path(restaurant) %>
+    <p><%= restaurant.rating %></p>
+    <p><%= restaurant.description %></p>
+    <% end %>
+  </div>
+</div>
