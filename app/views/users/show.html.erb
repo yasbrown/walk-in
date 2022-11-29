@@ -1,0 +1,19 @@
+<div class="container">
+  <div>
+    <i class="fa-solid fa-user fa-3x"></i>
+    <h1><%= @user.name %></h1>
+  </div>
+  <div>
+    <h2>Booked</h2>
+    <% if @bookings.nil?%>
+          <p>You've have to book first..</p>
+    <% end %>
+  </div>
+  <div>
+    <h2>Favourites</h2>
+    <% if @favorite_restaurant.nil? %>
+          <p>You've have to favorite first..</p>
+    <% end %>
+  </div>
+  <%= %>
+</div>
