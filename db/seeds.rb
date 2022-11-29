@@ -7,10 +7,6 @@ require "faker"
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts "Deleting all Restaurants"
-Restaurant.destroy_all
-puts "DB clean"
-
 postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163DN N32AG W66SS NW34SD E49AN W52DL W27DG
               SE16AP SE280NW SW194NS SW100BP E174DQ E29ET NW106EU N179UZ N128SD E84FL SE207BL SW198EY SW129JL SW66QS
               N10AJ NW96AB N52RT SE137DU NW24EX E143TJ SE228SU NW95ES E130AP E201GA E96QE N135UJ E111BH N89LE SW22DP
@@ -23,6 +19,13 @@ postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163
               N160ER N195RP SW66XQ SE228DL N28JX NW25PJ N154FT N88RL W43HB SE18TN SW40DU SW155HH N212AT N29PS NW72PE
               SW97ET E140FF SE156BU SW62EW SW178JB SE29AP SW185JZ SW191TX N43DJ SE62HP NW88PQ]
 
+puts "Deleting all Restaurants"
+Restaurant.destroy_all
+puts "Deleting all Covers"
+Cover.destroy_all
+puts "Deleting all Slots"
+Slot.destroy_all
+puts "DB clean"
 
 puts "Building new restaurants"
 150.times do
@@ -32,7 +35,10 @@ puts "Building new restaurants"
     cuisine: Faker::Restaurant.type,
     description: Faker::Restaurant.description,
     address: postcode.sample,
-    price: rand(1..3)
+    price: rand(1..3),
+    opening_time: Faker::Time.forward(days: 1, period: :evening, format: :short),
+    # rand(8..10),
+    closing_time: rand(21..23)
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
   8.times do
@@ -41,16 +47,16 @@ puts "Building new restaurants"
       restaurant: restaurant
     )
     puts "Cover with id: #{cover.id} has been created"
-    # 3.times do
-    #   slot = Slot.create(
-    #     date: Date.today,
-    #     available?: rand("true", "false"),
-    #     start_time: rand(18..20),
-    #     end_time: rand(21..23),
-    #     cover: cover
-    #   )
-    #   puts "Slot with id: #{slot.id} has been created"
-    # end
+    3.times do
+      slot = Slot.create!(
+        date: Date.today,
+        available?: Faker::Boolean.boolean,
+        start_time: rand(18..20),
+        end_time: rand(21..23),
+        cover: cover
+      )
+      puts "Slot with id: #{slot.id} has been created"
+    end
   end
 end
 
