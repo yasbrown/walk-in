@@ -2,6 +2,7 @@ class Restaurant < ApplicationRecord
   has_many :covers, dependent: :destroy
   has_many :favourite_restaurants, dependent: :destroy
   has_many :slots, through: :covers
+  has_many :reviews, dependent: :destroy
 
   validates :name, presence: true
   validates :rating, presence: true
