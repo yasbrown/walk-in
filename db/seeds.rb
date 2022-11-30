@@ -20,22 +20,26 @@ postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163
               N160ER N195RP SW66XQ SE228DL N28JX NW25PJ N154FT N88RL W43HB SE18TN SW40DU SW155HH N212AT N29PS NW72PE
               SW97ET E140FF SE156BU SW62EW SW178JB SE29AP SW185JZ SW191TX N43DJ SE62HP NW88PQ]
 
-puts "Deleting all Restaurants"
-Restaurant.destroy_all
-puts "Deleting all Covers"
-Cover.destroy_all
+puts "Deleting all bookings"
+Booking.destroy_all
 puts "Deleting all Slots"
 Slot.destroy_all
+puts "Deleting all Covers"
+Cover.destroy_all
+puts "Deleting all Restaurants"
+Restaurant.destroy_all
 puts "DB clean"
 
 puts "Building new restaurants"
 30.times do
+  result = Geocoder.search(postcode.sample)
+  address = result.first.display_name
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     rating: rand(3.0...5.0).round(2),
     cuisine: Faker::Restaurant.type,
     description: Faker::Restaurant.description,
-    address: postcode.sample,
+    address: address,
     price: rand(1..3),
     opening_time: rand(9..11),
     closing_time: rand(23..24)
