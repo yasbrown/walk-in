@@ -11,7 +11,6 @@ class RestaurantsController < ApplicationController
     else
       @restaurants = Restaurant.all
     end
-  end
 
     if params[:query].present?
       @restaurants = Restaurant.where.(address: params[:query])
