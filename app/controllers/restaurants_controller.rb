@@ -3,7 +3,10 @@ class RestaurantsController < ApplicationController
 
   def index
     if params[:query].present?
-      @restaurants = Restaurant.where.(address: params[:query])
+      @restaurants = Restaurant.global_search(params[:query])
+      if @restaurants.nil?
+        @Restaurants = Restaurant.all
+      end
     else
       @restaurants = Restaurant.all
     end
