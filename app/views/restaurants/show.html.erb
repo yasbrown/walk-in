@@ -1,5 +1,8 @@
 <div class="restaurant-images">
 </div>
+          <div class="left-heading">
+            <h2><%= @restaurant.name %></h2>
+          </div>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
   <div class="carousel-indicators">
@@ -10,9 +13,6 @@
     <div class="carousel-item active">
       <div class="restaurant-text">
         <div class="restaurant-heading">
-          <div class="left-heading">
-            <h2><%= @restaurant.name %></h2>
-          </div>
           <div class="right-heading">
             <p>Ratings</p>
             <p>Rating <i class="icon-light fa-sharp fa-solid fa-star">@restaurant.ratings.count</p>
