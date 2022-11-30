@@ -1,8 +1,5 @@
 require "faker"
-<<<<<<< Updated upstream
 require "date"
-=======
->>>>>>> Stashed changes
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -11,13 +8,6 @@ require "date"
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-<<<<<<< Updated upstream
-=======
-puts "Deleting all Restaurants"
-Restaurant.destroy_all
-puts "DB clean"
-
->>>>>>> Stashed changes
 postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163DN N32AG W66SS NW34SD E49AN W52DL W27DG
               SE16AP SE280NW SW194NS SW100BP E174DQ E29ET NW106EU N179UZ N128SD E84FL SE207BL SW198EY SW129JL SW66QS
               N10AJ NW96AB N52RT SE137DU NW24EX E143TJ SE228SU NW95ES E130AP E201GA E96QE N135UJ E111BH N89LE SW22DP
@@ -30,7 +20,9 @@ postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163
               N160ER N195RP SW66XQ SE228DL N28JX NW25PJ N154FT N88RL W43HB SE18TN SW40DU SW155HH N212AT N29PS NW72PE
               SW97ET E140FF SE156BU SW62EW SW178JB SE29AP SW185JZ SW191TX N43DJ SE62HP NW88PQ]
 
-<<<<<<< Updated upstream
+review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night and the wait was over an hour. A little surprised by that but the time went by pretty quick. They brought out some lemonade while we were waiting which was nice. Food itself was great and the atmosphere is amazing as well",
+                  "Amazing experience. Visited for a lunch for a friend’s birthday and the staff made it super special with attentive, helpful and genuine service. Looking forward to going back."]
+
 puts "Deleting all Restaurants"
 Restaurant.destroy_all
 puts "Deleting all Covers"
@@ -44,24 +36,19 @@ puts "Building new restaurants"
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     rating: rand(3.0...5.0).round(2),
-=======
-
-puts "Building new restaurants"
-150.times do
-  restaurant = Restaurant.create(
-    name: Faker::Restaurant.name,
-    rating: rand(3.0...5.0),
-    total_seats_available: rand(2..10),
->>>>>>> Stashed changes
     cuisine: Faker::Restaurant.type,
     description: Faker::Restaurant.description,
     address: postcode.sample,
     price: rand(1..3),
-<<<<<<< Updated upstream
     opening_time: rand(9..11),
     closing_time: rand(23..24)
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
+  4.times do
+    review = Review.create!(
+      content: review_content.sample
+    )
+  end
   8.times do
     cover = Cover.create!(
       seats: rand(2..8),
@@ -79,12 +66,6 @@ puts "Building new restaurants"
       puts "Slot with id: #{slot.id} has been created"
     end
   end
-=======
-    opening_time: rand(9..10),
-    closing_time: rand
-  )
-  puts "Restaurant with id: #{restaurant.id} has been created"
->>>>>>> Stashed changes
 end
 
 puts "Finished!"
