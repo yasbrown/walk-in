@@ -1,19 +1,20 @@
 <div class="container">
-  <div>
-    <i class="fa-solid fa-user fa-3x"></i>
+  <div class="profile-header">
     <h1><%= @user.name %></h1>
   </div>
+
   <div>
     <h2>Booked</h2>
     <% if @bookings.nil?%>
-          <p>You've have to book first..</p>
+        <p>Oops! You don't have any bookings. Not feeling hungry?</p>
     <% end %>
   </div>
+
   <div>
     <h2>Favourites</h2>
     <% if @favorite_restaurant.nil? %>
-          <p>You've have to favorite first..</p>
+          <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
     <% end %>
   </div>
-  <%= %>
+  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
 </div>

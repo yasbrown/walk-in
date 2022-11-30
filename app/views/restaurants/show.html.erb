@@ -4,19 +4,25 @@
   <div class="restaurant-heading">
     <div class="left-heading">
       <h2><%= @restaurant.name %></h2>
-      <div class="map-link">
+      <div class="restaurant-map">
         <img src="pin-purple" alt="pin">
         <p>See on maps -></p>
       </div>
     </div>
     <div class="right-heading">
-      <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i> <%= restaurant.rating %></p>
+      <p>Ratings</p>
+      <p>Rating <i class="icon-light fa-sharp fa-solid fa-star">@restaurant.ratings.count</p>
       <p>Read reviews</p>
     </div>
   </div>
   <div class="restaurant-times">
-    <p>Time slots</p>
+    <% @availabe_slots.each do |slot| %>
+        <p class="time-slot"><%= slot %>:00</p>
+    <% end %>
   </div>
+  <%# <button class="button purple medium ">Confirm</button> %>
+  <a class="btn btn-primary" data-bs-toggle="modal" href="#tableModal" role="button">Reserve</a>
+
   <div class="restaurant-description">
     <p><%= @restaurant.description %></p>
   </div>
