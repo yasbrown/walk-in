@@ -1,8 +1,21 @@
-.icon-light {
+.icon .medium {
+  width: 28px;
+}
+
+.icon .light {
   color: $light-purple;
 }
 
 .fa-star {
   width: 22px;
   height: 22px;
+}
+
+.icon-box {
+  color: $dark-grey;
+}
+.icon-box .active {
+  background-color: $purple;
+  width: 66px;
+  color: white;
 }

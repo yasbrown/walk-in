@@ -1,0 +1,26 @@
+.btn {
+  display: block;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: 2px, 2px rgba(0, 0, 0, 0.25);
+  padding: 7px 10px;
+  text-align: center;
+}
+
+.btn .primary {
+  background-color: $purple;
+  color: white;
+}
+
+.btn .secondary {
+  background-color: $light-purple;
+  color: $dark-grey;
+}
+
+.btn .large {
+  font-size: 26px;
+}
+
+.btn .medium {
+  font-size: 18px;
+}
