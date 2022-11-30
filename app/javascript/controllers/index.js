@@ -9,3 +9,9 @@ application.register("footer", FooterController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import RestThingController from "./rest_thing_controller"
+application.register("rest-thing", RestThingController)
+
+import RestaurantShowController from "./restaurant_show_controller"
+application.register("restaurant-show", RestaurantShowController)
