@@ -20,32 +20,69 @@ postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163
               N160ER N195RP SW66XQ SE228DL N28JX NW25PJ N154FT N88RL W43HB SE18TN SW40DU SW155HH N212AT N29PS NW72PE
               SW97ET E140FF SE156BU SW62EW SW178JB SE29AP SW185JZ SW191TX N43DJ SE62HP NW88PQ]
 
+review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night and the wait was over an hour. A little surprised by that but the time went by pretty quick. They brought out some lemonade while we were waiting which was nice. Food itself was great and the atmosphere is amazing as well",
+                  "Amazing experience. Visited for a lunch for my birthday and the staff made it super special with attentive, helpful and genuine service. Looking forward to going back.",
+                  "What a place!! Had breakfast here and absolutely loved it. Highly recommended!!",
+                  "Lovely restaurant, nice crowd and delicious food. Will definitely come back soon!",
+                  "Amazing food to share and good drink menu with creative cocktails and natural wine selection. Love the at atmosphere and super nice staff.",
+                  "Lovely small place with a small and delicious, innovative menu. Great service, much love goes into the food."]
+
+puts "Deleting all Users"
+User.destroy_all
 puts "Deleting all Restaurants"
 Restaurant.destroy_all
+puts "Deleting all Reviews"
+Review.destroy_all
 puts "Deleting all Covers"
 Cover.destroy_all
 puts "Deleting all Slots"
 Slot.destroy_all
+puts "Deleting all Restaurants"
+Restaurant.destroy_all
 puts "DB clean"
+
+puts "Building new users"
+users = []
+10.times do
+  user = User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.email,
+    password: "123456"
+  )
+  puts "User with id: #{user.id} has been created"
+  users << user
+end
 
 puts "Building new restaurants"
 30.times do
+  result = Geocoder.search(postcode.sample)
+  address = result.first.display_name
+
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     rating: rand(3.0...5.0).round(2),
     cuisine: Faker::Restaurant.type,
     description: Faker::Restaurant.description,
-    address: postcode.sample,
+    address: address,
     price: rand(1..3),
     opening_time: rand(9..11),
     closing_time: rand(23..24)
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
-  8.times do
-    cover = Cover.create!(
-      seats: rand(2..8),
-      restaurant: restaurant
+  4.times do
+    review = Review.create!(
+      content: review_content.sample,
+      restaurant: restaurant,
+      user: users.sample
     )
+    puts "Review with id: #{review.id} has been created"
+  end
+  8.times do
+    cover = Cover.new(
+      seats: rand(2..8)
+    )
+    cover.restaurant = restaurant
+    cover.save!
     puts "Cover with id: #{cover.id} has been created"
     3.times do
       slot = Slot.create!(

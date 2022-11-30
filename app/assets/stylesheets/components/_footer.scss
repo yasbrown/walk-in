@@ -6,9 +6,17 @@ body > #main {
   }
 
 .footer {
-position: fixed;
-bottom: 0;
-height: 100px;
-width: 100%;
-background-color: white;
+  position: fixed;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: space-around;
+  i {
+    font-size: 35px;
+  }
+  a {
+    text-decoration: none;
+  }
 }
