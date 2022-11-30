@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  belongs_to :cover
+  belongs_to :slot
   belongs_to :user
 
   validates :start_time, presence: true

@@ -20,7 +20,6 @@ postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163
               N160ER N195RP SW66XQ SE228DL N28JX NW25PJ N154FT N88RL W43HB SE18TN SW40DU SW155HH N212AT N29PS NW72PE
               SW97ET E140FF SE156BU SW62EW SW178JB SE29AP SW185JZ SW191TX N43DJ SE62HP NW88PQ]
 
-
 review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night and the wait was over an hour. A little surprised by that but the time went by pretty quick. They brought out some lemonade while we were waiting which was nice. Food itself was great and the atmosphere is amazing as well",
                   "Amazing experience. Visited for a lunch for my birthday and the staff made it super special with attentive, helpful and genuine service. Looking forward to going back.",
                   "What a place!! Had breakfast here and absolutely loved it. Highly recommended!!",
@@ -36,11 +35,8 @@ puts "Deleting all Reviews"
 Review.destroy_all
 puts "Deleting all Covers"
 Cover.destroy_all
-
 puts "Deleting all Slots"
 Slot.destroy_all
-puts "Deleting all Covers"
-Cover.destroy_all
 puts "Deleting all Restaurants"
 Restaurant.destroy_all
 puts "DB clean"
@@ -61,6 +57,7 @@ puts "Building new restaurants"
 30.times do
   result = Geocoder.search(postcode.sample)
   address = result.first.display_name
+
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     rating: rand(3.0...5.0).round(2),
@@ -78,12 +75,14 @@ puts "Building new restaurants"
       restaurant: restaurant,
       user: users.sample
     )
+    puts "Review with id: #{review.id} has been created"
   end
   8.times do
-    cover = Cover.create!(
-      seats: rand(2..8),
-      restaurant: restaurant
+    cover = Cover.new(
+      seats: rand(2..8)
     )
+    cover.restaurant = restaurant
+    cover.save!
     puts "Cover with id: #{cover.id} has been created"
     3.times do
       slot = Slot.create!(
