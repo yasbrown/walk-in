@@ -20,6 +20,9 @@ postcode = %i[SW98FG W38QL SE186EQ NW29QN W30LG NW108GZ SW23AS N228XY N99HH E163
               N160ER N195RP SW66XQ SE228DL N28JX NW25PJ N154FT N88RL W43HB SE18TN SW40DU SW155HH N212AT N29PS NW72PE
               SW97ET E140FF SE156BU SW62EW SW178JB SE29AP SW185JZ SW191TX N43DJ SE62HP NW88PQ]
 
+review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night and the wait was over an hour. A little surprised by that but the time went by pretty quick. They brought out some lemonade while we were waiting which was nice. Food itself was great and the atmosphere is amazing as well",
+                  "Amazing experience. Visited for a lunch for a friend’s birthday and the staff made it super special with attentive, helpful and genuine service. Looking forward to going back."]
+
 puts "Deleting all Restaurants"
 Restaurant.destroy_all
 puts "Deleting all Covers"
@@ -41,6 +44,11 @@ puts "Building new restaurants"
     closing_time: rand(23..24)
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
+  4.times do
+    review = Review.create!(
+      content: review_content.sample
+    )
+  end
   8.times do
     cover = Cover.create!(
       seats: rand(2..8),
