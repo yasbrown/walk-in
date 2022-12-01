@@ -82,4 +82,3 @@ group :test do
   gem "webdrivers"
 end
 gem "geocoder"
-gem "pg_search"
