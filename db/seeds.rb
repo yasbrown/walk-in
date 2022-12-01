@@ -31,13 +31,8 @@ review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night
 
 restaurant_type = %i[Italian Indian French Vegetarian Vegan Thai Japanese]
 
-restaurant_image = ["myprbssl7fbjgn0yeaim", "qvuhve94u4qbfo6fqsyd", "x3orikt9ywvfren2kavp", "dkrpwntoq1h7fwan41ep",
-                    "dl0hpuugj3trirk1ygzt", "ayblljxpm6hjhcm2dd3g", "r977r8h4oimhwq4kturo", "kwn9mcjc6bdpwo7l7mye",
-                    "sriurkfemhiaem0vrspy", "uqgbcketz2e6ngnidmka", "xwywbrswjemvkpxczhtt", "hmumlyeopzl6eanaxael",
-                    "eqcjggopzjvl6ovympx9", "bnp41fowfhejhrs3bvuf", "ggaapk18xia1pqk60evb", "zlzxlctdx0yjrdmjo3z6",
-                    "qtdqa1ghq5r3dmf4do6z", "alxlfxstghhi55xycht8", "cacoeek2ntmuqe3i5x3v", "hpxsndb6rciucmq0kiuq",
-                    "qiyikkxbiguukfrwtuch"]
-# p restaurant_image.sample
+restaurant_image = ["https://res.cloudinary.com/dft14camn/image/upload/v1669898682/qiyikkxbiguukfrwtuch.jpg"]
+# p "#{restaurant_image.sample}"
 
 puts "Deleting all Users"
 User.destroy_all
@@ -80,7 +75,7 @@ puts "Building new restaurants"
     opening_time: rand(9..11),
     closing_time: rand(23..24)
   )
-  file = URI.open(restaurant_image.sample)
+  file = URI.open("#{restaurant_image.sample}")
   restaurant.photo.attach(io: file, filename: "restaurant.png", content_type: "image/png")
   restaurant.save
 
