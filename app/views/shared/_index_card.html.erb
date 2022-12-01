@@ -5,8 +5,10 @@
     <div class="restaurant-info">
       <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
       <p><%= restaurant.address %></p>
-      <p><%= restaurant.rating %></p>
-      <p><%= restaurant.description %></p>
+      <div class="restaurant-cuisine-rating">
+        <p><%= restaurant.cuisine %></p>
+        <p><%= restaurant.rating %></p>
+      </div>
     </div>
   </div>
 <% end %>
