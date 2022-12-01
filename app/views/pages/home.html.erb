@@ -1,21 +1,26 @@
-<div>
-  <h1>WalkIn</h1>
-  <p>The one stop solution for restaurant reservations</p>
-  <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
-    Location: <%= f.text_field :address %><br />
-    time: <%= f.number_field :opening_time %><br />
-    time: <%= f.number_field :closing_time %><br />
-    number of people: <%= f.number_field :total_seats_available %><br />
-    <%= f.submit "Find a Table"%>
-  <% end %>
+  <div class="header">
+    <div class="intro">
+      <h1>WalkIn</h1>
+      <img src="/app/assets/images/Logo.png" alt="logo">
+      <p id="top_text">The one stop solution for </p>
+      <p id="bottom_text">restaurant reservations</p>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="form">
+   <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
+    <div>
+      Where do you want to eat?<br /> <%= f.text_field :address %><br />
+    </div>
+      What's your availability?<br />
+      <div class="time">
+        <%= f.number_field :opening_time %>
+      -
+        <%= f.number_field :closing_time %><br />
+    </div>
+      Nimber of people:<br /> <%= f.select :total_seats_available, 1..10 %><br />
+      <%= f.submit "Find a Table"%>
+    <% end %>
+  </div>
 </div>
-
-
-  <%# <%= simple_form_for (@restaurant) do |f| %>
-    <%# <%= f.input :address %>
-    <%# <%= f.input :opening_time, as: :integer, html5: true %>
-    <%# <%= f.input :closing_time, as: :integer, html5: true %>
-    <%# <%= f.input :total_seats_available, collection: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] %>
-    <%# <%= f.button :submit %>
-    <%# <%= link_to "Find a table", restaurants_path %>
- <%# <% end %>
