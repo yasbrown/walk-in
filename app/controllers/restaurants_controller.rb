@@ -29,12 +29,14 @@ class RestaurantsController < ApplicationController
           lng: restaurant.longitude
         }
       end
+
     # end
  end
-
 
   def show
     @restaurant = Restaurant.find(params[:id])
     @availabe_slots = @restaurant.covers.map(&:slots).flatten.select(&:available?).map(&:start_time).uniq.sort
+
+    @markers = [{ lat: @restaurant.latitude, lng: @restaurant.longitude }]
   end
 end
