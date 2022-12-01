@@ -66,7 +66,8 @@ puts "Building new restaurants"
     address: address,
     price: rand(1..3),
     opening_time: rand(9..11),
-    closing_time: rand(23..24)
+    closing_time: rand(23..24),
+    total_seats_available: rand(100..150)
   )
   puts "Restaurant with id: #{restaurant.id} has been created"
   4.times do
