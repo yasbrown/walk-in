@@ -1,0 +1,12 @@
+<% @restaurants.each do |restaurant| %>
+  <div class="card-container">
+    <%= cl_image_tag restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+
+    <div class="restaurant-info">
+      <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+      <p><%= restaurant.address %></p>
+      <p><%= restaurant.rating %></p>
+      <p><%= restaurant.description %></p>
+    </div>
+  </div>
+<% end %>
