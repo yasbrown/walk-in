@@ -1,5 +1,7 @@
 require "faker"
 require "date"
+require "open-uri"
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -26,6 +28,31 @@ review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night
                   "Lovely restaurant, nice crowd and delicious food. Will definitely come back soon!",
                   "Amazing food to share and good drink menu with creative cocktails and natural wine selection. Love the at atmosphere and super nice staff.",
                   "Lovely small place with a small and delicious, innovative menu. Great service, much love goes into the food."]
+
+restaurant_type = %i[Italian Indian French Vegetarian Vegan Thai Japanese]
+
+restaurant_image = ["https://res.cloudinary.com/dft14camn/image/upload/v1669898682/qiyikkxbiguukfrwtuch.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898677/hpxsndb6rciucmq0kiuq.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898671/cacoeek2ntmuqe3i5x3v.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898666/alxlfxstghhi55xycht8.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898661/qtdqa1ghq5r3dmf4do6z.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898655/zlzxlctdx0yjrdmjo3z6.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898648/ggaapk18xia1pqk60evb.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898494/bnp41fowfhejhrs3bvuf.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898489/eqcjggopzjvl6ovympx9.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898483/hmumlyeopzl6eanaxael.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898475/xwywbrswjemvkpxczhtt.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898469/uqgbcketz2e6ngnidmka.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898460/sriurkfemhiaem0vrspy.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898454/kwn9mcjc6bdpwo7l7mye.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898445/r977r8h4oimhwq4kturo.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898222/ayblljxpm6hjhcm2dd3g.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898216/dl0hpuugj3trirk1ygzt.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898208/dkrpwntoq1h7fwan41ep.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898202/x3orikt9ywvfren2kavp.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898183/qvuhve94u4qbfo6fqsyd.jpg",
+                    "https://res.cloudinary.com/dft14camn/image/upload/v1669894421/myprbssl7fbjgn0yeaim.jpg"]
+# p "#{restaurant_image.sample}"
 
 puts "Deleting all Users"
 User.destroy_all
@@ -54,21 +81,27 @@ users = []
 end
 
 puts "Building new restaurants"
-30.times do
+20.times do
   result = Geocoder.search(postcode.sample)
   address = result.first.display_name
 
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     rating: rand(3.0...5.0).round(2),
-    cuisine: Faker::Restaurant.type,
+    cuisine: restaurant_type.sample,
     description: Faker::Restaurant.description,
     address: address,
     price: rand(1..3),
     opening_time: rand(9..11),
-    closing_time: rand(23..24)
+    closing_time: rand(23..24),
+    total_seats_available: rand(100..150)
   )
+  file = URI.open("#{restaurant_image.sample}")
+  restaurant.photo.attach(io: file, filename: "restaurant.png", content_type: "image/png")
+  restaurant.save
+
   puts "Restaurant with id: #{restaurant.id} has been created"
+
   4.times do
     review = Review.create!(
       content: review_content.sample,
