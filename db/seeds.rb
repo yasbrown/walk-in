@@ -54,7 +54,7 @@ users = []
 end
 
 puts "Building new restaurants"
-30.times do
+20.times do
   result = Geocoder.search(postcode.sample)
   address = result.first.display_name
 
