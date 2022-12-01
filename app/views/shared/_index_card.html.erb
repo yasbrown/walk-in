@@ -4,11 +4,18 @@
 
     <div class="restaurant-info">
       <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
-      <p><%= restaurant.address %></p>
+      <% (restaurant.price).times do %>
+        <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
+      <% end %>
+      <% (3 - restaurant.price).times do %>
+        <i class="fa-solid fa-sterling-sign" id="price-light"></i>
+      <% end %>
+
       <div class="restaurant-cuisine-rating">
         <p><%= restaurant.cuisine %></p>
         <p><%= restaurant.rating %></p>
       </div>
+
     </div>
   </div>
 <% end %>

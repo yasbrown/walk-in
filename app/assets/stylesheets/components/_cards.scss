@@ -5,20 +5,39 @@
   box-shadow: 3px 3px 4px #f3f3f3;
   margin-top: 10px;
   margin-bottom: 10px;
+  align-items: center;
+  height: 115px;
   img {
     border-radius: 10%;
+    margin-left: 8px;
   }
   h4 > a {
     text-decoration: none;
+    color: #505050;
+  }
+  p {
     color: #505050;
   }
 }
 
 .restaurant-info {
   padding-left: 10px;
+  width: 100%;
+  // margin-top: 8px;
 }
 
 .restaurant-cuisine-rating {
   display: flex;
   justify-content: space-between;
+  margin-top: 6px;
+  margin-right: 8px;
+}
+
+#price-dark {
+  color: #505050;
+}
+
+#price-light {
+  color: #505050;
+  opacity: 50%;
 }
