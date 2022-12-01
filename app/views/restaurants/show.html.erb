@@ -1,5 +1,7 @@
 <div class="restaurant-images">
+  <%# <%= cl_image_tag("myprbssl7fbjgn0yeaim", width: 390, height: 200, crop: :fill) %>
 </div>
+
 <div class="restaurant-text" data-controller="restaurant-show">
   <div class="restaurant-heading">
     <div class="left-heading">
@@ -19,12 +21,12 @@
               <div class="restaurant-heading">
                 <div class="right-heading">
                   <p>Ratings</p>
-                  <p>Rating <i class="icon-light fa-sharp fa-solid fa-star">@restaurant.ratings.count</p>
+                  <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"><%= @restaurant.reviews.count %></p>
                   <p>Read reviews</p>
                 </div>
               </div>
               <div class="restaurant-times">
-                <% @availabe_slots.each do |slot| %>
+                <%= @availabe_slots.each do |slot| %>
                     <p class="time-slot"><%= slot %>:00</p>
                 <% end %>
               </div>
@@ -81,24 +83,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button class="button purple medium" data-bs-target="#tableConfirmModal" data-bs-toggle="modal">Continue</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal fade" id="tableConfirmModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalToggleLabel2">Choose a table</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="tables-display">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button class="button light medium" data-bs-target="#tableSelectModal" data-bs-toggle="modal">Back to first</button>
               <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Continue</button>
             </div>
           </div>
@@ -108,15 +92,20 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
+              <i data-bs-target="#tableConfirmModal" data-bs-toggle="modal" class="fa-solid fa-arrow-left"></i>
               <h2 class="modal-title" id="exampleModalToggleLabel3">Confirm booking</h2>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <div class="tables-display">
+              <div class="confirm-summary">
+                <h2>Confirm booking</h2>
+                <p><%= @restaurant.name %></p>
+                <p>at <%= @restaurant.start_time %></p>
+                <p>for <%= @restaurtant.cover.seats %></p>
               </div>
             </div>
             <div class="modal-footer">
-              <button class="button light medium" data-bs-target="#tableConfirmModal" data-bs-toggle="modal">Edit booking</button>
+              <button class="button light medium">Edit booking</button>
               <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Confirm</button>
             </div>
           </div>
