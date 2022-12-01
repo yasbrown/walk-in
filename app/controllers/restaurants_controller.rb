@@ -8,7 +8,7 @@ class RestaurantsController < ApplicationController
       opening_time = params.dig(:restaurant, :opening_time)
       closing_time = params.dig(:restaurant, :closing_time)
       total_seats_available = params.dig(:restaurant, :total_seats_available)
-      @restaurants = Restaurant.where(query, address, opening_time, closing_time, total_seats_available)
+      @restaurants = Restaurant.where(query, "%#{address}%", opening_time, closing_time, total_seats_available)
       if @restaurants.empty?
         @restaurants = Restaurant.all
       end
@@ -17,8 +17,8 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.all
     end
 
-    @restaurants = Restaurant.all
-    @markers = @restaurants.geocoded.map do |restaurant|
+    @restaurants_all = Restaurant.all
+    @markers = @restaurants_all.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
         lng: restaurant.longitude
