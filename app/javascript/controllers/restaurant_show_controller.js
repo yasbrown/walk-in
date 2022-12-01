@@ -2,7 +2,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["button"]
+  static targets = ["button", "time"]
 
   connect() {
   }
@@ -10,5 +10,9 @@ export default class extends Controller {
   show() {
     console.log("button");
     this.buttonTarget.classList.remove("hide")
+  }
+
+  active() {
+    this.timeTarget.classList.add("active")
   }
 }

@@ -13,8 +13,9 @@
 
   <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
     Location: <%= f.text_field :address %><br />
+    date: <%= f.date_field :date %><br />
     time: <%= f.number_field :opening_time %><br />
     time: <%= f.number_field :closing_time %><br />
-    number of people: <%= f.number_field :total_seats_available<br /> %>
-  <%= f.submit %>
+    number of people: <%= f.number_field :total_seats_available %><br />
+  <%= f.submit%>
 <% end %>
