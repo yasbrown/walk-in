@@ -1,0 +1,56 @@
+<div class="restaurant-images">
+</div>
+          <div class="left-heading">
+            <h2><%= @restaurant.name %></h2>
+          </div>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="restaurant-text">
+        <div class="restaurant-heading">
+          <div class="right-heading">
+            <p>Ratings</p>
+            <p>Rating <i class="icon-light fa-sharp fa-solid fa-star">@restaurant.ratings.count</p>
+            <p>Read reviews</p>
+          </div>
+        </div>
+        <div class="restaurant-times">
+          <% @availabe_slots.each do |slot| %>
+              <p class="time-slot"><%= slot %>:00</p>
+          <% end %>
+        </div>
+        <%# <button class="button purple medium ">Confirm</button> %>
+        <a class="btn btn-primary" data-bs-toggle="modal" href="#tableModal" role="button">Reserve</a>
+
+        <div class="restaurant-description">
+          <p><%= @restaurant.description %></p>
+        </div>
+        <div class="more-restaurants">
+          <h2>More tables at</h2>
+          <div class="restaurant-cards-small row"></div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="restaurant-map">
+        <img src="pin-purple" alt="pin">
+        <p>See on maps -></p>
+          <div><%= render "shared/map" %></div>
+      </div>
+    </div>
+
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon visually-hidden" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

@@ -1,0 +1,30 @@
+.button {
+  display: block;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: 2px, 2px, 4px rgba(0, 0, 0, 0.25);
+  padding: 7px 10px;
+  text-align: center;
+}
+
+.button.purple {
+  background-color: $purple;
+  color: white;
+}
+
+.button.light {
+  background-color: $light-purple;
+  color: $dark-grey;
+}
+
+.button.large {
+  font-size: 26px;
+}
+
+.button.medium {
+  font-size: 18px;
+}
+
+button.hide {
+    display: none;
+  }
