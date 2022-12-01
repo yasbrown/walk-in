@@ -12,7 +12,10 @@ export default class extends Controller {
     this.buttonTarget.classList.remove("hide")
   }
 
-  active() {
-    this.timeTarget.classList.add("active")
+  active(e) {
+    const timeSlots = document.querySelectorAll(".time-slot")
+    timeSlots.forEach((timeSlot) => {
+    timeSlot.classList.remove("active")})
+    e.target.classList.toggle("active")
   }
 }
