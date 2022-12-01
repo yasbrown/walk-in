@@ -27,6 +27,8 @@ review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night
                   "Amazing food to share and good drink menu with creative cocktails and natural wine selection. Love the at atmosphere and super nice staff.",
                   "Lovely small place with a small and delicious, innovative menu. Great service, much love goes into the food."]
 
+restaurant_type = %i[Italian Indian French Vegetarian Vegan Thai Japanese]
+
 puts "Deleting all Users"
 User.destroy_all
 puts "Deleting all Restaurants"
@@ -61,7 +63,7 @@ puts "Building new restaurants"
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
     rating: rand(3.0...5.0).round(2),
-    cuisine: Faker::Restaurant.type,
+    cuisine: restaurant_type.sample,
     description: Faker::Restaurant.description,
     address: address,
     price: rand(1..3),
