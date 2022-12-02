@@ -1,0 +1,21 @@
+<% @restaurants.each do |restaurant| %>
+  <div class="card-container">
+    <%= cl_image_tag restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+
+    <div class="restaurant-info">
+      <h4><%= link_to restaurant.name, restaurant_path(restaurant) %></h4>
+      <% (restaurant.price).times do %>
+        <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
+      <% end %>
+      <% (3 - restaurant.price).times do %>
+        <i class="fa-solid fa-sterling-sign" id="price-light"></i>
+      <% end %>
+
+      <div class="restaurant-cuisine-rating">
+        <p><%= restaurant.cuisine %></p>
+        <p><%= restaurant.rating %></p>
+      </div>
+
+    </div>
+  </div>
+<% end %>

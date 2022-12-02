@@ -1,1 +1,56 @@
 // Specific CSS for your home-page
+.form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#restaurant_total_seats_available {
+  width: 193px;
+}
+
+
+.intro {
+  text-align: center;
+  font-family: 'Josefin Sans';
+  background-color: $purple;
+  height: 175px;
+  border-radius: 0px 0px 100px 100px;
+  color: white;
+}
+
+.time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#restaurant_opening_time {
+  width: 100px;
+  margin-right: 15px;
+}
+
+#restaurant_closing_time {
+  width: 100px;
+  margin-left: 15px;
+}
+
+h1 {
+  font-size: 45px;
+}
+  // p {
+    //   font-size: 17px;
+    // }
+
+    // #top_text {
+      //   margin-bottom: 0;
+      // }
+
+      // .header {
+      //   text-align: center;
+      //   font-family: 'Josefin Sans';
+      //   background-color: $purple;
+      //   height: 175px;
+      //   border-radius: 0px 0px 100px 100px;
+      //   color: white;
+      // }
