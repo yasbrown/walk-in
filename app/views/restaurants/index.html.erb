@@ -3,40 +3,29 @@
     <h2>Your search</h2>
   </div>
 
-  <div class="menu">
-    <input checked="" class="menu_input" name="menu" type="radio" />
-
-    <input class="menu_input" id="btn2" name="menu" type="radio" />
-      <label class="menu_label" for="btn2">
-        <div class="fa fa-bars"></div>
-        <div class="menu_text">
-        List
-        </div>
-      </label>
-
-    <input class="menu_input" id="btn3" name="menu" type="radio" />
-      <label class="menu_label" for="btn3">
-        <div class="fa-solid fa-map-pin"></div>
-        <div class="menu_text">
-          Map
-        </div>
-      </label>
-  </div>
-
-
-  <div class="nav-btns">
-
+  <div class="menu nav-btns">
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
 
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">List</button>
+        <input class="menu_input nav-link active" id="btn2 pills-home-tab" name="menu" type="radio" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"/>
+          <label class="menu_label" for="btn2 pills-home-tab">
+            <div class="fa-solid fa-list"></div>
+            <div class="menu_text">
+            List
+            </div>
+          </label>
       </li>
 
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Map</button>
+      <li>
+        <input class="menu_input nav-link" id="btn3 pills-profile-tab" name="menu" type="radio" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true" />
+          <label class="menu_label" for="btn3 pills-profile-tab">
+            <div class="fa-solid fa-map-pin"></div>
+            <div class="menu_text">
+              Map
+            </div>
+          </label>
       </li>
     </ul>
-  </div>
 
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"><%= render "shared/index_card" %></div>
