@@ -4,126 +4,85 @@
 
 <div class="restaurant-text" data-controller="restaurant-show">
   <div class="restaurant-heading">
-    <div class="left-heading">
-      <h2><%= @restaurant.name %></h2>
-        <div class="left-heading">
-          <h2><%= @restaurant.name %></h2>
+    <h2><%= @restaurant.name %></h2>
+  </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
         </div>
-
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="restaurant-text">
-              <div class="restaurant-heading">
-                <div class="right-heading">
-                  <p>Ratings</p>
-                  <p>Rating <i class="icon-light fa-sharp fa-solid fa-star">@restaurant.ratings.count</p>
-                  <p>Read reviews</p>
-                </div>
-              </div>
-              <div class="restaurant-times">
-                <% @availabe_slots.each do |slot| %>
-                    <p class="time-slot"><%= slot %>:00</p>
-                <% end %>
-              </div>
-              <%# <button class="button purple medium ">Confirm</button> %>
-              <a class="btn btn-primary" data-bs-toggle="modal" href="#tableModal" role="button">Reserve</a>
-
-              <div class="restaurant-description">
-                <p><%= @restaurant.description %></p>
-              </div>
-              <div class="more-restaurants">
-                <h2>More tables at</h2>
-                <div class="restaurant-cards-small row"></div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="restaurant-map">
-              <img src="pin-purple" alt="pin">
-              <p>See on maps -></p>
-                <div><%= render "shared/map" %></div>
-            </div>
-          </div>
-          <div class="right-heading">
-            <p>Ratings</p>
-            <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i><%= @restaurant.reviews.count %></p>
-            <p>Read reviews</p>
+        <div class="carousel-item">
+          <div class="restaurant-map">
+            <img src="pin-purple" alt="pin">
+            <p>See on maps -></p>
+              <div><%= render "shared/map" %></div>
           </div>
         </div>
-        <div class="restaurant-times">
-          <% @availabe_slots.each do |slot| %>
-              <p class="time-slot" data-action="click->restaurant-show#show"><%= slot %>:00</p>
+      </div>
+      <div>
+      <div class="right-heading">
+        <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i> <%= @restaurant.reviews.count %></p>
+        <p>Read reviews</p>
+      </div>
+      <div class="restaurant-times">
+        <div class="restaurant-times-grid">
+          <% @available_slots.each do |slot| %>
+              <span class="time-slot" data-action="click->restaurant-show#show click->restaurant-show#active" data-restaurant-show-target="time" ><%= slot %>:00</span>
           <% end %>
         </div>
-        <%# <button class="button purple medium ">Confirm</button> %>
-        <a class="button purple medium hide" id="tables-modal" data-bs-toggle="modal" href="#tableSelectModal" role="button" data-restaurant-show-target="button">Reserve</a>
-        <div class="modal fade" id="tableSelectModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalToggleLabel">Choose a table</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="tables-display">
-                  <% @restaurant.covers.each_with_index do |cover, index| %>
-                    <div class="table-display">
-                      <%= index + 1 %>
-                    </div>
-                  <% end %>
-
-                  <%= simple_form_for @restaurant do |f| %>
-                    <%# <%= f.input : %>
-                  <% end %>
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button class="button purple medium" data-bs-target="#tableConfirmModal" data-bs-toggle="modal">Continue</button>
-            </div>
-          </div>
-        </div>
       </div>
-      <div class="modal fade" id="tableConfirmModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalToggleLabel2">Choose a table</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="tables-display">
-                </div>
-            </div>
-            <div class="modal-footer">
-              <button class="button light medium" data-bs-target="#tableSelectModal" data-bs-toggle="modal">Back to first</button>
-              <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Continue</button>
-            </div>
-          </div>
-        </div>
+      <a class="button purple medium hide" id="tables-modal" data-bs-toggle="modal"
+      href="#tableSelectModal" role="button" data-restaurant-show-target="button">Reserve</a>
+      <div class="restaurant-description">
+        <p><%= @restaurant.description %></p>
       </div>
-      <div class="modal fade" id="bookingConfirmModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="exampleModalToggleLabel3">Confirm booking</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="tables-display">
+      <div class="modal fade" id="tableSelectModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="exampleModalToggleLabel">Choose a table</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="tables-display">
+                <% @restaurant.covers.each_with_index do |cover, index| %>
+                  <div class="table-display">
+                    <%= index + 1 %>
+                  </div>
+                <% end %>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button class="button light medium" data-bs-target="#tableConfirmModal" data-bs-toggle="modal">Edit booking</button>
-              <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Confirm</button>
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Continue</button>
           </div>
         </div>
       </div>
+    </div>
+    <div class="modal fade" id="bookingConfirmModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <i data-bs-target="#tableConfirmModal" data-bs-toggle="modal" class="fa-solid fa-arrow-left"></i>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="confirm-summary">
+              <h2>Confirm booking</h2>
+              <p><%= @restaurant.name %></p>
+              <%# <p>at <%= @booking.start_time %></p>
+              <%# <p>for <%= @booking.slot.cover.seats %></p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="button light medium">Edit booking</button>
+            <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
@@ -134,3 +93,12 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+<div class="more-restaurants">
+  <h2>More tables at</h2>
+  <div class="restaurant-cards-small row"></div>
+</div>
+<%# <%= simple_form_for @booking do |f| %>
+  <%# <%= f.input :slot_id %>
+  <%# <%= f.input :cover_id %>
+  <%# <%= f.button :submit %>
+<%# <% end %>
