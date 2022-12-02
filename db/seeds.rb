@@ -96,7 +96,8 @@ puts "Building new restaurants"
     closing_time: rand(23..24),
     total_seats_available: rand(100..150)
   )
-  file = URI.open("#{restaurant_image.sample}")
+  # file = URI.open("#{restaurant_image.sample}")
+  file = File.open("/Users/yasmin/code/yasbrown/walk-in/app/image_test.jpeg")
   restaurant.photo.attach(io: file, filename: "restaurant.png", content_type: "image/png")
   restaurant.save
 
