@@ -3,6 +3,11 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  align-items: center;
+}
+
+.image-logo {
+  margin-right: 116px;
 }
 
 #restaurant_total_seats_available {
@@ -11,7 +16,6 @@
 
 
 .intro {
-  text-align: center;
   font-family: 'Josefin Sans';
   background-color: $purple;
   height: 175px;
@@ -19,11 +23,33 @@
   color: white;
 }
 
-.time {
+.text {
+  text-align: center;
+}
+
+.head {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
+
+p {
+  margin-bottom: 0;
+}
+
+.top {
+  position: absolute;
+  right: 95px;
+  top: 50px;
+}
+
+.form {
+  margin-top: 100px;
+}
+// .time {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
 #restaurant_opening_time {
   width: 100px;
@@ -38,19 +64,3 @@
 h1 {
   font-size: 45px;
 }
-  // p {
-    //   font-size: 17px;
-    // }
-
-    // #top_text {
-      //   margin-bottom: 0;
-      // }
-
-      // .header {
-      //   text-align: center;
-      //   font-family: 'Josefin Sans';
-      //   background-color: $purple;
-      //   height: 175px;
-      //   border-radius: 0px 0px 100px 100px;
-      //   color: white;
-      // }
