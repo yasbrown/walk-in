@@ -25,7 +25,8 @@
       <div>
       <div class="right-heading">
         <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i> <%= @restaurant.reviews.count %></p>
-        <p>Read reviews</p>
+        <p><%= @restaurant.cuisine %></p>
+        <%# <p>Read reviews</p> %>
       </div>
       <div class="restaurant-times">
         <div class="restaurant-times-grid">
@@ -53,6 +54,17 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
+<div class="reviews">
+  <h2>See what people are saying:</h2>
+  <p><% @restaurant.reviews.each do |review| %></p>
+    <div class="reviews d-flex justify-content-center">
+      <p><strong><%= review.user.name %></strong></p>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+</div>
+
 <div class="more-restaurants">
   <h2>More tables at</h2>
   <div class="restaurant-cards-small row"></div>
