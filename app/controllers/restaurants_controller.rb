@@ -30,7 +30,6 @@ class RestaurantsController < ApplicationController
       }
     end
 
-    # @params = request.query_parameters
   end
 
   def show
