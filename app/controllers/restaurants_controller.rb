@@ -2,8 +2,7 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params.present? && !params.has_key?(:rating) && !params.has_key?(:cuisine)
-
+    # if params.present? && !params.has_key?(:rating) && !params.has_key?(:cuisine)
     #   range = ((params.dig(:restaurant, :opening_time).to_i)..params.dig(:restaurant, :closing_time).to_i - 1).to_a
     #   restaurant_address = params.dig(:restaurant, :address)
     #   date = params.dig(:restaurant, :date)
@@ -22,16 +21,16 @@ class RestaurantsController < ApplicationController
     # else
     #   puts "sorry we are still not there.."
       @restaurants = Restaurant.all
-    end
-
-    # @markers = @restaurants.geocoded.map do |restaurant|
-    #   {
-    #     lat: restaurant.latitude,
-    #     lng: restaurant.longitude
-    #   }
     # end
 
-    @params = request.query_parameters
+    @markers = @restaurants.geocoded.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude
+      }
+    end
+
+    # @params = request.query_parameters
   end
 
   def show
