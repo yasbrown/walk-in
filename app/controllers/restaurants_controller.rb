@@ -25,12 +25,14 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.all
     end
 
-    @markers = @restaurants.geocoded.map do |restaurant|
-      {
-        lat: restaurant.latitude,
-        lng: restaurant.longitude
-      }
-    end
+    # @markers = @restaurants.geocoded.map do |restaurant|
+    #   {
+    #     lat: restaurant.latitude,
+    #     lng: restaurant.longitude
+    #   }
+    # end
+
+    @params = request.query_parameters
   end
 
   def show
@@ -38,5 +40,8 @@ class RestaurantsController < ApplicationController
     @available_slots = @restaurant.covers.map(&:slots).flatten.select(&:available?).map(&:start_time).uniq.sort
 
     @markers = [{ lat: @restaurant.latitude, lng: @restaurant.longitude }]
+
+    @params = request.query_parameters
   end
+
 end

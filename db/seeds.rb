@@ -94,7 +94,7 @@ puts "Building new restaurants"
     price: rand(1..3),
     opening_time: rand(9..11),
     closing_time: rand(23..24),
-    date: Date.new(2022, 12, 9)
+    date: Date.new(2022, 12, 9),
     total_seats_available: rand(100..150)
   )
   file = URI.open("#{restaurant_image.sample}")
