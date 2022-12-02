@@ -1,8 +1,8 @@
-.icon .medium {
+.icon.medium {
   width: 28px;
 }
 
-.icon .light {
+.icon.light {
   color: $light-purple;
 }
 
@@ -14,7 +14,7 @@
 .icon-box {
   color: $dark-grey;
 }
-.icon-box .active {
+.icon-box.active {
   background-color: $purple;
   width: 66px;
   color: white;

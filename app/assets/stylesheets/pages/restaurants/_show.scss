@@ -1,0 +1,34 @@
+.maps-link {
+  display: flex;
+}
+
+.restaurant-times {
+  display: flex;
+  justify-content: center;
+}
+
+.restaurant-times-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 10px auto;
+  grid-gap: 1rem;
+}
+
+.time-slot {
+  width: 109px;
+  height: 53px;
+  box-shadow: 1px 1px 6px #EBEBEB;
+}
+
+.time-slot.active {
+  background-color: $light-purple;
+}
+
+.restaurant-description {
+  margin: 15px auto;
+  border-top: solid 0.1em $light-grey;
+  border-bottom: solid 0.3em $light-grey;
+  p {
+    padding: 15px auto;
+  }
+}
