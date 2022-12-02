@@ -94,6 +94,7 @@ puts "Building new restaurants"
     price: rand(1..3),
     opening_time: rand(9..11),
     closing_time: rand(23..24),
+    date: Date.new(2022, 12, 9)
     total_seats_available: rand(100..150)
   )
   # file = URI.open("#{restaurant_image.sample}")
@@ -120,7 +121,7 @@ puts "Building new restaurants"
     puts "Cover with id: #{cover.id} has been created"
     3.times do
       slot = Slot.create!(
-        date: Date.new(2022,12,10),
+        date: Date.new(2022,12,9),
         available?: Faker::Boolean.boolean,
         start_time: rand(18..20),
         end_time: rand(21..23),

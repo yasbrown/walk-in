@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
     @booking.destroy
   end
 
+  def confirm
+    @restaurant = Restaurant.find(params[:id])
+  end
+
   private
 
   def booking_params
