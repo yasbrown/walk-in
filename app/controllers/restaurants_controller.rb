@@ -16,8 +16,7 @@ class RestaurantsController < ApplicationController
       puts "sorry we are still not there.."
       @restaurants = Restaurant.all
     end
-
-    # @restaurants_all = Restaurant.all
+    
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
