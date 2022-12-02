@@ -8,11 +8,11 @@ class RestaurantsController < ApplicationController
       restaurant_address = params.dig(:restaurant, :address)
       date = params.dig(:restaurant, :date)
       seats = params.dig(:restaurant, :total_seats_available)
-      @restautrants = []
+      @restaurants = []
       restaurants = Restaurant.where("address LIKE ?", "%#{restaurant_address}%")
       range.each do |time|
         @restaurants << restaurants.each do |restaurant|
-          restaurant.covers.where("seats >= ?", seats) &&
+          restaurant.covers.where("seats > ?", seats) &&
             restaurant.slots.where(start_time: time).where(available?: true).where(date: date)
         end
         @restaurants = @restaurants.flatten
