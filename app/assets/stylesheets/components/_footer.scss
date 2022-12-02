@@ -8,13 +8,19 @@ body > #main {
 .footer {
   position: fixed;
   bottom: 0;
-  height: 100px;
+  height: 80px;
   width: 100%;
   background-color: white;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  // box-shadow: 0px -3px 4px #f3f3f3;
+  border: 1px solid rgb(244, 244, 244);
   i {
     font-size: 35px;
+    color: #505050;
   }
   a {
     text-decoration: none;

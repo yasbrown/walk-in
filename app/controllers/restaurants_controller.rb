@@ -17,13 +17,6 @@ class RestaurantsController < ApplicationController
         end
         @restaurants = @restaurants.flatten
       end
-      # query = "address ILIKE ? AND opening_time <= ? AND closing_time >= ? AND total_seats_available >= ?"
-      # address = params.dig(:restaurant, :address)
-      # opening_time = params.dig(:restaurant, :opening_time)
-      # closing_time = params.dig(:restaurant, :closing_time)
-      # total_seats_available = params.dig(:restaurant, :total_seats_available)
-      # @restaurants = Restaurant.where(query, address, opening_time, closing_time, total_seats_available)
-
     elsif @restaurants.empty?
       @restaurants = Restaurant.all
     else
@@ -31,7 +24,6 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.all
     end
 
-    @restaurants = Restaurant.all
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,

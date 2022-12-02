@@ -1,5 +1,5 @@
 <div class="restaurant-images">
-  <%# <%= cl_image_tag("myprbssl7fbjgn0yeaim", width: 390, height: 200, crop: :fill) %>
+  <%= cl_image_tag @restaurant.photo.key, height: 200, width: 390, crop: :fill %>
 </div>
 
 <div class="restaurant-text" data-controller="restaurant-show">
