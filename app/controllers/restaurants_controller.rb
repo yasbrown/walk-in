@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+
     if params.present? && !params.has_key?(:rating) && !params.has_key?(:cuisine)
 
       range = ((params.dig(:restaurant, :opening_time).to_i)..params.dig(:restaurant, :closing_time).to_i - 1).to_a
