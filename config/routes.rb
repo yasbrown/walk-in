@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :restaurants, only: %i[index show] do
     resources :favourite_restaurants, only: %i[create destroy]
-    resources :covers, only: [:create]
+    resources :covers, only: %i[index create]
   end
 
   resources :covers, only: [] do
-    resources :slots, only: %i[index create]
+    resources :slots, only: %i[create]
   end
   resources :slots, only: [] do
     resources :bookings, only: [:create]
