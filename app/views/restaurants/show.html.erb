@@ -34,55 +34,15 @@
           <% end %>
         </div>
       </div>
-      <a class="button purple medium hide" id="tables-modal" data-bs-toggle="modal"
-      href="#tableSelectModal" role="button" data-restaurant-show-target="button">Reserve</a>
+      <%# <a class="button purple medium hide" id="tables-modal" data-bs-toggle="modal"
+      href="#tableSelectModal" role="button" data-restaurant-show-target="button">Reserve</a> %>
+      <div class="center-btn">
+        <button class="button purple medium hide", style="text-align: center", data-restaurant-show-target="button"><%= link_to "Reserve", restaurant_covers_path(@restaurant.covers, query: @params) %></button>
+      </div>
       <div class="restaurant-description">
         <p><%= @restaurant.description %></p>
       </div>
-      <div class="modal fade" id="tableSelectModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalToggleLabel">Choose a table</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="tables-display">
-                <% @restaurant.covers.each_with_index do |cover, index| %>
-                  <div class="table-display">
-                    <%= index + 1 %>
-                  </div>
-                <% end %>
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Continue</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="bookingConfirmModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel3" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <i data-bs-target="#tableConfirmModal" data-bs-toggle="modal" class="fa-solid fa-arrow-left"></i>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="confirm-summary">
-              <h2>Confirm booking</h2>
-              <p><%= @restaurant.name %></p>
-              <%# <p>at <%= @booking.start_time %></p>
-              <%# <p>for <%= @booking.slot.cover.seats %></p>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button class="button light medium">Edit booking</button>
-            <button class="button purple medium" data-bs-target="#bookingConfirmModal" data-bs-toggle="modal">Confirm</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon visually-hidden" aria-hidden="true"></span>
