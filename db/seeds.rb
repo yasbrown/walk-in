@@ -1,10 +1,6 @@
 require "faker"
 require "date"
 require "open-uri"
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -101,15 +97,10 @@ puts "Building new restaurants"
     date: Date.new(2022, 12, 9),
     total_seats_available: rand(100..150)
   )
-<<<<<<< Updated upstream
   file = URI.open("#{restaurant_image.sample}")
   # file = URI.open("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80")
   restaurant.photo.attach(io: file, filename: "restaurant.png", content_type: "image/png")
   restaurant.save
-=======
-  file = URI.open("https://creator.nightcafe.studio/creation/8QwUD9QV9gj9gj4quzEG")
-  restaurant.photo.attach(io: file, filename: 'user.png', content_type: 'image/png')
->>>>>>> Stashed changes
 
   puts "Restaurant with id: #{restaurant.id} has been created"
 
