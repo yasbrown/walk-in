@@ -4,14 +4,14 @@
 
 import { application } from "./application"
 
-import FooterController from "./footer_controller"
-application.register("footer", FooterController)
-
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import RestaurantShowController from "./restaurant_show_controller"
-application.register("restaurant-show", RestaurantShowController)
+import HomeBtnController from "./home_btn_controller"
+application.register("home-btn", HomeBtnController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import RestaurantShowController from "./restaurant_show_controller"
+application.register("restaurant-show", RestaurantShowController)

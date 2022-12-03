@@ -1,17 +1,30 @@
-<div class="intro">
-  <div class="top">
-    <div class="head">
-      <%= image_tag("Logo.png", height: '50', width: '50', class: "logo") %>
-      <h1>WalkIn</h1>
+<div class="banner">
+  <div class="intro">
+    <div class="top">
+      <div class="head">
+        <%= image_tag("Logo.png", height: '50', width: '50', class: "logo") %>
+        <h1>WalkIn</h1>
+      </div>
+      <div class="text">
+        <p>Reinventing reservations</p>
+      </div>
     </div>
-    <div class="text">
-      <p>The one stop solution for </p>
-      <p>restaurant reservations</p>
+  </div>
+  <div class="copy-text" data-controller="home-btn">
+    <div class="question-one">
+      <p>Left your restaurant planning to the last minute?</p>
     </div>
+    <div class="question-two">
+      <p>Spontaneous dinner plans?</p>
+    </div>
+    <div class="statement">
+      <p>You want to try that swanky new restaurant someone told you you just <em>have</em> to try. Except that restaurant is fully booked for the next month.</p>
+      <p>How do you find the a great restaurant with available tables tonight?</p>
+    </div>
+    <%= link_to "WalkIn", data: { action: "click->home-btn#push", target: "btn.push" } %>
   </div>
 </div>
 
-<div class="container">
   <div class="form">
    <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
     <div>
@@ -29,4 +42,3 @@
       <%= f.submit "Find a Table"%>
     <% end %>
   </div>
-</div>
