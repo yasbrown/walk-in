@@ -26,7 +26,7 @@
     </div>
   </div>
 
-    <div class="form">
+    <div class="form" id="home-form">
     <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
       <div>
         Where do you want to eat?<br /> <%= f.text_field :address %><br />
