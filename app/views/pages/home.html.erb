@@ -1,44 +1,46 @@
-<div class="banner">
-  <div class="intro">
-    <div class="top">
-      <div class="head">
-        <%= image_tag("Logo.png", height: '50', width: '50', class: "logo") %>
-        <h1>WalkIn</h1>
+<div data-controller="home-btn">
+  <div class="banner">
+    <div class="intro">
+      <div class="top">
+        <div class="head">
+          <%= image_tag("Logo.png", height: '50', width: '50', class: "logo") %>
+          <h1>WalkIn</h1>
+        </div>
+        <div class="text">
+          <p>Reinventing reservations</p>
+        </div>
       </div>
-      <div class="text">
-        <p>Reinventing reservations</p>
+    </div>
+    <div class="copy-text">
+      <div class="question-one">
+        <p>Left your restaurant planning to the last minute?</p>
       </div>
+      <div class="question-two">
+        <p>Spontaneous dinner plans?</p>
+      </div>
+      <div class="statement">
+        <p>You want to try that swanky new restaurant someone told you you just <em>have</em> to try. Except that restaurant is fully booked for the next month.</p>
+        <p>How do you find the a great restaurant with available tables tonight?</p>
+      </div>
+      <a href="#" class="button.purple" data-action="click->home-btn#scroll">WalkIn</a>
     </div>
   </div>
-  <div class="copy-text" data-controller="home-btn">
-    <div class="question-one">
-      <p>Left your restaurant planning to the last minute?</p>
+
+    <div class="form">
+    <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
+      <div>
+        Where do you want to eat?<br /> <%= f.text_field :address %><br />
+        date: <%= f.date_field :date %><br />
+
+      </div>
+        What's your availability?<br />
+        <div class="time">
+          <%= f.number_field :opening_time %>
+        -
+          <%= f.number_field :closing_time %><br />
+      </div>
+        Number of people:<br /> <%= f.select :total_seats_available, 1..10 %><br />
+        <%= f.submit "Find a Table"%>
+      <% end %>
     </div>
-    <div class="question-two">
-      <p>Spontaneous dinner plans?</p>
-    </div>
-    <div class="statement">
-      <p>You want to try that swanky new restaurant someone told you you just <em>have</em> to try. Except that restaurant is fully booked for the next month.</p>
-      <p>How do you find the a great restaurant with available tables tonight?</p>
-    </div>
-    <%= link_to "WalkIn", data: { action: "click->home-btn#push", target: "btn.push" } %>
-  </div>
 </div>
-
-  <div class="form">
-   <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
-    <div>
-      Where do you want to eat?<br /> <%= f.text_field :address %><br />
-      date: <%= f.date_field :date %><br />
-
-    </div>
-      What's your availability?<br />
-      <div class="time">
-        <%= f.number_field :opening_time %>
-      -
-        <%= f.number_field :closing_time %><br />
-    </div>
-      Number of people:<br /> <%= f.select :total_seats_available, 1..10 %><br />
-      <%= f.submit "Find a Table"%>
-    <% end %>
-  </div>

@@ -1,4 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
+// import ScrollTo from 'stimulus-scroll-to'
+
+// const application = Application.start()
+// application.register('scroll-to', ScrollTo)
 
 // Connects to data-controller="home-btn"
 export default class extends Controller {
@@ -8,13 +12,11 @@ export default class extends Controller {
     console.log("connected")
   }
 
-  push() {
-    console.log(this.btn.pushTarget)
-    // document.querySelector('.form').scrollIntoView({
-    //   behavior: 'smooth'
-    // });
+  scroll(event) {
+    console.log(this.Element)
+
+    event.preventDefault()
+    event.window.scrollBy(0, 852)
   }
 
 }
-
-// document.querySelector("#home-btn").addEventListener("click", funcyi)
