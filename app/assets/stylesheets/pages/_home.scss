@@ -29,6 +29,7 @@
   p {
     opacity: .8;
     font-weight: lighter;
+    color: white;
   }
 }
 
@@ -40,7 +41,7 @@
 
 .top {
   position: absolute;
-  right: 95px;
+  right: 75px;
   top: 50px;
 }
 
@@ -67,17 +68,13 @@ h1 {
 
 .banner {
   height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), image-url("restaurant-home.jpg");
-  background-size: cover;
-  background-position: center;
   .copy-text {
     width: 70%;
     margin: 0 15%;
-    margin-top: 80px;
-  }
-  p {
-    color: white;
-    opacity: 0.8;
+    p {
+      color: #505050;
+      opacity: 0.8;
+    }
   }
   a {
     display: block;
@@ -88,8 +85,15 @@ h1 {
     text-align: center;
     background-color: $purple;
     color: white;
-    margin-top: 40px;
+    margin-top: 30px;
   }
+}
+
+.home-img {
+  height: 50vh;
+  background-image: image-url("walk--in-home.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .question-one {
@@ -98,9 +102,5 @@ h1 {
 
 .question-two {
   text-align: center;
-}
-
-.statement {
-  text-align: justify;
-  text-justify: inter-character;
+  margin: 23px;
 }
