@@ -1,7 +1,7 @@
 <div class="intro">
   <h1>WalkIn</h1>
   <img src="/app/assets/images/Logo.png" alt="logo">
-  <p id="top_text">The one stop solution for </p>
+  <p id="top_text">The one stop solution for  </p>
   <p id="bottom_text">restaurant reservations</p>
 </div>
 
@@ -10,7 +10,8 @@
    <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
     <div>
       Where do you want to eat?<br /> <%= f.text_field :address %><br />
-      date: <%= f.date_field :date %><br />
+      Date:
+      <%= f.date_field :date %><br />
 
     </div>
       What's your availability?<br />

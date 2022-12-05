@@ -25,12 +25,12 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.all
     end
 
-    @markers = @restaurants.geocoded.map do |restaurant|
-      {
-        lat: restaurant.latitude,
-        lng: restaurant.longitude
-      }
-    end
+    # @markers = @restaurants.geocoded.map do |restaurant|
+    #   {
+    #     lat: restaurant.latitude,
+    #     lng: restaurant.longitude
+    #   }
+    # end
   end
 
   def show
