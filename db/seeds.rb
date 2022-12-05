@@ -40,6 +40,7 @@ description_array = description_array.reject { |element| element == nil }
 
 # *-- RETURNS POSTCODE --*
 address_array = []
+all_postcodes_array = []
 names_array.each do |name|
   if name.include?("Quality")
     restaurants_urls = "https://www.timeout.com/london/bars-and-pubs/quality-wines-farringdon"
@@ -81,9 +82,14 @@ names_array.each do |name|
     postcode = details[4]
     address = "#{street}, #{city}, #{postcode}"
     restaurant_array << address
+
+    postcode = restaurant_details.text.strip.split(/(London)/)
+    postcode_array << postcode[2]
   end
   address_array << restaurant_array[0]
+  all_postcodes_array << postcode_array
 end
+p restaurant_postcodes = all_postcodes_array.flatten.reject { |element| element == nil }
 # p address_array
 
 # *-- REVIEWS --*
@@ -146,7 +152,8 @@ end
 
 puts "Building new restaurants"
 names_array.each_with_index do |value, index|
-  # result = Geocoder.search("se22 9lq")
+  # result = Geocoder.search("#{restaurant_postcodes[index]}")
+  # puts "Creating #{restaurant_postcodes[index]} restaurant"
   # address = result.first.display_name
 
   restaurant = Restaurant.create!(
