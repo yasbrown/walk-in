@@ -1,0 +1,40 @@
+.logo-purple-box {
+  background-color: $purple;
+  height: 211px;
+  border-radius: 0px 0px 100px 100px;
+  box-shadow: 4px 4px 10px 10px rgba(0, 0, 0, 0.25);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+
+.logo-box-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  p {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 17px;
+  }
+}
+
+.logo-title-row {
+  display: flex;
+  justify-content: center;
+  h1 {
+    font-weight: 600;
+    font-size: 45px;
+    margin-bottom: 0px;
+    align-self: flex-end;
+  }
+}
+
+#logo {
+  transform: rotate(3.47deg);
+  width: 71.25px;
+  height: 80.31px;
+}
