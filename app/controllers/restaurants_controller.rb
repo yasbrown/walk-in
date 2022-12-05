@@ -31,6 +31,7 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.where(id: restaurant_ids)
 
       @params = request.query_parameters["restaurant"]
+
     else
       @restaurants = Restaurant.all
     end
