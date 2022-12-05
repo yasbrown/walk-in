@@ -57,10 +57,6 @@ class RestaurantsController < ApplicationController
           .where("start_time <= ?", needed_before)
           .where("date = ?", date)
           .where(cover_id: available_covers_ids).select(:start_time).distinct
-    # raise
-            # .flatten.select(&:available?).map(&:start_time).uniq.sort
-
-    # @available_slots = @restaurant.covers.map(&:slots).flatten.select(&:available?).map(&:start_time).uniq.sort
 
     @markers = [{lat: @restaurant.latitude, lng: @restaurant.longitude}]
     @params = request.query_parameters["query"]
