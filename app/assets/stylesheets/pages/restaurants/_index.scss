@@ -1,6 +1,20 @@
 .index-header {
+  display: flex;
+  justify-content: space-between;
   color: #505050;
   margin-top: 20px;
+  width: 100%;
+}
+
+.search-select {
+  width: 73px;
+  height: 27px;
+  color: $dark-grey;
+  box-shadow: 0.2px 0.2px 6px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 5px;;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .nav-btns > ul {
