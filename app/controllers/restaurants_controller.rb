@@ -31,16 +31,17 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.where(id: restaurant_ids)
 
       @params = request.query_parameters["restaurant"]
+
     else
       @restaurants = Restaurant.all
     end
 
-    # @markers = @restaurants.geocoded.map do |restaurant|
-    #   {
-    #     lat: restaurant.latitude,
-    #     lng: restaurant.longitude
-    #   }
-    # end
+    @markers = @restaurants.geocoded.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude
+      }
+    end
   end
 
   def show
