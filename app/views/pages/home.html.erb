@@ -1,39 +1,41 @@
-<div class="home-heading">
-  <div class="logo-purple-box">
-    <div class="logo-box-content">
-      <div class="logo-title-row">
-        <%= image_tag("Logo-Walkin.png", class: "logo") %>
-        <h1>WalkIn</h1>
+<div class="header">
+  <div class="home-heading">
+    <div class="logo-purple-box">
+      <div class="logo-box-content">
+        <div class="logo-title-row">
+          <%= image_tag("Logo-Walkin.png", class: "logo") %>
+          <h1>WalkIn</h1>
+          </div>
+          <p>Revolutionising restaurant reservations</p>
         </div>
-        <p>The one stop solution for restaurant reservations</p>
       </div>
     </div>
+
+    <div class="home-img"><%= image_tag("walk--in-home") %></div>
+    <div class="home-text">
+      <p>Left that dinner reservation to the last minute?</p>
+      <p>Spontaneous plans with friends?</p>
+      <a href="#home-form" class="button purple" data-controller="scroll-to">Why not WalkIn?</a>
+    </div>
   </div>
-
-</div>
-<div class="home-img"><%= image_tag("walk--in-home") %></div>
-<div class="home-text">
-  <p>Left that dinner reservation to the last minute?</p>
-  <p>Spontaneous plans with friends?</p>
-  <a href="#home-form" class="button purple" data-controller="scroll-to">Why not WalkIn?</a>
 </div>
 
 
-<div class="home-heading">
+<%# <div class="home-heading">
   <div class="logo-purple-box">
     <div class="logo-box-content">
       <div class="logo-title-row">
         <%= image_tag("Logo-Walkin.png", class: "logo") %>
-        <h1>WalkIn</h1>
-      </div>
-        <p>Revolutionising restaurant reservations</p>
-      </div>
-     </div>
-  </div>
-</div>
+        <%# <h1>WalkIn</h1> %>
+      <%# </div> %>
+        <%# <p>Revolutionising restaurant reservations</p> %>
+      <%# </div> %>
+     <%# </div> %>
+  <%# </div> %>
+<%# </div> %> %>
 
 <%# FORM %>
-<div class="form home">
+<div class="form home" id="home-form">
   <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
     <div class="form-row">
       <div class="form-tag">
