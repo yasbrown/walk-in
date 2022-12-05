@@ -1,11 +1,11 @@
 class BookingsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:create, :destroy]
-
   def create
-    @booking = Booking.new(booking_params)
-    @booking.user_id = current_user
+    @slot = Slot.find(params[:slot_id])
+    @booking = Booking.new
+    @booking.slot = @slot
+    @booking.user = current_user
     @booking.save!
-    redirect_to confirmation_path(@booking)
+    redirect_to booking_confirmation_path(@booking)
   end
 
   def destroy
@@ -13,13 +13,18 @@ class BookingsController < ApplicationController
     @booking.destroy
   end
 
-  def confirm
-    @restaurant = Restaurant.find(params[:id])
+  def confirmation
+    @booking = Booking.find(params[:booking_id])
+    @restaurant = Restaurant.find(@booking.slot.restaurant.id)
+  end
+
+  def my_bookings
+    @bookings = Booking.where(user: current_user)
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:user_id, :slot_id, :start_time, :end_time)
+    params.require(:booking).permit(:slot_id)
   end
 end
