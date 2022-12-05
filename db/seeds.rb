@@ -176,19 +176,19 @@ names_array.each_with_index do |value, index|
     )
     puts "Review with id: #{review.id} has been created"
   end
-  8.times do
+  3.times do
     cover = Cover.new(
       seats: rand(2..8)
     )
     cover.restaurant = restaurant
     cover.save!
     puts "Cover with id: #{cover.id} has been created"
-    3.times do
+    (restaurant.closing_time - restaurant.opening_time).times do |hour|
       slot = Slot.create!(
         date: Date.new(2022,12,9),
         available?: Faker::Boolean.boolean,
-        start_time: rand(18..20),
-        end_time: rand(21..23),
+        start_time: restaurant.opening_time + hour,
+        end_time: restaurant.opening_time + hour + 1,
         cover: cover
       )
       puts "Slot with id: #{slot.id} has been created"
