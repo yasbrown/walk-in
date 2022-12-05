@@ -1,32 +1,74 @@
-<div class="intro">
-  <div class="top">
-    <div class="head">
-      <%= image_tag("Logo.png", height: '50', width: '50', class: "logo") %>
-      <h1>WalkIn</h1>
-    </div>
-    <div class="text">
-      <p>The one stop solution for </p>
-      <p>restaurant reservations</p>
+<div class="home-heading">
+  <div class="logo-purple-box">
+    <div class="logo-box-content">
+      <div class="logo-title-row">
+        <%= image_tag("Logo-Walkin.png", class: "logo") %>
+        <h1>WalkIn</h1>
+      </div>
+        <p>The one stop solution for restaurant reservations</p>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
-  <div class="form">
-   <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
+<%# FORM %>
+<div class="form home">
+  <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
+    <div class="form-row">
+      <div class="form-tag">
+        <%= image_tag("pin.png", class: "icon-medium") %>
+      </div>
+      <div class="form-text">
+        <h4>Where do you want to eat?</h4><br />
+        <div >
+          <%= f.text_field :address, placeholder: "e.g. London", label: false, class: "form-input" %><br />
+        </div>
+      </div>
+    </div>
     <div>
-      Where do you want to eat?<br /> <%= f.text_field :address %><br />
-      date: <%= f.date_field :date %><br />
-
+    <div class="form-row">
+      <div class="form-tag">
+        <i class="fa-regular fa-calendar icon medium"></i>
+      </div>
+      <div class="form-text">
+        <h4>What day do you want to book?</h4><br />
+        <div >
+          <%= f.date_field :address, placeholder: "pick a day", label: false, class: "form-input" %><br />
+        </div>
+      </div>
     </div>
-      What's your availability?<br />
-      <div class="time">
-        <%= f.number_field :opening_time %>
-      -
-        <%= f.number_field :closing_time %><br />
+    <div>
+    <div class="form-row">
+      <div class="form-tag">
+        <%= image_tag("clock.png", class: "icon-medium") %>
+      </div>
+      <div class="form-text">
+        <h4>What's your availability?</h4><br />
+        <div class="short-form-box">
+          <%= f.number_field :opening_time, placeholder: "earliest time", label: false, class: "form-input-short" %><br />
+          -
+          <%= f.number_field :closing_time, placeholder: "latest time", label: false, class: "form-input-short" %><br />
+        </div>
+      </div>
     </div>
-      Number of people:<br /> <%= f.select :total_seats_available, 1..10 %><br />
-      <%= f.submit "Find a Table"%>
-    <% end %>
-  </div>
+    <div>
+    <div class="form-row">
+      <div class="form-tag">
+        <%= image_tag("person.png", class: "icon-medium") %>
+      </div>
+      <div class="form-text">
+        <h4>Number of people:</h4><br />
+        <div >
+          <%= f.select :total_seats_available, 1..10, placeholder: "2", label: false, class: "form-input" %><br />
+          <select class="form-select" aria-label="Default select example">
+            <option selected>2</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <%= f.submit "Find a Table", class: "button purple" %>
+  <% end %>
 </div>
