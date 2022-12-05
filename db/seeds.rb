@@ -4,11 +4,6 @@ require "open-uri"
 require "nokogiri"
 # # This file should contain all the record creation needed to seed the database with its default values.
 # # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-# #
-# # Examples:
-# #
-# #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-# #   Character.create(name: "Luke", movie: movies.first)
 
 url = "https://www.timeout.com/london/restaurants/best-restaurants-in-london"
 html = URI.open(url).read
@@ -34,7 +29,7 @@ end
 cuisine_array = cuisine_array.slice(8..-1)
 # p cuisine_array
 
-# *-- RETURNS RESTAURANT DESCRIPTION & PRICE --*
+# *-- RETURNS RESTAURANT DESCRIPTION --*
 description_array = []
 restautants_description.take(60).each do |description|
   description = description.text.strip.split(/\AWhat\Ss\sthe\sdeal\S\s/)
@@ -43,8 +38,8 @@ end
 description_array = description_array.reject { |element| element == nil }
 # p description_array
 
-# *-- POSTCODE --*
-postcode_array = []
+# *-- RETURNS POSTCODE --*
+address_array = []
 names_array.each do |name|
   if name.include?("Quality")
     restaurants_urls = "https://www.timeout.com/london/bars-and-pubs/quality-wines-farringdon"
@@ -79,13 +74,18 @@ names_array.each do |name|
 
   details = restaurant_doc.search("._list_1fhdc_5")
   details.each do |restaurant_details|
-    postcode = restaurant_details.text.strip.split(/(London)/)
-    restaurant_array << postcode
+    details = restaurant_details.text.strip.split(/(Address:)|(London)/)
+    street = details[2]
+    city = details[3]
+    postcode = details[4]
+    address = "#{street}, #{city}, #{postcode}"
+    restaurant_array << address
   end
-  postcode_array << restaurant_array[0][2]
+  address_array << restaurant_array[0]
 end
-# p postcode_array
+# p address_array
 
+# *-- REVIEWS --*
 review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night and the wait was over an hour. A little surprised by that but the time went by pretty quick. They brought out some lemonade while we were waiting which was nice. Food itself was great and the atmosphere is amazing as well",
                   "Amazing experience. Visited for a lunch for my birthday and the staff made it super special with attentive, helpful and genuine service. Looking forward to going back.",
                   "What a place!! Had breakfast here and absolutely loved it. Highly recommended!!",
@@ -93,6 +93,7 @@ review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night
                   "Amazing food to share and good drink menu with creative cocktails and natural wine selection. Love the at atmosphere and super nice staff.",
                   "Lovely small place with a small and delicious, innovative menu. Great service, much love goes into the food."]
 
+# *-- IMAGES --*
 restaurant_image = ["https://res.cloudinary.com/dft14camn/image/upload/v1669898682/qiyikkxbiguukfrwtuch.jpg",
                     "https://res.cloudinary.com/dft14camn/image/upload/v1669898677/hpxsndb6rciucmq0kiuq.jpg",
                     "https://res.cloudinary.com/dft14camn/image/upload/v1669898671/cacoeek2ntmuqe3i5x3v.jpg",
@@ -116,6 +117,7 @@ restaurant_image = ["https://res.cloudinary.com/dft14camn/image/upload/v16698986
                     "https://res.cloudinary.com/dft14camn/image/upload/v1669894421/myprbssl7fbjgn0yeaim.jpg"]
 # # p "#{restaurant_image.sample}"
 
+# *-- BUILDING INSTANCES --*
 puts "Deleting all Users"
 User.destroy_all
 puts "Deleting all Restaurants"
@@ -144,15 +146,15 @@ end
 
 puts "Building new restaurants"
 names_array.each_with_index do |value, index|
-  result = Geocoder.search(postcode_array[index])
-  address = result.first.display_name
+  # result = Geocoder.search(postcode_array[index])
+  # address = result.first.display_name
 
   restaurant = Restaurant.create!(
     name: value,
     rating: rand(3.0...5.0).round(1),
     cuisine: cuisine_array[index],
     description: description_array[index],
-    address: address,
+    address: address_array[index],
     price: rand(1..3),
     opening_time: rand(9..11),
     closing_time: rand(23..24),
@@ -198,7 +200,7 @@ end
 puts "Finished!"
 
 
-# for testing
+# *-- SEED FOR TESTING--*
 # restaurant1 = Restaurant.new(
 #   name: "only",
 #   rating: 4,
