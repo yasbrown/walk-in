@@ -26,7 +26,8 @@ class RestaurantsController < ApplicationController
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
-        lng: restaurant.longitude
+        lng: restaurant.longitude,
+        info_window: render_to_string(partial: "shared/popup", locals: {restaurant: restaurant})
       }
     end
 
