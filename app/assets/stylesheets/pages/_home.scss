@@ -4,6 +4,8 @@
   justify-content: center;
   text-align: center;
   align-items: center;
+  height: 100vh;
+  margin-top: 0px;
 }
 
 .image-logo {
@@ -13,7 +15,6 @@
 #restaurant_total_seats_available {
   width: 193px;
 }
-
 
 .intro {
   font-family: 'Josefin Sans';
@@ -25,26 +26,25 @@
 
 .text {
   text-align: center;
+  p {
+    opacity: .8;
+    font-weight: lighter;
+    color: white;
+  }
 }
 
 .head {
   display: flex;
   justify-content: center;
-}
-
-p {
-  margin-bottom: 0;
+  font-weight: bold;
 }
 
 .top {
   position: absolute;
-  right: 95px;
+  right: 75px;
   top: 50px;
 }
 
-.form {
-  margin-top: 100px;
-}
 // .time {
 //   display: flex;
 //   justify-content: center;
@@ -63,4 +63,44 @@ p {
 
 h1 {
   font-size: 45px;
+  margin-bottom: 0px;
+}
+
+.banner {
+  height: 100vh;
+  .copy-text {
+    width: 70%;
+    margin: 0 15%;
+    p {
+      color: #505050;
+      opacity: 0.8;
+    }
+  }
+  a {
+    display: block;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 2px, 2px, 4px rgba(0, 0, 0, 0.25);
+    padding: 7px 10px;
+    text-align: center;
+    background-color: $purple;
+    color: white;
+    margin-top: 30px;
+  }
+}
+
+.home-img {
+  height: 50vh;
+  background-image: image-url("walk--in-home.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.question-one {
+  text-align: center;
+}
+
+.question-two {
+  text-align: center;
+  margin: 23px;
 }

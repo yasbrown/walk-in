@@ -12,6 +12,10 @@
   color: white;
 }
 
+.button.purple :hover {
+  background-color: #6e62c0;
+}
+
 .button.light {
   background-color: $light-purple;
   color: $dark-grey;

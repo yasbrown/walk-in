@@ -1,32 +1,46 @@
-<div class="intro">
-  <div class="top">
-    <div class="head">
-      <%= image_tag("Logo.png", height: '50', width: '50', class: "logo") %>
-      <h1>WalkIn</h1>
+<div>
+  <div class="banner">
+    <div class="intro">
+      <div class="top">
+        <div class="head">
+          <%= image_tag("Logo.png", height: '50', width: '50', class: "logo") %>
+          <h1>WalkIn</h1>
+        </div>
+        <div class="text">
+          <p>Reinventing restaurant reservations</p>
+        </div>
+      </div>
     </div>
-    <div class="text">
-      <p>The one stop solution for </p>
-      <p>restaurant reservations</p>
+
+    <div class="home-img">
+    </div>
+
+    <div class="copy-text">
+      <div class="question-one">
+        <p>Left that dinner reservation to the last minute?</p>
+      </div>
+      <div class="question-two">
+        <p>Spontaneous plans with friends?</p>
+      </div>
+      <a href="#home-form" class="button.purple" data-controller="scroll-to">Why not WalkIn?</a>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="form">
-   <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
-    <div>
-      Where do you want to eat?<br /> <%= f.text_field :address %><br />
-      date: <%= f.date_field :date %><br />
+    <div class="form" id="home-form">
+    <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
+      <div>
+        Where do you want to eat?<br /> <%= f.text_field :address %><br />
+        date: <%= f.date_field :date %><br />
 
+      </div>
+        What's your availability?<br />
+        <div class="time">
+          <%= f.number_field :opening_time %>
+        -
+          <%= f.number_field :closing_time %><br />
+      </div>
+        Number of people:<br /> <%= f.select :total_seats_available, 1..10 %><br />
+        <%= f.submit "Find a Table"%>
+      <% end %>
     </div>
-      What's your availability?<br />
-      <div class="time">
-        <%= f.number_field :opening_time %>
-      -
-        <%= f.number_field :closing_time %><br />
-    </div>
-      Number of people:<br /> <%= f.select :total_seats_available, 1..10 %><br />
-      <%= f.submit "Find a Table"%>
-    <% end %>
-  </div>
 </div>

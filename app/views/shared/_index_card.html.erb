@@ -3,17 +3,23 @@
     <%= cl_image_tag restaurant.photo.key, height: 100, width: 100, crop: :fill  %>
 
     <div class="restaurant-info">
-      <h4><%= link_to restaurant.name, restaurant_path(restaurant, query: @params) %></h4>
-      <% (restaurant.price).times do %>
-        <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
-      <% end %>
-      <% (3 - restaurant.price).times do %>
-        <i class="fa-solid fa-sterling-sign" id="price-light"></i>
-      <% end %>
-
-      <div class="restaurant-cuisine-rating">
-        <p><%= restaurant.cuisine %></p>
+      <div class="title">
+        <h4><%= link_to restaurant.name, restaurant_path(restaurant, query: @params) %></h4>
         <p><%= restaurant.rating %></p>
+      </div>
+
+      <p><%= restaurant.description.truncate(60) %></p>
+
+      <div class="restaurant-cuisine-price">
+        <p><%= restaurant.cuisine %></p>
+        <div>
+          <% (restaurant.price).times do %>
+            <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
+          <% end %>
+          <% (3 - restaurant.price).times do %>
+            <i class="fa-solid fa-sterling-sign" id="price-light"></i>
+          <% end %>
+        </div>
       </div>
 
     </div>
