@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  post '/', to: 'pages#ho', as: 'first_search'
-  post '/restaurants', to: 'restaurants#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  post "/", to: "pages#ho", as: "first_search"
+  post "/restaurants", to: "restaurants#index"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
   resources :users, only: [:show]
   resources :restaurants, only: %i[index show] do
+    resources :slots, only: %i[index]
     resources :favourite_restaurants, only: %i[create destroy]
-    resources :covers, only: %i[index create]
+    # resources :covers, only: %i[]
   end
 
   resources :covers, only: [] do
@@ -20,6 +18,9 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   resources :bookings, only: [:destroy] do
-    get "confirmation", to: "bookings#confirm", as: :confirmation
+    # confirmation doesn't need to be nested; could just call current_user.bookings.last on confirmation page
+    get "confirmation", to: "bookings#confirmation", as: :confirmation
   end
+
+  get "my_bookings", to: "bookings#my_bookings", as: :my_bookings
 end

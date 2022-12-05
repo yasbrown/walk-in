@@ -1,11 +1,16 @@
-<div class="restaurant-images">
-  <%= cl_image_tag @restaurant.photo.key, height: 200, width: 390, crop: :fill %>
-</div>
-
-<div class="restaurant-text" data-controller="restaurant-show">
-  <div class="restaurant-heading">
-    <h2><%= @restaurant.name %></h2>
+<div class= container>
+  <div class="restaurant-images">
+    <%= cl_image_tag @restaurant.photo.key, height: 200, width: 390, crop: :fill %>
   </div>
+      <div class="restaurant-text" data-controller="restaurant-show">
+    <div class="restaurant-heading">
+      <h2><%= @restaurant.name %></h2>
+    </div>
+
+      <%= link_to restaurant_favourite_restaurants_path(@restaurant), data: {turbo_method: :post} do %>
+        <h1>Favourite me</h1>
+      <% end %>
+
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -25,20 +30,22 @@
       <div class="right-heading">
         <p><%= @restaurant.rating %> <i class="icon-light fa-sharp fa-solid fa-star"></i></p>
         <p><%= @restaurant.cuisine %></p>
-        <%# <p>Read reviews</p> %>
       </div>
       <div class="restaurant-times">
         <div class="restaurant-times-grid">
-          <% @available_slots.each do |slot| %>
-              <span class="time-slot" data-action="click->restaurant-show#show click->restaurant-show#active" data-restaurant-show-target="time" ><%= slot %>:00</span>
-          <% end %>
+
+
+          <turbo-frame id="covers-index">
+            <% @available_slots.each do |slot| %>
+                <%= link_to restaurant_slots_path(@restaurant, query: {date: @params["date"], time: slot.start_time}) do %>
+                  <p><%= slot.start_time %> : 00</p>
+                <% end %>
+            <% end %>
+          </turbo-frame>
+
         </div>
       </div>
-      <%# <a class="button purple medium hide" id="tables-modal" data-bs-toggle="modal"
-      href="#tableSelectModal" role="button" data-restaurant-show-target="button">Reserve</a> %>
-      <div class="center-btn">
-        <button class="button purple medium hide", style="text-align: center", data-restaurant-show-target="button"><%= link_to "Reserve", restaurant_covers_path(@restaurant.covers, query: @params) %></button>
-      </div>
+
       <div class="restaurant-description">
         <p><%= @restaurant.description %></p>
       </div>
@@ -69,8 +76,3 @@
   <h2>More tables at</h2>
   <div class="restaurant-cards-small row"></div>
 </div>
-<%# <%= simple_form_for @booking do |f| %>
-  <%# <%= f.input :slot_id %>
-  <%# <%= f.input :cover_id %>
-  <%# <%= f.button :submit %>
-<%# <% end %>

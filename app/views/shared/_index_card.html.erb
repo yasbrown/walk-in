@@ -4,7 +4,12 @@
 
     <div class="restaurant-info">
       <div class="title">
-        <h4><%= link_to restaurant.name, restaurant_path(restaurant, query: @params) %></h4>
+        <h4><%= link_to restaurant.name, restaurant_path(restaurant.id, query: {
+          date: @params["date"],
+          needed_seats: @params["total_seats_available"],
+          needed_after: @params["opening_time"],
+          needed_before: @params["closing_time"]
+          }) %></h4>
         <p><%= restaurant.rating %></p>
       </div>
 
