@@ -47,13 +47,17 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
     needed_seats = params.dig(:query, :needed_seats).to_i
-    available_covers = @restaurant.covers.where("seats > ?", needed_seats)
+    available_covers = @restaurant.covers.where("seats >= ?", needed_seats)
     available_covers_ids = available_covers.map { |cover| cover.id }
 
     date = params.dig(:query, :date)
     needed_after = params.dig(:query, :needed_after).to_i
     needed_before = params.dig(:query, :needed_before).to_i
-    @available_slots = @restaurant.slots.where("start_time >= ?", needed_after).where("start_time <= ?", needed_before).where("date = ?", date).where(cover_id: available_covers_ids)
+    @available_slots = @restaurant.slots.where(available?: true)
+          .where("start_time >= ?", needed_after)
+          .where("start_time <= ?", needed_before)
+          .where("date = ?", date)
+          .where(cover_id: available_covers_ids).select(:start_time).distinct
 
     @markers = [{lat: @restaurant.latitude, lng: @restaurant.longitude}]
     @params = request.query_parameters["query"]

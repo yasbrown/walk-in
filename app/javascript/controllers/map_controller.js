@@ -14,14 +14,35 @@ export default class extends Controller {
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10"
     });
+
+    const geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true,
+      showUserHeading: true
+    })
+    this.map.addControl(geolocate);
+    this.map.on('load', () => {
+      geolocate.trigger();
+      });
+
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    const indexMap = this.map;
+
+    function resizeMap() {
+      indexMap.resize()
+    }
+    setInterval(resizeMap, 1);
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
-      new mapboxgl.Marker()
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+      new mapboxgl.Marker({color: "#9382FF"})
         .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
         .addTo(this.map)
     })
   }
