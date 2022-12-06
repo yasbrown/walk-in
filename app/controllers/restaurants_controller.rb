@@ -27,14 +27,6 @@ class RestaurantsController < ApplicationController
       cover_ids = covers.map { |cover| cover.id }
       slots = Slot.where("start_time >= ?", needed_after).where("start_time <= ?", needed_before).where(cover_id: cover_ids).where("date = ?", date)
 
-
-    @markers = @restaurants.geocoded.map do |restaurant|
-      {
-        lat: restaurant.latitude,
-        lng: restaurant.longitude,
-        info_window: render_to_string(partial: "shared/popup", locals: {restaurant: restaurant})
-      }
-      
       restaurant_ids = slots.map { |slot| slot.restaurant.id }
       @restaurants = Restaurant.where(id: restaurant_ids)
 
@@ -43,14 +35,13 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.all
     end
 
-    # @markers = @restaurants.geocoded.map do |restaurant|
-    #   {
-    #     lat: restaurant.latitude,
-    #     lng: restaurant.longitude
-    #   }
-    # end
+    @markers = @restaurants.geocoded.map do |restaurant|
+      {
+        lat: restaurant.latitude,
+        lng: restaurant.longitude
+      }
+    end
   end
-
   def show
     @restaurant = Restaurant.find(params[:id])
     needed_seats = params.dig(:query, :needed_seats).to_i
