@@ -53,7 +53,7 @@
               <div class="restaurant-times-grid">
                 <turbo-frame id="covers-index">
                   <% @available_slots.each do |slot| %>
-                      <%= link_to restaurant_slots_path(@restaurant, query: {date: @params["date"], time: slot.start_time}) do %>
+                      <%= link_to restaurant_slots_path(@restaurant, query: {date: @params[:date], time: slot.start_time}) do %>
                       <div class="time-slot">
                         <p><%= slot.start_time %> : 00</p>
                       </div>

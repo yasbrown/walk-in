@@ -4,5 +4,6 @@ class UsersController < ApplicationController
     @bookings = Booking.where(user_id: current_user.id)
     @last_booking = @bookings.last
     @favourites = current_user.favourite_restaurants
+    @restaurant = Restaurant.find(params[:id])
   end
 end
