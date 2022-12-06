@@ -89,7 +89,10 @@ names_array.each do |name|
   address_array << restaurant_array[0]
   all_postcodes_array << postcode_array
 end
-p restaurant_postcodes = all_postcodes_array.flatten.reject { |element| element == nil }
+restaurant_postcodes = all_postcodes_array.flatten.reject { |element| element == nil }
+restaurant_postcodes[5] = "W1K 6LF"
+restaurant_postcodes[13] = "E1 6GY"
+p restaurant_postcodes
 # p address_array
 
 # *-- REVIEWS --*
@@ -152,17 +155,16 @@ end
 
 puts "Building new restaurants"
 names_array.each_with_index do |value, index|
-  # result = Geocoder.search("#{restaurant_postcodes[index]}")
-  # puts "Creating #{restaurant_postcodes[index]} restaurant"
-  # address = result.first
-  # p address
+  result = Geocoder.search("#{restaurant_postcodes[index]}")
+  puts "Creating #{restaurant_postcodes[index]} restaurant"
+  address = result.first.display_name
 
   restaurant = Restaurant.create!(
     name: value,
     rating: rand(3.0...5.0).round(1),
     cuisine: cuisine_array[index],
     description: description_array[index],
-    address: address_array[index],
+    address: address,
     price: rand(1..3),
     opening_time: rand(9..11),
     closing_time: rand(23..24),
