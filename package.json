@@ -7,10 +7,15 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "install": "^0.13.0",
 =======
     "star-rating.js": "^4.3.0",
 >>>>>>> filter
+=======
+    "star-rating.js": "^4.3.0",
+    "install": "^0.13.0",
+>>>>>>> f256512544d936d7a4c283f04f2ef7a3a41f6f94
     "stimulus-scroll-to": "^4.0.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0"
