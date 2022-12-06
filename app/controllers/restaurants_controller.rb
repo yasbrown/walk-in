@@ -25,10 +25,17 @@ class RestaurantsController < ApplicationController
 
       covers = Cover.where("seats > ?", @needed_seats).where(restaurant_id: restaurant_by_address_ids)
       cover_ids = covers.map { |cover| cover.id }
+<<<<<<< Updated upstream
       slots = Slot.where("start_time >= ?", @needed_after)
         .where("start_time <= ?", @needed_before)
         .where(cover_id: cover_ids)
         .where("date = ?", @date)
+=======
+      slots = Slot.where("start_time >= ?", needed_after)
+        .where("start_time <= ?", needed_before)
+        .where(cover_id: cover_ids)
+        .where("date = ?", date)
+>>>>>>> Stashed changes
 
       restaurant_ids = slots.map { |slot| slot.restaurant.id }
       @restaurants = Restaurant.where(id: restaurant_ids)
