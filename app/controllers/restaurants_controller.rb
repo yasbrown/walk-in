@@ -2,10 +2,6 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-<<<<<<< HEAD
-=======
-
->>>>>>> f256512544d936d7a4c283f04f2ef7a3a41f6f94
     if all_search_params_present?
       @restaurant_address = params.dig(:restaurant, :address)
       @date = params.dig(:restaurant, :date)
