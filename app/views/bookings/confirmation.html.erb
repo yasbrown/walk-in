@@ -5,9 +5,7 @@
     <p><%= @restaurant.name %></p>
     <p>Date</p>
     <p>Number of people</p>
-    <button class="button purple medium">Share with your guests</button>
-    <button class="button light medium">Find on maps -></button>
-    <div class="social-media-icons"></div>
-    <%= link_to "See all bookings!", my_bookings_path %>
+    <button class="button purple medium">Share details</button>
+    <%= link_to "See all bookings", user_path(current_user), id: "confirmation-modal-btn" %>
   </div>
 </turbo-frame>

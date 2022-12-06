@@ -1,8 +1,8 @@
 <turbo-frame id="covers-index">
   <turbo-frame id="confirmation">
     <% @available_slots.each do |slot| %>
-      <%= link_to slot_bookings_path(slot), data: {turbo_method: :post} do %>
-        <p>table <%= slot.cover_id %></p>
+      <%= link_to slot_bookings_path(slot), data: {turbo_method: :post }  do %>
+        <p>Table <%= slot.cover_id %></p>
       <% end %>
     <% end %>
   </turbo-frame>

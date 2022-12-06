@@ -1,3 +1,190 @@
 .profile-header {
   text-align: center;
 }
+
+.image {
+  background-size: cover;
+  width: 391px;
+  position: relative;
+  bottom: 23px;
+}
+
+.logo {
+  position: absolute;
+  top: 93px;
+  right: 225px;
+}
+
+.user {
+  position: absolute;
+  top: 111px;
+  right: 50px;
+}
+
+.user h1 {
+  margin-bottom: 0;
+}
+
+.booking {
+  position: absolute;
+  height: 120px;
+}
+
+.booking_title h2 {
+  position: absolute;
+  left: 17px;
+  top: 25px;
+  color: white;
+}
+
+.booking_description {
+  position: absolute;
+  left: 40px;
+  top: 60px;
+  width: 300px;
+}
+
+.favorites {
+  position: absolute;
+  top: 269px;
+}
+
+.favorites_title h2 {
+  position: absolute;
+  left: 17px;
+  color: white;
+}
+
+.favorites_description p {
+  position: absolute;
+  width: 340px;
+  left: 40px;
+  top: 60px;
+  color: white;
+}
+
+.button_logoff {
+  position: absolute;
+  bottom: 122px;
+}
+
+.user p {
+  color: white;
+}
+
+h1 {
+  font-size: 60px;
+  color: white;
+}
+
+.background_color {
+  background-color: #C9C0FF;
+  position: absolute;
+  height: 460px;
+  top: 305px;
+  width: 100%;
+  border-radius: 0px 100px 0 0;
+  color: white;
+}
+
+.direction {
+  position: relative;
+  padding: 20px 50px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 260px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 40px;
+  bottom: 480px;
+  left: 60px;
+  top: 90px;
+}
+
+.direction span {
+  position: relative;
+  color: black;
+  font-size: 17px;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 1;
+  left: 33px;
+  bottom: 4px;
+}
+
+.direction .liquide {
+  position: absolute;
+  top: -80px;
+  left: 0;
+  width: 260px;
+  height: 250px;
+  background: $purple;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+  transition: .5s;
+}
+
+.direction .liquide::after,
+.direction .liquide::before {
+  content: '';
+  width: 200%;
+  height: 200%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -76%);
+  background: #000;
+}
+
+.direction .liquide::before {
+  border-radius: 45%;
+  background: rgba(250, 250, 250, 1);
+  animation: animate 5s linear infinite;
+  display: block;
+}
+
+.direction .liquide::after {
+  border-radius: 45%;
+  background: rgba(250, 250, 250, 0.5);
+  animation: animate 10s linear infinite;
+  display: block;
+}
+
+@keyframes animate {
+  0% {
+    transform: translate(-50%, -76%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -76%) rotate(360deg);
+  }
+}
+
+
+.booking_card {
+  position: absolute;
+  width: 300px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+}
+
+.booking_card img {
+  border-radius: 20px;
+}
+
+.restaurant_name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+// .restaurant_info {
+//   position: absolute;
+//   top: 11px;
+//   right: 24px;
+//   font-size: 20px;
+//   height: 75px;
+// }
+
+// #start_time {
+//   position: absolute;
+//   left: 35px;
+// }

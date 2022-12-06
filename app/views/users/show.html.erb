@@ -1,20 +1,48 @@
-<div class="container">
-  <div class="profile-header">
+<%= image_tag ("walk-in-profile.jpg"), class: "image" %>
+<%= image_tag ("Logo-Walkin.png"), class: "logo" %>
+
+  <div class="user">
     <h1><%= @user.name %></h1>
+    <p><%= @user.location %></p>
   </div>
 
-  <div>
-    <h2>Booked</h2>
-    <% if @bookings.nil?%>
-        <p>Oops! You don't have any bookings. Not feeling hungry?</p>
-    <% end %>
+<div class="background_color">
+  <div class="booking">
+    <div class="booking_title">
+      <h2>Booked</h2>
+    </div>
+    <div class="booking_description">
+      <% if @bookings.empty?%>
+          <p>Oops! You don't have any bookings. Not feeling hungry?</p>
+      <% else %>
+      <%= link_to restaurant_path do %>
+      <div class="booking_card d-flex">
+        <%= cl_image_tag @last_booking.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+        <div class="d-flex align-items-start flex-column" style="height: 20px; padding-top: 20px; padding-left: 18px">
+          <div class="restaurant_name"><%= @last_booking.restaurant.name %></div>
+          <div class>at <%= @last_booking.slot.start_time %> : 00 </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
   </div>
 
-  <div>
-    <h2>Favourites</h2>
-    <% if @favorite_restaurant.nil? %>
-          <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
-    <% end %>
+  <div class="favorites">
+    <div class="favorites_title">
+      <h2>Favourites</h2>
+    </div>
+    <div class="favorites_description">
+      <% if @favorite_restaurant.nil? %>
+            <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
+      <% end %>
+    </div>
   </div>
-  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
 </div>
+<%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
+<%# <%= link_to '<button type="button">Log Out</button>'.html_safe, destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
+
+<a href="#" class="direction">
+  <span>Direction</span>
+  <div class="liquide"></div>
+</a>

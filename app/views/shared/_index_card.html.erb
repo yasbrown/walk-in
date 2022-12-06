@@ -3,33 +3,34 @@
     <div class="card-container">
       <div class="card">
         <i class="fa-regular fa-heart"></i>
-        <%= link_to restaurant_path(restaurant.id, query: {
-          date: @params["date"],
-          needed_seats: @params["total_seats_available"],
-          needed_after: @params["opening_time"],
-          needed_before: @params["closing_time"]
+        <%= link_to restaurant_path(restaurant.id, restaurant: {
+            address: @params["address"],
+            date: @params["date"],
+            total_seats_available: @params["total_seats_available"],
+            opening_time: @params["opening_time"],
+            closing_time: @params["closing_time"]
           }) do %>
-        <div class="card-content">
-          <div class="restaurant-img">
-            <%= cl_image_tag restaurant.photo.key, height: 100, width: 100, crop: :fill  %>
-          </div>
-          <div class="restaurant-info">
-            <h3><%= restaurant.name %></h3>
-            <% (restaurant.price).times do %>
-              <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
-            <% end %>
-            <% (3 - restaurant.price).times do %>
-              <i class="fa-solid fa-sterling-sign" id="price-light"></i>
-            <% end %>
-            <div class="restaurant-cuisine-rating">
-              <p><%= restaurant.cuisine %></p>
-              <div class="rating-box">
-                <p><%= restaurant.rating %></p>
-                <p style="width: 20px; height: 20px"><%= image_tag("Star.png") %></p>
+          <div class="card-content">
+            <div class="restaurant-img">
+              <%= cl_image_tag restaurant.photo.key, height: 100, width: 100, crop: :fill  %>
+            </div>
+            <div class="restaurant-info">
+              <h3><%= restaurant.name %></h3>
+              <% (restaurant.price).times do %>
+                <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
+              <% end %>
+              <% (3 - restaurant.price).times do %>
+                <i class="fa-solid fa-sterling-sign" id="price-light"></i>
+              <% end %>
+              <div class="restaurant-cuisine-rating">
+                <p><%= restaurant.cuisine %></p>
+                <div class="rating-box">
+                  <p><%= restaurant.rating %></p>
+                  <p style="width: 20px; height: 20px"><%= image_tag("Star.png") %></p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>

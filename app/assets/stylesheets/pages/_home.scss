@@ -1,7 +1,12 @@
 // Specific CSS for your home-page
+.header-home-main {
+  height: 100vh;
+}
+
 .home-heading {
   height: 26vh;
 }
+
 .form {
   // margin-top: 50px;
 }
@@ -11,8 +16,8 @@
   margin-top: 10px;
   margin-bottom: 50px;
 }
+
 .home-heading {
   h1, p {
     color: white;
   }
-}

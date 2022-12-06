@@ -1,18 +1,27 @@
-<div class= container>
   <div class="restaurant-images">
     <%= cl_image_tag @restaurant.photo.key %>
   </div>
-      <%# <div class="restaurant-text" data-controller="restaurant-show"> %>
+<div class= container>
     <div class="restaurant-heading">
-      <h1><%= @restaurant.name %></h1>
-      <div class="right-heading">
-        <p><%= '⭐' * @restaurant.rating.round %> </p>
+      <h2><%= @restaurant.name %></h2>
+      <div class="rating-box">
+        <p><%= @restaurant.rating %></p>
+        <p style="width: 20px; height: ;eight: 20px"><%= image_tag("Star.png") %></p>
+      </div>
+    </div>
+    <div class="restaurant-buttons">
+      <div class="maps-button"  data-bs-toggle="modal" data-bs-target="#restaurantFilterModal">
+        <p>See on maps -></p>
+      </div>
+      <div class="reviews-button">
+        <a href="#reviews-container" class="review-button" data-controller="scroll-to">Read reviews</a>
       </div>
     </div>
 
-  <div type="button" data-bs-toggle="modal" data-bs-target="#restaurantFilterModal">
-    <p>See on maps</p>
-  </div>
+      <%= link_to restaurant_favourite_restaurants_path(@restaurant), data: {turbo_method: :post} do %>
+        <i class="fa-regular fa-heart"></i>
+      <% end %>
+
 
     <div class="modal fade" id="restaurantFilterModal" aria-hidden="true" aria-labelledby="restaurantFilterModalLabel" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -28,41 +37,56 @@
       </div>
     </div>
 
-      <div class="restaurant-times">
-        <div class="restaurant-times-grid">
-          <turbo-frame id="covers-index">
-            <% @available_slots.each do |slot| %>
-                <%= link_to restaurant_slots_path(@restaurant, query: {date: @params["date"], time: slot.start_time}) do %>
-                <div class="time-slot">
-                  <p><%= slot.start_time %> : 00</p>
-                </div>
-                <% end %>
-            <% end %>
-          </turbo-frame>
+    <button type="button" class="button purple" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Select a time
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New booking</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="restaurant-times">
+              <div class="restaurant-times-grid">
+                <turbo-frame id="covers-index">
+                  <% @available_slots.each do |slot| %>
+                      <%= link_to restaurant_slots_path(@restaurant, query: {date: @params["date"], time: slot.start_time}) do %>
+                      <div class="time-slot">
+                        <p><%= slot.start_time %> : 00</p>
+                      </div>
+                      <% end %>
+                  <% end %>
+                </turbo-frame>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
-      <%= link_to restaurant_favourite_restaurants_path(@restaurant), data: {turbo_method: :post} do %>
-        <h2>Favourite me</h2>
-      <% end %>
 
       <div class="restaurant-description">
         <p><%= @restaurant.description %></p>
-        <p><%= @restaurant.cuisine %></p>
       </div>
-  <div class="reviews">
+
+  <div class="reviews" id="reviews-container">
     <h2>See what people are saying:</h2>
     <p>Number of reviews: <%= @restaurant.reviews.count %></p>
     <p><% @restaurant.reviews.each do |review| %></p>
-      <div class="reviews d-flex justify-content-center mt-2">
-        <div class="px-4"><p><strong><%= review.user.name %></strong></p></div>
+      <div class="reviews-details">
+        <div><p><strong><%= review.user.name %></strong></p></div>
         <div><p><%= review.content %></p></div>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <div class="more-restaurants">
-    <h2>More tables at</h2>
-    <div class="restaurant-cards-small row"></div>
-  </div>
+    <div class="more-restaurants">
+      <h2>More tables at</h2>
+      <div class="restaurant-cards-small row">
+        <%= render "shared/index_card" %>
+      </div>
+    </div>
 </div>
