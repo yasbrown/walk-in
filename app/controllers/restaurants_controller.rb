@@ -72,6 +72,7 @@ class RestaurantsController < ApplicationController
 
     @markers = [{ lat: @restaurant.latitude, lng: @restaurant.longitude }]
     @params = request.query_parameters["restaurant"]
+    @restaurants = Restaurant.where("rating > 4").first(1)
   end
 
   private
