@@ -30,16 +30,17 @@
   height: 120px;
 }
 
-.booking_title {
+.booking_title h2 {
   position: absolute;
   left: 17px;
   top: 25px;
+  color: white;
 }
 
 .booking_description {
   position: absolute;
-  left: 50px;
-  top: 88px;
+  left: 40px;
+  top: 60px;
   width: 300px;
 }
 
@@ -48,16 +49,18 @@
   top: 269px;
 }
 
-.favorites_title {
+.favorites_title h2 {
   position: absolute;
   left: 17px;
+  color: white;
 }
 
-.favorites_description {
+.favorites_description p {
   position: absolute;
   width: 340px;
   left: 40px;
   top: 60px;
+  color: white;
 }
 
 .button_logoff {
@@ -153,4 +156,24 @@ h1 {
   100% {
     transform: translate(-50%, -76%) rotate(360deg);
   }
+}
+
+
+.booking_card {
+  position: absolute;
+  width: 300px;
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+}
+
+.booking_card img {
+  border-radius: 20px;
+}
+
+.restaurant_name {
+position: absolute;
+top: 11px;
+right: 80px;
+font-size: 20px;
 }

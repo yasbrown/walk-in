@@ -14,6 +14,13 @@
     <div class="booking_description">
       <% if @bookings.nil?%>
           <p>Oops! You don't have any bookings. Not feeling hungry?</p>
+      <% else %>
+      <div class="booking_card">
+        <%= cl_image_tag @last_booking.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+        <div class="restaurant_name">
+          <%= @last_booking.restaurant.name %>
+        </div>
+      </div>
       <% end %>
     </div>
   </div>
@@ -29,7 +36,7 @@
     </div>
   </div>
 </div>
-<%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
+<%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
 <%# <%= link_to '<button type="button">Log Out</button>'.html_safe, destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
 
 <a href="#" class="direction">
