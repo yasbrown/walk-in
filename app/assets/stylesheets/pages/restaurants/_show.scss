@@ -27,10 +27,10 @@
 
 .restaurant-description {
   margin: 15px auto;
-  border-top: solid 0.1em $light-grey;
-  border-bottom: solid 0.3em $light-grey;
+  border-top: solid 0.2em $light-grey;
+  border-bottom: solid 0.2em $light-grey;
   p {
-    padding: 15px auto;
+    padding-top: 2px;
   }
 }
 
@@ -38,17 +38,25 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
+  // margin-top: 7px;
 }
 
 .restaurant-heading {
-  padding: 16px;
+  padding-top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  position: relative;
 }
 
+.restaurant-buttons {
+  display: flex;
+  justify-content: space-between;
+}
 
 #covers-index a {
   text-decoration: none;
+}
+
+.reviews-details {
+  text-align: justify;
 }
