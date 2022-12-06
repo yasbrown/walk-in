@@ -24,14 +24,14 @@
   z-index: 1;
   display: flex;
   align-items: center;
-  height: 130px;
+  height: 150px;
   padding-right: 10px;
 }
 
 .card {
   border: 1px solid rgb(244, 244, 244);
   box-shadow: 3px 3px 4px #f3f3f3;
-  height: 130px;
+  height: 150px;
   text-decoration: none;
   img {
     border-radius: 10%;
@@ -51,9 +51,8 @@
 }
 
 .restaurant-info {
-  width: 60%;
-  margin-left: 15px;
-  margin-top: 10px;
+  width: 75%;
+  padding: 15px;
 }
 
 #price-dark {

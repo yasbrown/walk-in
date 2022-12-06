@@ -7,7 +7,7 @@
       Filter  <%= image_tag("filter.png") %>
     </button>
     <div class="modal fade" id="filterModal" aria-hidden="true"
-      aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      aria-labelledby="exampleModalToggleLabel" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -17,31 +17,40 @@
             </button>
           </div>
           <div class="modal-body">
-            <%= form_with url: "/restaurants", method: :get do |form| %>
+            <%= simple_form_for(@restaurant) do |f| %>
               <div class="filter-section">
                 <h2>Cuisine</h2>
-                <div class="filter-list">
-                  <%= form.collection_check_boxes :query, Restaurant.all, :id, :cuisine do |c| %>
-                    <%= c.check_box(class: "filter-check") %>
-                    <%= c.label(:"data-value" => c.value, class: "filter-input") %>
-                  <% end %>
-                  </div>
+                <div class="form filter-list">
+                  <%= f.input :cuisine,
+                    as: :check_boxes,
+                    collection_wrapper_tag: 'div',
+                    collection_wrapper_class: 'filter-list',
+                    item_wrapper_class: 'filter',
+                    input_html: {class: 'filter-check'},
+                    collection: ["Italian", "Japanese", "Indian", "Chinese", "Thai", "Spanish", "Middle Eastern", "Turkish", "Mexican", "British", "French", "Malaysian", "Taiwanese",
+                    "Seafood", "North African", "West African", "Gastropubs", "Contemporary European", "Fusion", "Vegetarian"] %>
+                  <%= f.hidden_field :address, value: @params["address"] %>
+                  <%= f.hidden_field :date, value: @params["date"] %>
+                  <%= f.hidden_field :opening_time, value: @params["opening_time"] %>
+                  <%= f.hidden_field :closing_time, value: @params["closing_time"] %>
+                  <%= f.hidden_field :total_seats_available, value: @params[:total_seats_available] %>
                 </div>
               </div>
-              <div class="filter-section">
+              <div class="filter-section" style="margin-top: 50px;">
                 <h2>Rating</h2>
-                <div class="filter-list">
-                  <%= check_box_tag(:rating, value: 5, class: "filter-check") %>
-                  <%= check_box_tag(:rating, value: 4, class: "filter-check") %>
-                  <%= check_box_tag(:rating, value: 3, class: "filter-check") %>
-                  <%= check_box_tag(:rating, value: 2, class: "filter-check") %>
-                  <%= check_box_tag(:rating, value: 1, class: "filter-check") %>
+                <div class="form rating-list">
+                  <%= f.input :rating,
+                    input_html: { data: {controller: "star-rating"}},
+                    collection: (1..5).to_a %>
+                  <%= f.hidden_field :address, value: @params["address"] %>
+                  <%= f.hidden_field :date, value: @params["date"] %>
+                  <%= f.hidden_field :opening_time, value: @params["opening_time"] %>
+                  <%= f.hidden_field :closing_time, value: @params["closing_time"] %>
+                  <%= f.hidden_field :total_seats_available, value: @params[:total_seats_available] %>
                 </div>
               </div>
-              <div class="filter-section">
-                <div class="modal-footer">
-                  <button type="button"><%= form.submit "Apply", class: "search-select" %></button>
-                </div>
+              <div class="modal-footer">
+                <%= f.submit "Apply", class: "button purple large" %>
               </div>
             <% end %>
           </div>
@@ -49,8 +58,11 @@
       </div>
     </div>
   </div>
-  <div class="form-input results"><%= @restaurant_address %>, <%= @date %>, <%= @needed_after %> - <%= @needed_before %>, <%= @needed_seats %> guests</div>
-
+  <%= link_to root_path do %>
+  <div class="form-input results">
+    <span><%= @restaurant_address %>, <%= @date %>, <%= @needed_after %>, - <%= @needed_before %>, <%= @needed_seats %>, <%= @guests %> guests </span>
+  </div>
+  <% end %>
   <div class="index-items">
     <div class="menu nav-btns">
       <ul class="nav nav-pills" id="pills-tab" role="tablist">
@@ -67,7 +79,7 @@
         <li class="nav-item" role="presentation">
           <input class="menu_input nav-link" id="btn3 pills-profile-tab" name="menu" type="radio" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true" />
             <label class="menu_label" for="btn3 pills-profile-tab">
-              <div class="fa-solid fa-map-pin"></div>
+              <div class="fa fa-map-pin"></div>
               <div class="menu_text">
                 Map
               </div>
@@ -75,9 +87,6 @@
         </li>
       </ul>
     </div>
-
-    <%= link_to "French", restaurants_path(restaurant: @params, cuisine: "French") %>
-
 
     <div class="tab-content" id="pills-tabContent">
       <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0"><%= render "shared/index_card" %></div>
