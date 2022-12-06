@@ -56,6 +56,7 @@ class RestaurantsController < ApplicationController
   end
   def show
     @restaurant = Restaurant.find(params[:id])
+
     needed_seats = params.dig(:restaurant, :total_seats_available).to_i
     available_covers = @restaurant.covers.where("seats >= ?", needed_seats)
     available_covers_ids = available_covers.map(&:id)
@@ -72,6 +73,17 @@ class RestaurantsController < ApplicationController
     # raise
 
     @markers = [{ lat: @restaurant.latitude, lng: @restaurant.longitude }]
+    if all_search_params_present?
+      @params = request.query_parameters["restaurant"]
+    else
+      @params = {
+        address: "London",
+        date: Date.new(2022,12,9),
+        total_seats_available: 2,
+        opening_time: 9,
+        closing_time: 23
+      }
+    end
     @params = request.query_parameters["restaurant"]
     @restaurants = Restaurant.where("rating > 4").first(1)
   end
