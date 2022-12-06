@@ -1,11 +1,15 @@
 class FavouriteRestaurantsController < ApplicationController
   def create
-    @favourite_restaurant = FavouriteRstaurant.new(params[:id])
-    @favourite_restaurant.save
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @favourite_restaurant = FavouriteRestaurant.new
+    @favourite_restaurant.restaurant = @restaurant
+    @favourite_restaurant.user = current_user
+    @favourite_restaurant.save!
+    redirect_to root_path
   end
 
   def destroy
-    @favourite_restaurant = FavouriteRstaurant.find(params[:id])
-    @favourite_restaurant.destroy
+    # @favourite_restaurant = FavouriteRestaurant.find(params[:id])
+    # @favourite_restaurant.destroy
   end
 end

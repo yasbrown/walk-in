@@ -31,6 +31,7 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.where(id: restaurant_ids)
 
       @params = request.query_parameters["restaurant"]
+
     else
       @restaurants = Restaurant.all
     end
@@ -38,22 +39,26 @@ class RestaurantsController < ApplicationController
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
-        lng: restaurant.longitude
+        lng: restaurant.longitude,
+        info_window: render_to_string(partial: "shared/popup", locals: {restaurant: restaurant})
       }
     end
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
-    @needed_seats = params.dig(:query, :needed_seats).to_i
-    available_covers = @restaurant.covers.where("seats > ?", @needed_seats)
+    needed_seats = params.dig(:query, :needed_seats).to_i
+    available_covers = @restaurant.covers.where("seats >= ?", needed_seats)
     available_covers_ids = available_covers.map { |cover| cover.id }
 
-    @date = params.dig(:query, :date)
-    @needed_after = params.dig(:query, :needed_after).to_i
-    @needed_before = params.dig(:query, :needed_before).to_i
-    @available_slots = @restaurant.slots.where("start_time >= ?", @needed_after).where("start_time <= ?", @needed_before).where("date = ?", @date).where(cover_id: available_covers_ids)
-
+    date = params.dig(:query, :date)
+    needed_after = params.dig(:query, :needed_after).to_i
+    needed_before = params.dig(:query, :needed_before).to_i
+    @available_slots = @restaurant.slots.where(available?: true)
+          .where("start_time >= ?", needed_after)
+          .where("start_time <= ?", needed_before)
+          .where("date = ?", date)
+          .where(cover_id: available_covers_ids).select(:start_time).distinct
     @markers = [{lat: @restaurant.latitude, lng: @restaurant.longitude}]
     @params = request.query_parameters["query"]
   end
