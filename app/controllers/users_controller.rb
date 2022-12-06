@@ -5,6 +5,4 @@ class UsersController < ApplicationController
     @last_booking = @bookings.last
     @favourites = current_user.favourite_restaurants
   end
-
-
 end

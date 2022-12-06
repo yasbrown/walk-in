@@ -172,8 +172,19 @@ h1 {
 }
 
 .restaurant_name {
-position: absolute;
-top: 11px;
-right: 80px;
-font-size: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
+
+// .restaurant_info {
+//   position: absolute;
+//   top: 11px;
+//   right: 24px;
+//   font-size: 20px;
+//   height: 75px;
+// }
+
+// #start_time {
+//   position: absolute;
+//   left: 35px;
+// }

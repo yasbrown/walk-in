@@ -12,15 +12,18 @@
       <h2>Booked</h2>
     </div>
     <div class="booking_description">
-      <% if @bookings.nil?%>
+      <% if @bookings.empty?%>
           <p>Oops! You don't have any bookings. Not feeling hungry?</p>
       <% else %>
-      <div class="booking_card">
+      <%= link_to restaurant_path do %>
+      <div class="booking_card d-flex">
         <%= cl_image_tag @last_booking.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
-        <div class="restaurant_name">
-          <%= @last_booking.restaurant.name %>
+        <div class="d-flex align-items-start flex-column" style="height: 20px; padding-top: 20px; padding-left: 18px">
+          <div class="restaurant_name"><%= @last_booking.restaurant.name %></div>
+          <div class>at <%= @last_booking.slot.start_time %> : 00 </div>
         </div>
       </div>
+      <% end %>
       <% end %>
     </div>
   </div>
