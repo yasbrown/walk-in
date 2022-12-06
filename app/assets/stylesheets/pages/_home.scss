@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+.header-home-main {
+  height: 100vh;
+}
+
 .home-heading {
   height: 26vh;
 }
@@ -10,4 +14,16 @@
   text-align: center;
   margin-top: 10px;
   margin-bottom: 50px;
+}
+
+#home-form {
+  height: 100vh
+}
+
+.home-copy-text {
+  padding-top: 34px;
+}
+
+#form-home-container {
+  padding-top: 30px;
 }

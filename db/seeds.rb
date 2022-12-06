@@ -154,7 +154,8 @@ puts "Building new restaurants"
 names_array.each_with_index do |value, index|
   # result = Geocoder.search("#{restaurant_postcodes[index]}")
   # puts "Creating #{restaurant_postcodes[index]} restaurant"
-  # address = result.first.display_name
+  # address = result.first
+  # p address
 
   restaurant = Restaurant.create!(
     name: value,
