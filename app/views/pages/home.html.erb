@@ -1,102 +1,96 @@
-<div class="home-heading">
-  <div class="logo-purple-box">
-    <div class="logo-box-content">
-      <div class="logo-title-row">
-        <%= image_tag("Logo-Walkin.png", class: "logo") %>
-        <h1>WalkIn</h1>
+<div class="header-home-main">
+  <div class="home-heading">
+    <div class="logo-purple-box">
+      <div class="logo-box-content">
+        <div class="logo-title-row">
+          <%= image_tag("Logo-Walkin.png", class: "logo") %>
+          <h1>WalkIn</h1>
+          </div>
+          <p>Revolutionising restaurant reservations</p>
         </div>
-        <p>The one stop solution for restaurant reservations</p>
       </div>
     </div>
-  </div>
 
-</div>
-<div class="home-img"><%= image_tag("walk--in-home") %></div>
-<div class="home-text">
-  <p>Left that dinner reservation to the last minute?</p>
-  <p>Spontaneous plans with friends?</p>
-  <a href="#home-form" class="button purple" data-controller="scroll-to">Why not WalkIn?</a>
-</div>
-
-
-<div class="home-heading">
-  <div class="logo-purple-box">
-    <div class="logo-box-content">
-      <div class="logo-title-row">
-        <%= image_tag("Logo-Walkin.png", class: "logo") %>
-        <h1>WalkIn</h1>
-      </div>
-        <p>The one stop solution for restaurant reservations</p>
-      </div>
-     </div>
+    <div class="home-img"><%= image_tag("walk--in-home") %></div>
+    <div class="home-text">
+      <p>Left that dinner reservation to the last minute?</p>
+      <p>Spontaneous plans with friends?</p>
+      <a href="#home-form" class="button purple" data-controller="scroll-to">Why not WalkIn?</a>
+    </div>
   </div>
 </div>
 
 <%# FORM %>
-<div class="form home">
-  <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
-    <div class="form-row">
-      <div class="form-tag">
-        <%= image_tag("pin.png", class: "icon medium", style: "width: 20px") %>
-      </div>
-      <div class="form-text">
-        <h4>Where do you want to eat?</h4><br />
-        <div >
-          <%= f.text_field :address, placeholder: "e.g. London", label: false, class: "form-input" %><br />
+<div class="form home" id="home-form">
+  <div class="home-copy-text">
+    <p>WalkIn is a mobile app that allows you to quickly find last minute restaurant reservations, tap into the hottest new restaurants, and discover incredible food at the best spots near you.</p>
+    <p>Simply choose the location, day, time and group size you want, and WalkIn connects you with the best options in your area.</p>
+  </div>
+  <div id="form-home-container">
+    <%= form_for @restaurant, url: restaurants_path, method: :get do |f| %>
+      <div class="form-row">
+        <div class="form-tag">
+          <%= image_tag("pin.png", class: "icon medium", style: "width: 20px") %>
+        </div>
+        <div class="form-text">
+          <h4>Where do you want to eat?</h4><br />
+          <div >
+            <%= f.text_field :address, placeholder: "e.g. London", label: false, class: "form-input" %><br />
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-    <div class="form-row">
-      <div class="form-tag">
-        <i class="fa-regular fa-calendar icon medium"></i>
-      </div>
-      <div class="form-text">
-        <h4>What day?</h4><br />
-        <div >
-          <%= f.date_field :address, placeholder: "pick a day", label: false, class: "form-input" %><br />
+      <div>
+      <div class="form-row">
+        <div class="form-tag">
+          <i class="fa-regular fa-calendar icon medium"></i>
+        </div>
+        <div class="form-text">
+          <h4>What day?</h4><br />
+          <div >
+            <%= f.date_field :date, placeholder: "pick a day", label: false, class: "form-input" %><br />
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-    <div class="form-row">
-      <div class="form-tag">
-        <%= image_tag("clock.png", class: "icon medium") %>
-      </div>
-      <div class="form-text">
-        <h4>What's your availability?</h4><br />
-        <p class="short-form-box">
-          <%= f.number_field :opening_time, placeholder: "00:00", label: false, class: "form-input-short" %>  -  <%= f.number_field :closing_time, placeholder: "00:00", label: false, class: "form-input-short" %>
-        </p>
+      <div>
+      <div class="form-row">
+        <div class="form-tag">
+          <%= image_tag("clock.png", class: "icon medium") %>
+        </div>
+        <div class="form-text">
+          <h4>What's your availability?</h4><br />
+          <p class="short-form-box">
+            <%= f.number_field :opening_time, placeholder: "00:00", label: false, class: "form-input-short" %>  -  <%= f.number_field :closing_time, placeholder: "00:00", label: false, class: "form-input-short" %>
+          </p>
+          </div>
         </div>
       </div>
-    </div>
-    <div>
-    <div class="form-row">
-      <div class="form-tag">
-        <%= image_tag("person.png", class: "icon medium", style: "width: 20px") %>
-      </div>
-      <div class="form-text">
-        <h4>How many people?</h4><br />
-        <div >
-          <select class="form-select form-input" name="restaurant[total_seats_available]", id="restaurant_total_seats_available", aria-label="Default select example">
-            <option selected>2</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
+      <div>
+      <div class="form-row">
+        <div class="form-tag">
+          <%= image_tag("person.png", class: "icon medium", style: "width: 20px") %>
+        </div>
+        <div class="form-text">
+          <h4>How many people?</h4><br />
+          <div >
+            <select class="form-select form-input" name="restaurant[total_seats_available]", id="restaurant_total_seats_available", aria-label="Default select example">
+              <option selected>2</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+          </div>
         </div>
       </div>
-    </div>
-    <%= f.submit "Find a Table", class: "button purple", style: "margin-top: 25px" %>
-  <% end %>
+      <%= f.submit "Find a Table", class: "button purple", style: "margin-top: 25px" %>
+    <% end %>
+  </div>
 </div>

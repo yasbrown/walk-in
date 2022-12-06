@@ -1,32 +1,37 @@
-<% @restaurants.each do |restaurant| %>
-  <div class="card-container">
-    <%= cl_image_tag restaurant.photo.key, height: 100, width: 100, crop: :fill  %>
-
-    <div class="restaurant-info">
-      <div class="title">
-        <h4><%= link_to restaurant.name, restaurant_path(restaurant.id, query: {
+<div class="cards">
+  <% @restaurants.each do |restaurant| %>
+    <div class="card-container">
+      <div class="card">
+        <i class="fa-regular fa-heart"></i>
+        <%= link_to restaurant_path(restaurant.id, query: {
           date: @params["date"],
           needed_seats: @params["total_seats_available"],
           needed_after: @params["opening_time"],
           needed_before: @params["closing_time"]
-          }) %></h4>
-        <p><%= restaurant.rating %></p>
-      </div>
-
-      <p><%= restaurant.description.truncate(60) %></p>
-
-      <div class="restaurant-cuisine-price">
-        <p><%= restaurant.cuisine %></p>
-        <div>
-          <% (restaurant.price).times do %>
-            <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
-          <% end %>
-          <% (3 - restaurant.price).times do %>
-            <i class="fa-solid fa-sterling-sign" id="price-light"></i>
-          <% end %>
+          }) do %>
+        <div class="card-content">
+          <div class="restaurant-img">
+            <%= cl_image_tag restaurant.photo.key, height: 100, width: 100, crop: :fill  %>
+          </div>
+          <div class="restaurant-info">
+            <h3><%= restaurant.name %></h3>
+            <% (restaurant.price).times do %>
+              <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
+            <% end %>
+            <% (3 - restaurant.price).times do %>
+              <i class="fa-solid fa-sterling-sign" id="price-light"></i>
+            <% end %>
+            <div class="restaurant-cuisine-rating">
+              <p><%= restaurant.cuisine %></p>
+              <div class="rating-box">
+                <p><%= restaurant.rating %></p>
+                <p style="width: 20px; height: 20px"><%= image_tag("Star.png") %></p>
+              </div>
+            </div>
+          </div>
         </div>
+        <% end %>
       </div>
-
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

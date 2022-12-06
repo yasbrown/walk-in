@@ -18,6 +18,7 @@
   width: 109px;
   height: 53px;
   box-shadow: 1px 1px 6px #EBEBEB;
+  color: black;
 }
 
 .time-slot.active {
@@ -31,4 +32,23 @@
   p {
     padding: 15px auto;
   }
+}
+
+.restaurant-images > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.restaurant-heading {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+
+#covers-index a {
+  text-decoration: none;
 }

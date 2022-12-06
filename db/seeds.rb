@@ -40,6 +40,7 @@ description_array = description_array.reject { |element| element == nil }
 
 # *-- RETURNS POSTCODE --*
 address_array = []
+all_postcodes_array = []
 names_array.each do |name|
   if name.include?("Quality")
     restaurants_urls = "https://www.timeout.com/london/bars-and-pubs/quality-wines-farringdon"
@@ -69,6 +70,7 @@ names_array.each do |name|
   end
 
   restaurant_array = []
+  postcode_array = []
   restaurant_show_html = URI.open(restaurants_urls).read
   restaurant_doc = Nokogiri::HTML(restaurant_show_html)
 
@@ -80,9 +82,17 @@ names_array.each do |name|
     postcode = details[4]
     address = "#{street}, #{city}, #{postcode}"
     restaurant_array << address
+
+    postcode = restaurant_details.text.strip.split(/(London)/)
+    postcode_array << postcode[2]
   end
   address_array << restaurant_array[0]
+  all_postcodes_array << postcode_array
 end
+restaurant_postcodes = all_postcodes_array.flatten.reject { |element| element == nil }
+restaurant_postcodes[5] = "W1K 6LF"
+restaurant_postcodes[13] = "E1 6GY"
+p restaurant_postcodes
 # p address_array
 
 # *-- REVIEWS --*
@@ -94,27 +104,26 @@ review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night
                   "Lovely small place with a small and delicious, innovative menu. Great service, much love goes into the food."]
 
 # *-- IMAGES --*
-restaurant_image = ["https://res.cloudinary.com/dft14camn/image/upload/v1669898682/qiyikkxbiguukfrwtuch.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898677/hpxsndb6rciucmq0kiuq.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898671/cacoeek2ntmuqe3i5x3v.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898666/alxlfxstghhi55xycht8.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898661/qtdqa1ghq5r3dmf4do6z.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898655/zlzxlctdx0yjrdmjo3z6.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898648/ggaapk18xia1pqk60evb.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898494/bnp41fowfhejhrs3bvuf.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898489/eqcjggopzjvl6ovympx9.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898483/hmumlyeopzl6eanaxael.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898475/xwywbrswjemvkpxczhtt.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898469/uqgbcketz2e6ngnidmka.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898460/sriurkfemhiaem0vrspy.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898454/kwn9mcjc6bdpwo7l7mye.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898445/r977r8h4oimhwq4kturo.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898222/ayblljxpm6hjhcm2dd3g.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898216/dl0hpuugj3trirk1ygzt.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898208/dkrpwntoq1h7fwan41ep.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898202/x3orikt9ywvfren2kavp.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669898183/qvuhve94u4qbfo6fqsyd.jpg",
-                    "https://res.cloudinary.com/dft14camn/image/upload/v1669894421/myprbssl7fbjgn0yeaim.jpg"]
+restaurant_image = ["https://media.timeout.com/images/105881562/750/562/image.jpg",
+                    "https://media.timeout.com/images/105248100/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881566/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881569/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881573/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881576/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881578/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881582/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881586/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881587/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881588/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881589/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881591/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881593/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881594/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881596/750/562/image.jpg",
+                    "https://media.timeout.com/images/105884641/750/562/image.jpg",
+                    "https://media.timeout.com/images/105905611/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881599/750/562/image.jpg",
+                    "https://media.timeout.com/images/105881603/750/562/image.jpg"]
 # # p "#{restaurant_image.sample}"
 
 # *-- BUILDING INSTANCES --*
@@ -146,22 +155,23 @@ end
 
 puts "Building new restaurants"
 names_array.each_with_index do |value, index|
-  # result = Geocoder.search(postcode_array[index])
-  # address = result.first.display_name
+  result = Geocoder.search("#{restaurant_postcodes[index]}")
+  puts "Creating #{restaurant_postcodes[index]} restaurant"
+  address = result.first.display_name
 
   restaurant = Restaurant.create!(
     name: value,
     rating: rand(3.0...5.0).round(1),
     cuisine: cuisine_array[index],
     description: description_array[index],
-    address: address_array[index],
+    address: address,
     price: rand(1..3),
     opening_time: rand(9..11),
     closing_time: rand(23..24),
     date: Date.new(2022, 12, 9),
     total_seats_available: rand(100..150)
   )
-  file = URI.open("#{restaurant_image.sample}")
+  file = URI.open(restaurant_image[index])
   # file = URI.open("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&w=1000&q=80")
   restaurant.photo.attach(io: file, filename: "restaurant.png", content_type: "image/png")
   restaurant.save
@@ -176,19 +186,19 @@ names_array.each_with_index do |value, index|
     )
     puts "Review with id: #{review.id} has been created"
   end
-  8.times do
+  3.times do
     cover = Cover.new(
       seats: rand(2..8)
     )
     cover.restaurant = restaurant
     cover.save!
     puts "Cover with id: #{cover.id} has been created"
-    3.times do
+    (restaurant.closing_time - restaurant.opening_time).times do |hour|
       slot = Slot.create!(
         date: Date.new(2022,12,9),
         available?: Faker::Boolean.boolean,
-        start_time: rand(18..20),
-        end_time: rand(21..23),
+        start_time: restaurant.opening_time + hour,
+        end_time: restaurant.opening_time + hour + 1,
         cover: cover
       )
       puts "Slot with id: #{slot.id} has been created"
