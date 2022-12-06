@@ -12,3 +12,6 @@ application.register("map", MapController)
 
 import RestaurantShowController from "./restaurant_show_controller"
 application.register("restaurant-show", RestaurantShowController)
+
+import StarRatingController from "./star_rating_controller"
+application.register("star-rating", StarRatingController)

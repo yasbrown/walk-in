@@ -68,4 +68,9 @@
   align-self: center;
   margin: 20px auto;
   font-size: 16px;
+  padding: 10px;
+  span {
+    text-decoration: none;
+    color: inherit;
+  }
 }

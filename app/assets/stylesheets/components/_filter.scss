@@ -1,9 +1,24 @@
-.modal-body {
-  overflow-y: scroll;
+.modal-header {
+  button {
+    border-radius: 45px;
+    border: none;
+    width: 45px;
+    background-color: $light-purple;
+  }
+  span {
+    font-size: 30px;
+  }
 }
 
-.filter-section {
-
+.search-select {
+  width: 73px;
+  height: 27px;
+  color: #8f90a0;
+  box-shadow: 0.2px 0.2px 6px rgba(0, 0, 0, 0.25);
+  border: none;
+  border-radius: 5px;;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .filter-list {
@@ -17,8 +32,8 @@
   scrollbar-color: $purple;
 }
 
-.filter-check + .filter-input {
-  width: 90%;
+.filter-check + label {
+  width: 95%;
   height: 38.9px;
   color: $dark-grey;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
@@ -35,7 +50,38 @@
   transform: scale(0);
 }
 
-.filter-check:checked + .filter-input {
+.filter-check:checked + label {
   background-color: $purple;
   color: white;
+}
+
+.rating-list {
+  margin: 20px, auto;
+}
+
+label[for="restaurant_rating"] {
+  display: none;
+}
+
+.col-form-label {
+  display: none;
+}
+
+.gl-star-rating > span {
+  aria-label {
+  display: none;
+  }
+}
+
+.gl-star-rating--stars {
+  margin: 20px auto;
+}
+
+
+.gl-star-rating--stars[class*=" s"] > span {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  width: 60px;
+  height: 60px;
 }

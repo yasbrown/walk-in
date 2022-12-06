@@ -10,13 +10,13 @@ class RestaurantsController < ApplicationController
       @needed_before = params.dig(:restaurant, :closing_time).to_i
       restaurants_by_address = Restaurant.where("address LIKE ?", "%#{@restaurant_address.capitalize}%")
 
-      if params.has_key?(:cuisine) || params.has_key?(:rating)
-        cuisine = params[:cuisine] if params[:cuisine].present?
-        rating = params[:rating].to_f if params[:rating].present?
-        if params.has_key?(:cuisine)
+      if params[:restaurant].has_key?(:cuisine) || params[:restaurant].has_key?(:rating)
+        cuisine = params[:restaurant][:cuisine][1] if params[:restaurant][:cuisine][1].present?
+        rating = params[:restaurant][:rating][1] if params[:restaurant][:rating][1].present?
+        if params[:restaurant].has_key?(:cuisine)
           restaurants_by_address = restaurants_by_address.where("cuisine LIKE ?", cuisine)
         end
-        if params.has_key?(:rating)
+        if params[:restaurant].has_key?(:rating)
           restaurants_by_address = restaurants_by_address.where("rating >= ?", rating)
         end
       end
@@ -45,6 +45,7 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.all
     end
 
+    @restaurant = Restaurant.new
     @markers = @restaurants.geocoded.map do |restaurant|
       {
         lat: restaurant.latitude,
@@ -83,7 +84,8 @@ class RestaurantsController < ApplicationController
         closing_time: 23
       }
     end
-
+    @params = request.query_parameters["restaurant"]
+    @restaurants = Restaurant.where("rating > 4").first(1)
   end
 
   private
