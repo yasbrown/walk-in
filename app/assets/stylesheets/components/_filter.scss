@@ -1,0 +1,41 @@
+.modal-body {
+  overflow-y: scroll;
+}
+
+.filter-section {
+
+}
+
+.filter-list {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 90%;
+  height: 20vh;
+  margin: 10px auto;
+  overflow-y: scroll;
+  scrollbar-color: $purple;
+}
+
+.filter-check + .filter-input {
+  width: 90%;
+  height: 38.9px;
+  color: $dark-grey;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  padding-left: 10px;
+  border: 0.2px solid #8B8B8B;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 20px;
+  margin: 2px 0;
+}
+
+.filter-check  {
+  position: absolute;
+  transform: scale(0);
+}
+
+.filter-check:checked + .filter-input {
+  background-color: $purple;
+  color: white;
+}
