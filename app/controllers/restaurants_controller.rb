@@ -84,8 +84,8 @@ class RestaurantsController < ApplicationController
         closing_time: 23
       }
     end
-    @params = request.query_parameters["restaurant"]
-    @restaurants = Restaurant.where("rating > 4").first(1)
+    # @params = request.query_parameters["restaurant"]
+    @restaurant_sample = Restaurant.where("rating > 4").sample
   end
 
   private
