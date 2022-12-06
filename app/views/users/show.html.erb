@@ -5,9 +5,10 @@
 
   <div>
     <h2>Booked</h2>
-    <% if @bookings.nil?%>
-        <p>Oops! You don't have any bookings. Not feeling hungry?</p>
-    <% end %>
+    <%# <% if @bookings.nil?%>
+        <%# <p>Oops! You don't have any bookings. Not feeling hungry?</p> %>
+    <%# <% end %> %> %>
+    <%= @user.bookings %>
   </div>
 
   <div>
