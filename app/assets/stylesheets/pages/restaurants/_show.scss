@@ -62,7 +62,13 @@
   display: flex;
   justify-content: center;
   a {
+    width: 109px;
+    height: 53px;
     box-shadow: 1px 1px 6px #EBEBEB;
     margin: 10px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 11px;
+    margin: 0 10px;
   }
 }
