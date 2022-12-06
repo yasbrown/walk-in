@@ -8,10 +8,7 @@
 }
 
 .restaurant-times-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 10px auto;
-  grid-gap: 1rem;
 }
 
 .time-slot {
@@ -19,6 +16,10 @@
   height: 53px;
   box-shadow: 1px 1px 6px #EBEBEB;
   color: black;
+  text-align: center;
+  justify-content: center;
+  padding-top: 11px;
+  margin: 0 10px;
 }
 
 .time-slot.active {
@@ -52,6 +53,10 @@
   display: flex;
   justify-content: space-between;
 }
+#covers-index {
+  display: flex;
+  justify-content: center;
+}
 
 #covers-index a {
   text-decoration: none;
@@ -59,4 +64,25 @@
 
 .reviews-details {
   text-align: justify;
+}
+#confirmation {
+  display: flex;
+  justify-content: center;
+  a {
+    width: 109px;
+    height: 53px;
+    box-shadow: 1px 1px 6px #EBEBEB;
+    margin: 10px;
+    text-align: center;
+    justify-content: center;
+    padding-top: 11px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #505050;
+    margin-top: 10px;
+  }
+}
+
+#confirmation-modal-btn {
+  padding-top: 0px !important;
 }

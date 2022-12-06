@@ -89,11 +89,10 @@ names_array.each do |name|
   address_array << restaurant_array[0]
   all_postcodes_array << postcode_array
 end
-restaurant_postcodes = all_postcodes_array.flatten.reject { |element| element == nil }
+p restaurant_postcodes = all_postcodes_array.flatten.reject { |element| element == nil }
 restaurant_postcodes[5] = "W1K 6LF"
 restaurant_postcodes[13] = "E1 6GY"
 p restaurant_postcodes
-# p address_array
 
 # *-- REVIEWS --*
 review_content = ["Dinner was amazing! We got here around 9pm on a Tuesday night and the wait was over an hour. A little surprised by that but the time went by pretty quick. They brought out some lemonade while we were waiting which was nice. Food itself was great and the atmosphere is amazing as well",

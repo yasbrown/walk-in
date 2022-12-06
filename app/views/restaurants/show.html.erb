@@ -24,6 +24,7 @@
         <i class="fa-regular fa-heart"></i>
       <% end %>
 
+
     <div class="modal fade" id="restaurantFilterModal" aria-hidden="true" aria-labelledby="restaurantFilterModalLabel" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -38,19 +39,35 @@
       </div>
     </div>
 
-      <div class="restaurant-times">
-        <div class="restaurant-times-grid">
-          <turbo-frame id="covers-index">
-            <% @available_slots.each do |slot| %>
-                <%= link_to restaurant_slots_path(@restaurant, query: {date: @params["date"], time: slot.start_time}) do %>
-                <div class="time-slot">
-                  <p><%= slot.start_time %> : 00</p>
-                </div>
-                <% end %>
-            <% end %>
-          </turbo-frame>
+    <button type="button" class="button purple" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Select a time
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">New booking</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="restaurant-times">
+              <div class="restaurant-times-grid">
+                <turbo-frame id="covers-index">
+                  <% @available_slots.each do |slot| %>
+                      <%= link_to restaurant_slots_path(@restaurant, query: {date: @params["date"], time: slot.start_time}) do %>
+                      <div class="time-slot">
+                        <p><%= slot.start_time %> : 00</p>
+                      </div>
+                      <% end %>
+                  <% end %>
+                </turbo-frame>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
 
       <div class="restaurant-description">
@@ -65,11 +82,11 @@
         <div><p><strong><%= review.user.name %></strong></p></div>
         <div><p><%= review.content %></p></div>
       </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <div class="more-restaurants">
-    <h2>More tables at</h2>
-    <div class="restaurant-cards-small row"></div>
-  </div>
+    <div class="more-restaurants">
+      <h2>More tables at</h2>
+      <div class="restaurant-cards-small row"></div>
+    </div>
 </div>
