@@ -33,6 +33,11 @@ class RestaurantsController < ApplicationController
         closing_time: 23
       }
       @restaurants = Restaurant.all
+      @restaurant_address = "London"
+      @date = Date.new(2022,12,9)
+      @needed_seats = 2
+      @needed_after = 9
+      @needed_before = 23
 
       @restaurants = filter_by_cuisine_and_rating(@restaurants)
     end

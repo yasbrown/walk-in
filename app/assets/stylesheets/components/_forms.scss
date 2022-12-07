@@ -1,17 +1,22 @@
 .form.home {
-  width: 300px;
-  margin: 36px auto;
+  width: 80%;
+  margin: 0 auto 36px auto;
+}
+
+#form-home-container {
+  margin-top: 40px;
 }
 
 .form-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 85px;
   margin-top: 10px;
 }
 
 .form-tag {
-  align-self: end;
+  align-self: center;
+  margin-top: 22px;
   display: flex;
   justify-content: center;
   background-color: $light-purple;
@@ -22,10 +27,11 @@
 }
 
 .form-text {
+  margin-left: 15px;
   h4 {
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 0px
+  margin-bottom: -10px;
   }
 }
 
@@ -40,18 +46,31 @@
   color: #CDCCCC;
   font-weight: bold;
   font-size: 18px;
+  .placeholder {
+    color: #CDCCCC;
+  }
 }
+
+:root {
+  $input-placeholder-color: #CDCCCC;
+}
+
 
 .short-form-box {
   display: flex;
   justify-content: space-around;
   width: 230px;
+  align-items: center;
+  .form-input {
+    width: 100px;
+  }
 }
 
 .form-input-short {
-  width: 110px;
+  width: 100px;
   height: 40px;
   padding-left: 10px;
+  margin: 0 10px;
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
@@ -59,18 +78,4 @@
   color: #CDCCCC;
   font-weight: bold;
   font-size: 18px;
-}
-
-.form-input.results {
-  width: 80%;
-  height: auto;
-  text-align: center;
-  align-self: center;
-  margin: 20px auto;
-  font-size: 16px;
-  padding: 10px;
-  span {
-    text-decoration: none;
-    color: inherit;
-  }
 }
