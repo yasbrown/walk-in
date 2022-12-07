@@ -53,6 +53,9 @@
             <div class="restaurant-times">
               <div class="restaurant-times-grid">
                 <turbo-frame id="covers-index">
+                  <% if !current_user.signed_in? %>
+                    <%= redirect_to  new_user_session_path, status: :see_other %>
+                  <% else %>
                   <% @available_slots.each do |slot| %>
                       <%= link_to restaurant_slots_path(@restaurant, query: {date: @params[:date], time: slot.start_time}) do %>
                       <div class="time-slot">

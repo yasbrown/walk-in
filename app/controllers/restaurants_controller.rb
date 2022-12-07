@@ -24,6 +24,14 @@ class RestaurantsController < ApplicationController
       @restaurants = Restaurant.where(id: restaurant_ids)
 
       @params = request.query_parameters["restaurant"]
+
+      @markers = @restaurants.geocoded.map do |restaurant|
+        {
+          lat: restaurant.latitude,
+          lng: restaurant.longitude,
+          info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+        }
+      end
     else
       @params = {
         address: "London",
@@ -33,18 +41,17 @@ class RestaurantsController < ApplicationController
         closing_time: 23
       }
       @restaurants = Restaurant.all
-
       @restaurants = filter_by_cuisine_and_rating(@restaurants)
-    end
 
-    @restaurant = Restaurant.new
-    @markers = @restaurants.geocoded.map do |restaurant|
-      {
-        lat: restaurant.latitude,
-        lng: restaurant.longitude,
-        info_window: render_to_string(partial: "shared/popup", locals: {restaurant: restaurant})
-      }
+      @markers = @restaurants.geocoded.map do |restaurant|
+        {
+          lat: restaurant.latitude,
+          lng: restaurant.longitude,
+          info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+        }
+      end
     end
+    @restaurant = Restaurant.new
   end
 
   def show
