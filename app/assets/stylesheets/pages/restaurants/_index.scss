@@ -4,6 +4,23 @@
   color: #505050;
   margin-top: 20px;
   width: 100%;
+  h1 {
+    margin-bottom: 0;
+  }
+}
+
+.form-input.results {
+  width: 85%;
+  height: auto;
+  text-align: center;
+  align-self: center;
+  margin: 20px auto;
+  font-size: 16px;
+  padding: 10px;
+  span {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 
 .nav-btns > ul {

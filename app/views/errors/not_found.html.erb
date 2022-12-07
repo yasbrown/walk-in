@@ -1,0 +1,14 @@
+<div class="error-image-container">
+  <div>
+    <%= image_tag ("walk-in-profile.jpg"), class: "error-image" %>
+  </div>
+  <div class="error-code">
+    <h1>Error: 404</h1>
+  </div>
+  <div class="error-text container">
+    <h3>Oops! Looks like this page doesn't exist!</h3>
+    <div class="error-link">
+      <p>Why not go <%= link_to "back to home", root_path %> and check out some restaurants available near you?</p>
+    </div>
+  </div>
+</div>
