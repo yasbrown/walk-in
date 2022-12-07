@@ -37,9 +37,14 @@
       <h2>Favourites</h2>
     </div>
     <div class="favorites_description">
-      <% if @favorite_restaurant.nil? %>
-            <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
+      <% if @favourites.empty? %>
+        <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
       <% end %>
+      <ul>
+        <% @favourites.each do |favourite| %>
+          <li><%= favourite.restaurant.name %></li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
