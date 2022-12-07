@@ -27,23 +27,34 @@
   flex-direction: column;
   text-align: left;
   width: 90%;
-  height: 20vh;
-  margin: 10px auto;
+  height: 25vh;
   overflow-y: scroll;
   scrollbar-color: $purple;
 }
 
 .filter-check + label {
-  width: 95%;
-  height: 38.9px;
-  color: $dark-grey;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 40px;
+  margin: 5px 0;
   padding-left: 10px;
-  border: 0.2px solid #8B8B8B;
-  border-radius: 3px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+  background-color: #FAF9F9;
+  color: #CDCCCC;
+  font-weight: 400;
+  font-size: 18px;
   cursor: pointer;
-  font-size: 20px;
-  margin: 2px 0;
+  .placeholder {
+    color: #CDCCCC;
+  }
+}
+
+body::-webkit-scrollbar {
+  width: 2em;
+  color: $purple;
 }
 
 .filter-check  {
@@ -58,29 +69,15 @@
 
 .rating-list {
   margin: 20px, auto;
+  .filter-list {
+    height: auto;
+  }
 }
 
 .form-label[for="restaurant_rating"] {
-  display: "Select a rating";
-}
-
-.col-form-label {
-  display: "Select a rating";
-}
-
-[data-star-rating] .gl-star-rating--stars[aria-label]::before, [data-star-rating] .gl-star-rating--stars[aria-label]::after {
   display: none;
 }
 
-.gl-star-rating--stars {
-  margin: 20px auto;
-}
-
-
-.gl-star-rating--stars[class*=" s"] > span {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 90%;
-  width: 60px;
-  height: 60px;
+.col-form-label {
+  display: none;
 }
