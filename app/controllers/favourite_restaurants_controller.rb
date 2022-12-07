@@ -1,6 +1,6 @@
 class FavouriteRestaurantsController < ApplicationController
   def create
-    if !current_user
+    if !user_signed_in?
       redirect_to new_user_registration_path
     end
     @restaurant = Restaurant.find(params[:restaurant_id])
