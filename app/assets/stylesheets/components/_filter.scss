@@ -10,6 +10,14 @@
   }
 }
 
+.modal {
+  --bs-modal-header-border-color: $light-purple;
+}
+
+.modal-body {
+  margin: 5px 15px;
+}
+
 .search-select {
   width: 80px;
   height: 35px;

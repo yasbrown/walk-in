@@ -11,7 +11,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1>Filters</h1>
+            <h2>Filters</h2>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -19,7 +19,7 @@
           <div class="modal-body">
             <%= simple_form_for(@restaurant, method: :get) do |f| %>
               <div class="filter-section">
-                <h2>Cuisine</h2>
+                <h3>Cuisine</h3>
                 <div class="form">
                   <%= f.input :cuisine,
                     as: :check_boxes,
@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="filter-section">
-                <h2>Price</h2>
+                <h3>Price</h3>
                 <div class="form rating-list">
                   <%= f.input :price,
                   as: :check_boxes,
@@ -49,7 +49,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <%= f.submit "Apply", class: "button purple large" %>
+                <%= f.submit "Apply", class: "button purple" %>
               </div>
             <% end %>
           </div>
