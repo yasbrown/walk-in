@@ -19,11 +19,7 @@
   <body>
     <div class="container-page">
       <div><%= yield %></div>
-      <div>
-        <% if !current_page?(root_url) %>
-          <%= render "shared/footer" %>
-        <% end %>
-      </div>
+      <%= render "shared/footer" %>
     </div>
   </body>
 </html>
