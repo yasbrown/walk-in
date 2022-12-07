@@ -9,17 +9,7 @@ class RestaurantsController < ApplicationController
       @needed_after = params.dig(:restaurant, :opening_time).to_i
       @needed_before = params.dig(:restaurant, :closing_time).to_i
       restaurants_by_address = Restaurant.where("address LIKE ?", "%#{@restaurant_address.capitalize}%")
-
-      if params[:restaurant].has_key?(:cuisine) || params[:restaurant].has_key?(:rating)
-        cuisine = params[:restaurant][:cuisine][1] if params[:restaurant][:cuisine][1].present?
-        rating = params[:restaurant][:rating][1] if params[:restaurant][:rating][1].present?
-        if params[:restaurant].has_key?(:cuisine)
-          restaurants_by_address = restaurants_by_address.where("cuisine LIKE ?", cuisine)
-        end
-        if params[:restaurant].has_key?(:rating)
-          restaurants_by_address = restaurants_by_address.where("rating >= ?", rating)
-        end
-      end
+      restaurants_by_address = filter_by_cuisine_and_rating(restaurants_by_address)
 
       restaurant_by_address_ids = restaurants_by_address.map(&:id)
 
@@ -43,6 +33,8 @@ class RestaurantsController < ApplicationController
         closing_time: 23
       }
       @restaurants = Restaurant.all
+
+      @restaurants = filter_by_cuisine_and_rating(@restaurants)
     end
 
     @restaurant = Restaurant.new
@@ -54,6 +46,7 @@ class RestaurantsController < ApplicationController
       }
     end
   end
+
   def show
     @restaurant = Restaurant.find(params[:id])
 
@@ -89,6 +82,21 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+  def filter_by_cuisine_and_rating(restaurants)
+    if params[:restaurant].has_key?(:cuisine) || params[:restaurant].has_key?(:rating)
+      cuisine = params[:restaurant][:cuisine][1] if params[:restaurant][:cuisine][1].present?
+      rating = params[:restaurant][:rating] if params[:restaurant][:rating].present?
+      if params[:restaurant].has_key?(:cuisine)
+        restaurants = restaurants.where("cuisine LIKE ?", cuisine)
+      end
+      if params[:restaurant].has_key?(:rating)
+        restaurants = restaurants.where("rating >= ?", rating)
+      end
+    end
+
+    restaurants
+  end
 
   def all_search_params_present?
     params[:restaurant].present? &&
