@@ -19,15 +19,15 @@
       <% if @bookings.empty?%>
           <p>Oops! You don't have any bookings. Not feeling hungry?</p>
       <% else %>
-      <%= link_to restaurant_path do %>
-      <div class="booking_card d-flex">
-        <%= cl_image_tag @last_booking.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
-        <div class="d-flex align-items-start flex-column" style="height: 20px; padding-top: 20px; padding-left: 18px">
-          <div class="restaurant_name"><%= @last_booking.restaurant.name %></div>
-          <div class>at <%= @last_booking.slot.start_time %> : 00 </div>
-        </div>
-      </div>
-      <% end %>
+        <%= link_to restaurant_path do %>
+          <div class="booking_card d-flex">
+            <%= cl_image_tag @last_booking.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+            <div class="d-flex align-items-start flex-column" style="height: 20px; padding-top: 20px; padding-left: 18px">
+              <div class="restaurant_name"><%= @last_booking.restaurant.name %></div>
+              <div class>at <%= @last_booking.slot.start_time %> : 00 </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -37,28 +37,12 @@
       <h2>Favourites</h2>
     </div>
     <div class="favorites_description">
-<<<<<<< HEAD
-      <% if @favourites.empty? %>
-        <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
-      <% end %>
-      <ul>
-        <% @favourites.each do |favourite| %>
-          <li><%= favourite.restaurant.name %>
-            <%= link_to "Delete",
-            favourite_restaurant_path(favourite),
-            data: {turbo_method: :delete,
-            turbo_confirm: "Are you sure?"}
-            %></li>
-        <% end %>
-      </ul>
-=======
       <%= render "shared/index_card_favourites" %>
->>>>>>> css
     </div>
   </div>
 </div>
 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
-<%# <%= link_to '<button type="button">Log Out</button>'.html_safe, destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
+<%# <%= link_to '<button type="button">Log Out</button>'.html_safe, destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %> %>
 
 <a href="#" class="direction">
   <span>Direction</span>
