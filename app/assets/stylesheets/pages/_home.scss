@@ -7,14 +7,10 @@
   height: 26vh;
 }
 
-.form {
-  // margin-top: 50px;
-}
-
 .home-text {
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 50px;
+  margin: 20px auto;
+  width: 70%;
 }
 
 .home-heading {
@@ -26,5 +22,9 @@
 .home-copy-text {
   border: 1px solid #9382FF;
   padding: 20px;
-  border-radius: 27px
+  border-radius: 27px;
+  text-align: center;
+  p {
+    margin: 0 auto;
+  }
 }
