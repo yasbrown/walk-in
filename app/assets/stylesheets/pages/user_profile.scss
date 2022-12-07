@@ -17,6 +17,8 @@
 
 .user h1 {
   margin-bottom: 0;
+  font-size: 60px;
+  color: white;
 }
 
 .booking {
@@ -65,11 +67,11 @@
 
 .user p {
   color: white;
+  font-family: $body-font;
 }
 
-h1 {
-  font-size: 60px;
-  color: white;
+.icon.medium{
+  color: $purple;
 }
 
 .background_color {
@@ -103,9 +105,10 @@ h1 {
   font-size: 17px;
   font-family: Arial, Helvetica, sans-serif;
   z-index: 1;
-  left: 33px;
-  bottom: 4px;
+  left: 63px;
+  bottom: 7px;
 }
+
 
 .direction .liquide {
   position: absolute;
@@ -167,8 +170,8 @@ h1 {
 }
 
 .restaurant_name {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 23px;
+  font-family: $body-font;
 }
 
 .favorites {
