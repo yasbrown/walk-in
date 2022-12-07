@@ -8,6 +8,7 @@ class FavouriteRestaurantsController < ApplicationController
     @favourite_restaurant.restaurant = @restaurant
     @favourite_restaurant.user = current_user
     @favourite_restaurant.save!
+
   end
 
   def destroy
