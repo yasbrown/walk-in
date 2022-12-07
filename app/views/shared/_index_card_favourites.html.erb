@@ -1,0 +1,43 @@
+<% if @favourites.empty? %>
+  <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
+<% end %>
+<ul>
+  <div class="cards">
+    <% @favourites.each do |favourite| %>
+      <%= link_to restaurant_path do %>
+
+
+
+      <div class="card-content">
+        <div class="restaurant-img">
+          <%= cl_image_tag favourite.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+        </div>
+        <div class="restaurant-info">
+          <div class="restaurant_name"><%= favourite.restaurant.name %></div>
+          <%= link_to favourite_restaurant_path(favourite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+          <% (favourite.restaurant.price).times do %>
+            <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
+          <% end %>
+          <% (3 - favourite.restaurant.price).times do %>
+            <i class="fa-solid fa-sterling-sign" id="price-light"></i>
+          <% end %>
+          <div class="restaurant-cuisine-rating">
+            <p><%= favourite.restaurant.cuisine %></p>
+            <div class="rating-box">
+              <p><%= favourite.restaurant.rating %></p>
+              <p style="width: 20px; height: 20px"><%= image_tag("Star.png") %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <% end %>
+    <% end %>
+  </div>
+</ul>
