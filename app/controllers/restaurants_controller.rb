@@ -2,7 +2,6 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @params = request.query_parameters["restaurant"]
     if all_search_params_present?
       @restaurant_address = params.dig(:restaurant, :address)
       @date = params.dig(:restaurant, :date)
@@ -27,11 +26,37 @@ class RestaurantsController < ApplicationController
       @params = request.query_parameters["restaurant"]
 
       @markers = @restaurants.geocoded.map do |restaurant|
-        {
-          lat: restaurant.latitude,
-          lng: restaurant.longitude,
-          info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
-        }
+        if restaurant.id == 1
+          {
+            lat: 51.549723,
+            lng: -0.057367,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 5
+          {
+            lat: 51.5384,
+            lng: -0.07592,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 12
+          {
+            lat: 51.52435,
+            lng: 0.02942,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 14
+          {
+            lat: 51.52447,
+            lng: -0.07438,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        else
+          {
+            lat: restaurant.latitude,
+            lng: restaurant.longitude,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        end
       end
     else
       @params = {
@@ -51,11 +76,37 @@ class RestaurantsController < ApplicationController
       @restaurants = filter_by_cuisine_and_rating(@restaurants)
 
       @markers = @restaurants.geocoded.map do |restaurant|
-        {
-          lat: restaurant.latitude,
-          lng: restaurant.longitude,
-          info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
-        }
+        if restaurant.id == 1
+          {
+            lat: 51.549723,
+            lng: -0.057367,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 5
+          {
+            lat: 51.5384,
+            lng: -0.07592,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 12
+          {
+            lat: 51.52435,
+            lng: 0.02942,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 14
+          {
+            lat: 51.52447,
+            lng: -0.07438,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        else
+          {
+            lat: restaurant.latitude,
+            lng: restaurant.longitude,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        end
       end
     end
     @restaurant = Restaurant.new
@@ -77,6 +128,7 @@ class RestaurantsController < ApplicationController
           .where("date = ?", date)
           .where(cover_id: available_covers_ids).select(:start_time).distinct
 
+    # raise
 
     @markers = [{ lat: @restaurant.latitude, lng: @restaurant.longitude }]
     if all_search_params_present?
@@ -107,6 +159,7 @@ class RestaurantsController < ApplicationController
         restaurants = restaurants.where("rating >= ?", rating)
       end
     end
+
     restaurants
   end
 

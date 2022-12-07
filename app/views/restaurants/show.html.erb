@@ -9,9 +9,12 @@
         <p style="width: 20px; height: ;eight: 20px"><%= image_tag("Star.png") %></p>
       </div>
     </div>
+    <div class="restaurant-cuisine-show">
+      <p><%= @restaurant.cuisine %></p>
+    </div>
     <div class="restaurant-buttons">
       <div class="maps-button"  data-bs-toggle="modal" data-bs-target="#restaurantFilterModal">
-        <p>See on maps -></p>
+        <p>See on maps</p>
       </div>
       <div class="reviews-button">
         <a href="#reviews-container" class="review-button" data-controller="scroll-to">Read reviews</a>
@@ -78,18 +81,27 @@
       </div>
 
   <div class="reviews" id="reviews-container">
-    <h2>See what people are saying:</h2>
+    <div class="reviews-header"><h2>See what people are saying:</h2></div>
     <p>Number of reviews: <%= @restaurant.reviews.count %></p>
     <p><% @restaurant.reviews.each do |review| %></p>
       <div class="reviews-details">
-        <div><p><strong><%= review.user.name %></strong></p></div>
-        <div><p><%= review.content %></p></div>
+        <div class="review-name-rating">
+          <div>
+            <p><strong><%= review.user.name %></strong></p>
+          </div>
+          <div class="review-stars">
+            <% rand(3..4).times do %>
+            <%= image_tag("Star.png") %>
+            <% end %>
+          </div>
+        </div>
+        <div class="review-content"><p><%= review.content %></p></div>
       </div>
       <% end %>
     </div>
 
     <div class="more-restaurants">
-      <h2>More tables at</h2>
+      <div class="more-restaurants-header"><h2>More tables at</h2></div>
       <div class="restaurant-cards-small row">
         <%= render "shared/index_card_show_page" %>
       </div>
