@@ -3,8 +3,8 @@
     <h1>Done!</h1>
     <p>Your booking has been confirmed:</p>
     <p><%= @restaurant.name %></p>
-    <p>Date</p>
-    <p>Number of people</p>
+    <p><%= @booking.slot.start_time %>:00</p>
+    <p><%= @booking.slot.cover.seats %> people</p>
     <button class="button purple medium">Share details</button>
     <%= link_to "See all bookings", user_path(current_user), id: "confirmation-modal-btn" %>
   </div>

@@ -9,6 +9,7 @@
             opening_time: @params["opening_time"],
             closing_time: @params["closing_time"]
           }) do %>
+
           <div class="card-content">
             <div class="restaurant-img">
               <%= cl_image_tag @restaurant_sample.photo.key, height: 100, width: 100, crop: :fill  %>
