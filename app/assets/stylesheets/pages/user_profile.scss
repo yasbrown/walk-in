@@ -41,6 +41,7 @@
 .favorites {
   position: absolute;
   top: 269px;
+  height: 100%;
 }
 
 .favorites_title h2 {
@@ -74,7 +75,7 @@ h1 {
 .background_color {
   background-color: #C9C0FF;
   position: absolute;
-  height: 460px;
+  height: 100%;
   top: 305px;
   width: 100%;
   border-radius: 0px 100px 0 0;
@@ -93,7 +94,7 @@ h1 {
   border-radius: 40px;
   bottom: 480px;
   left: 60px;
-  top: 90px;
+  top: 8px;
 }
 
 .direction span {
@@ -168,6 +169,11 @@ h1 {
 .restaurant_name {
   font-size: 20px;
   font-weight: bold;
+}
+
+.favorites {
+  width: 100%;
+  overflow: auto;
 }
 
 // .restaurant_info {

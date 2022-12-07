@@ -22,6 +22,7 @@ export default class extends Controller {
       trackUserLocation: true,
       showUserHeading: true
     })
+
     this.map.addControl(geolocate);
     this.map.on('load', () => {
       geolocate.trigger();
