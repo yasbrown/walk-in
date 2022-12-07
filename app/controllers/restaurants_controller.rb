@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+    @params = request.query_parameters["restaurant"]
     if all_search_params_present?
       @restaurant_address = params.dig(:restaurant, :address)
       @date = params.dig(:restaurant, :date)
@@ -46,7 +47,7 @@ class RestaurantsController < ApplicationController
       @needed_seats = 2
       @needed_after = 9
       @needed_before = 23
-      
+
       @restaurants = filter_by_cuisine_and_rating(@restaurants)
 
       @markers = @restaurants.geocoded.map do |restaurant|
@@ -76,7 +77,6 @@ class RestaurantsController < ApplicationController
           .where("date = ?", date)
           .where(cover_id: available_covers_ids).select(:start_time).distinct
 
-    # raise
 
     @markers = [{ lat: @restaurant.latitude, lng: @restaurant.longitude }]
     if all_search_params_present?
@@ -107,7 +107,6 @@ class RestaurantsController < ApplicationController
         restaurants = restaurants.where("rating >= ?", rating)
       end
     end
-
     restaurants
   end
 
