@@ -2,7 +2,12 @@
   <% @restaurants.each do |restaurant| %>
     <div class="card-container">
       <div class="card">
-        <i class="fa-regular fa-heart"></i>
+            <% if user_signed_in? && current_user.favourite_restaurants.includes(:restaurant).where('restaurant_id = ?', restaurant.id).present? %>
+              <i class="fa-heart fa-solid"></i>
+            <% else %>
+              <i class="fa-regular fa-heart"></i>
+            <% end %>
+
         <%= link_to restaurant_path(restaurant.id, restaurant: {
             address: @params["address"],
             date: @params["date"],
