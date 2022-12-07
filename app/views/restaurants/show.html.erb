@@ -19,7 +19,11 @@
     </div>
       <div class="favourite-heart">
           <%= link_to restaurant_favourite_restaurants_path(@restaurant), data: {turbo_method: :post} do %>
-            <i class="fa-regular fa-heart"></i>
+            <% if current_user.favourite_restaurants.includes(:restaurant).where('restaurant_id = ?', @restaurant.id).present? %>
+              <i class="fa-heart fa-solid" data-controller="fill-heart" data-action="click->fill-heart#animation"></i>
+            <% else %>
+              <i class="fa-regular fa-heart" data-controller="fill-heart" data-action="click->fill-heart#animation"></i>
+            <% end %>
           <% end %>
       </div>
 
