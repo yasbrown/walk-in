@@ -160,7 +160,7 @@ names_array.each_with_index do |value, index|
 
   restaurant = Restaurant.create!(
     name: value,
-    rating: rand(3.0...5.0).round(1),
+    rating: rand(4.0...5.0).round(1),
     cuisine: cuisine_array[index],
     description: description_array[index],
     address: address,

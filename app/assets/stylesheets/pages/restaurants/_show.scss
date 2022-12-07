@@ -31,12 +31,13 @@
   border-top: solid 0.2em $light-grey;
   border-bottom: solid 0.2em $light-grey;
   p {
-    padding-top: 2px;
+    padding-top: 18px;
+    text-align: justify;
   }
 }
 
 .restaurant-images > img {
-  height: 200px;
+  height: 225px;
   width: 100%;
   object-fit: cover;
 }
@@ -79,7 +80,10 @@
 
 .reviews-details {
   text-align: justify;
+  border: 1px solid rgb(244, 244, 244);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
 #confirmation {
   display: flex;
   justify-content: center;
@@ -100,6 +104,7 @@
 
 .reviews {
   border-bottom: solid 0.2em $light-grey;
+  padding-bottom: 15px;
 }
 
 #confirmation-modal-btn {
@@ -119,4 +124,41 @@
 
 .animating-heart {
   color: white!important;
+}
+
+.reviews-header {
+  margin-bottom: 4px;
+  margin-top: 18px;
+}
+
+.review-name-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    margin-bottom: 4px;
+    padding-left: 15px;
+    padding-top: 15px;
+  }
+}
+
+.review-content {
+  padding: 0px 15px;
+  padding-bottom: 15px;
+}
+
+.more-restaurants-header {
+  margin-top: 18px;
+}
+
+.review-stars {
+  padding-right: 15px;
+}
+
+.restaurant-cuisine-show p {
+  margin-bottom: 3px;
+}
+
+.rating-box p {
+  padding-right: 4px;
 }
