@@ -12,7 +12,8 @@ class FavouriteRestaurantsController < ApplicationController
   end
 
   def destroy
-    # @favourite_restaurant = FavouriteRestaurant.find(params[:id])
-    # @favourite_restaurant.destroy
+    @favourite_restaurant = FavouriteRestaurant.find(params[:id])
+    @favourite_restaurant.destroy
+    redirect_to user_path(current_user), status: :see_other
   end
 end
