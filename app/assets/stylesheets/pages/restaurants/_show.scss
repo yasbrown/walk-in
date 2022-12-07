@@ -98,13 +98,22 @@
   }
 }
 
+.reviews {
+  border-bottom: solid 0.2em $light-grey;
+}
+
 #confirmation-modal-btn {
   padding-top: 0px !important;
 }
+
 
 .favourite-heart {
   i {
     color:#9382FF;
     font-size: 30px;
   }
+
+.more-restaurants {
+  margin-bottom: 25%;
+
 }

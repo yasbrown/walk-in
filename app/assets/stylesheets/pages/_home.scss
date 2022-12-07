@@ -17,14 +17,14 @@
   margin-bottom: 50px;
 }
 
-#home-form {
-  height: 100vh
+.home-heading {
+  h1, p {
+    color: white;
+  }
 }
 
 .home-copy-text {
-  padding-top: 34px;
-}
-
-#form-home-container {
-  padding-top: 30px;
+  border: 1px solid #9382FF;
+  padding: 20px;
+  border-radius: 27px
 }
