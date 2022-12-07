@@ -42,7 +42,12 @@
       <% end %>
       <ul>
         <% @favourites.each do |favourite| %>
-          <li><%= favourite.restaurant.name %></li>
+          <li><%= favourite.restaurant.name %>
+            <%= link_to "Delete",
+            favourite_restaurant_path(favourite),
+            data: {turbo_method: :delete,
+            turbo_confirm: "Are you sure?"}
+            %></li>
         <% end %>
       </ul>
     </div>
