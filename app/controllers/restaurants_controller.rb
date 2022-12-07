@@ -46,7 +46,7 @@ class RestaurantsController < ApplicationController
       @needed_seats = 2
       @needed_after = 9
       @needed_before = 23
-      
+
       @restaurants = filter_by_cuisine_and_rating(@restaurants)
 
       @markers = @restaurants.geocoded.map do |restaurant|

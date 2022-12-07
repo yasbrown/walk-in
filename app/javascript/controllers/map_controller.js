@@ -39,8 +39,10 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
+    console.log("MARKERS", this.markersValue.length)
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
+      console.log({popup})
       new mapboxgl.Marker({color: "#9382FF"})
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
