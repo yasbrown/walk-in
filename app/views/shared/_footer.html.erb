@@ -1,9 +1,15 @@
 <% existing_query = @params || {} %>
 <div class="footer" data-controller="footer" data-action="click->footer#active">
   <div class="footer-icon">
+  <% if @params.present?%>
     <%= link_to restaurants_path(restaurant: @params) do %>
       <i class="<%= "btn-active" if params[:controller] == 'restaurants' %> fa-solid fa-magnifying-glass"></i>
     <% end %>
+  <% else %>
+    <%= link_to restaurants_path do %>
+      <i class="<%= "btn-active" if params[:controller] == 'restaurants' %> fa-solid fa-magnifying-glass"></i>
+    <% end %>
+  <% end %>
   </div>
 
   <div class="footer-icon">
