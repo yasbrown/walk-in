@@ -4,8 +4,10 @@
     <p>Your booking has been confirmed:</p>
     <p><%= @restaurant.name %></p>
     <p><%= @booking.slot.start_time %>:00</p>
-    <p><%= @booking.slot.cover.seats %> people</p>
-    <button class="button purple medium">Share details</button>
-    <%= link_to "See all bookings", user_path(current_user), id: "confirmation-modal-btn" %>
+    <p>Table for <%= @booking.slot.cover.seats %> people</p>
+    <button class="button purple medium" style="margin-bottom: 12px;" id="details-button">Share details</button>
+    <div class="button light small">
+      <%= link_to "See all bookings", user_path(current_user), id: "confirmation-modal-btn" %>
+    </div>
   </div>
 </turbo-frame>
