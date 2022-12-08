@@ -16,9 +16,21 @@
   font-weight: bold;
 }
 
-.rating {
-  text-align: left;
+.favourite_name h4{
+  margin-bottom: 0;
 }
+
+.rating {
+  display: flex;
+  justify-content: space-between;
+  width: 11em;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 #restaurant-name {
   margin-bottom: 0px;
   text-decoration: none;

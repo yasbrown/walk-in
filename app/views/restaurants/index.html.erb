@@ -11,7 +11,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h1>Filters</h1>
+            <h2>Filters</h2>
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -19,11 +19,10 @@
           <div class="modal-body">
             <%= simple_form_for(@restaurant, method: :get) do |f| %>
               <div class="filter-section">
-                <h2>Cuisine</h2>
+                <h3>Cuisine</h3>
                 <div class="form">
                   <%= f.input :cuisine,
                     as: :check_boxes,
-                    label: "Select below:",
                     collection_wrapper_tag: 'div',
                     collection_wrapper_class: 'filter-list',
                     item_wrapper_class: 'filter',
@@ -32,10 +31,16 @@
                     "Seafood", "North African", "West African", "Gastropubs", "Contemporary European", "Fusion", "Vegetarian"] %>
                 </div>
               </div>
-              <div class="filter-section" style="margin-top: 50px;">
-                <h2>Rating</h2>
+              <div class="filter-section">
+                <h3>Price</h3>
                 <div class="form rating-list">
-                  <%= f.input :rating, label: "Select below:", input_html: { data: {controller: "star-rating"}}, collection: (1..5).to_a %>
+                  <%= f.input :price,
+                  as: :check_boxes,
+                    collection_wrapper_tag: 'div',
+                    collection_wrapper_class: 'filter-list',
+                    item_wrapper_class: 'filter',
+                    input_html: {class: 'filter-check'},
+                    collection: ["£", "££", "£££"] %>
                   <%= f.hidden_field :address, value: @params[:address] %>
                   <%= f.hidden_field :date, value: @params[:date] %>
                   <%= f.hidden_field :opening_time, value: @params[:opening_time] %>
@@ -44,7 +49,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-                <%= f.submit "Apply", class: "button purple large" %>
+                <%= f.submit "Apply", class: "button purple" %>
               </div>
             <% end %>
           </div>
