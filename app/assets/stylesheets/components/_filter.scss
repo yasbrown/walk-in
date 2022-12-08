@@ -3,6 +3,8 @@
     border-radius: 45px;
     border: none;
     width: 45px;
+    height: 45px;
+    color: $dark-grey;
     background-color: $light-purple;
   }
   span {
@@ -19,7 +21,8 @@
 }
 
 .search-select {
-  width: 80px;
+  font-family: 'Raleway';
+  width: 85px;
   height: 35px;
   color: #8f90a0;
   background-color: $light-purple;
@@ -28,6 +31,9 @@
   border-radius: 5px;;
   font-weight: 700;
   font-size: 16px;
+  img {
+    margin-left: 5px;
+  }
 }
 
 .filter-list {
@@ -36,8 +42,29 @@
   text-align: left;
   width: 90%;
   height: 25vh;
-  overflow-y: scroll;
-  scrollbar-color: $purple;
+  overflow-y: auto;
+}
+
+.filter-list {
+  overflow-y: auto;
+}
+
+.filter-list::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.filter-list::-webkit-scrollbar:vertical {
+  width: 11px;
+}
+
+.filter-list::-webkit-scrollbar:horizontal {
+  height: 11px;
+}
+
+.filter-list::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 1px solid white; /* should match background, can't be transparent */
+  background-color: $purple;
 }
 
 .filter-check + label {
