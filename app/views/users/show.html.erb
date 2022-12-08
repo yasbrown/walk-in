@@ -10,9 +10,6 @@
   </div>
 </div>
 
-
-
-
 <div class="background_color">
   <div class="booking">
     <div class="booking_title">
@@ -47,11 +44,8 @@
 
 <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
 
- <%# <% url ="https://www.google.com/maps/dir/?api=1&#{@last_booking.restaurant.latitude}" %>
 
-<a
-href="<%= url ="https://www.google.com/maps/dir/?api=1&destination=#{@last_booking.restaurant.latitude},#{@last_booking.restaurant.longitude}&travelmode=walking" %>"
-class="direction">
+<a href="<%= url ="https://www.google.com/maps/dir/?api=1&destination=#{@last_booking.restaurant.latitude},#{@last_booking.restaurant.longitude}&travelmode=walking" %>"class="direction">
   <span>Direction</span>
   <div class="liquide maps-button" data-bs-toggle="modal" data-bs-target="#restaurantFilterModal"></div>
 </a>
