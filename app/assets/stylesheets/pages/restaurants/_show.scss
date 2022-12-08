@@ -4,7 +4,7 @@
 
 .restaurant-times {
   display: flex;
-  justify-content: center;
+  // justify-content: center;
 }
 
 .restaurant-times-grid {
@@ -93,8 +93,8 @@
 }
 
 #confirmation {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  // justify-content: center;
   a {
     width: 109px;
     height: 53px;

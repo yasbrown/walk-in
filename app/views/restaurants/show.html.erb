@@ -51,31 +51,34 @@
     Select a time
   </button>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New booking</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="restaurant-times">
-            <div class="restaurant-times-grid">
-              <turbo-frame id="covers-index">
-                <% @available_slots.each do |slot| %>
-                    <%= link_to restaurant_slots_path(@restaurant, query: {date: @params[:date], time: slot.start_time}) do %>
-                    <div class="time-slot">
-                      <p><%= slot.start_time %> : 00</p>
-                    </div>
-                    <% end %>
-                <% end %>
-              </turbo-frame>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New booking</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body" style="overflow-y: scroll">
+                <div class="restaurant-times">
+                  <div class="restaurant-times-grid">
+                    <turbo-frame id="covers-index" class="tables-display">
+                      <div class="tables-display">
+                          <% @available_slots.each do |slot| %>
+                              <%= link_to restaurant_slots_path(@restaurant, query: {date: @params[:date], time: slot.start_time}) do %>
+                              <div class="time-slot">
+                                <p><%= slot.start_time %> : 00</p>
+                              </div>
+                              <% end %>
+                          <% end %>
+                      </div>
+                    </turbo-frame>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+
   <div class="show-section">
     <div class="restaurant-description">
       <p><%= @restaurant.description %></p>
@@ -96,7 +99,7 @@
               <%= image_tag("Star.png") %>
               <% end %>
             </div>
-          </div>
+          
           <div class="review-content"><p><%= review.content %></p></div>
         </div>
         <% end %>
