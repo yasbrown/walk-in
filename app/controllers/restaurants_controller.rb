@@ -149,6 +149,8 @@ class RestaurantsController < ApplicationController
   private
 
   def filter_by_cuisine_and_rating(restaurants)
+    return restaurants if !params[:restaurant]
+
     if params[:restaurant].has_key?(:cuisine) || params[:restaurant].has_key?(:rating)
       cuisine = params[:restaurant][:cuisine][1] if params[:restaurant][:cuisine][1].present?
       rating = params[:restaurant][:rating] if params[:restaurant][:rating].present?
