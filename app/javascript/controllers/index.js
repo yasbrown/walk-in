@@ -18,3 +18,6 @@ application.register("restaurant-show", RestaurantShowController)
 
 import StarRatingController from "./star_rating_controller"
 application.register("star-rating", StarRatingController)
+
+import SwipeController from "./swipe_controller"
+application.register("swipe", SwipeController)

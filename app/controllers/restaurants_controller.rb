@@ -31,10 +31,28 @@ class RestaurantsController < ApplicationController
             lng: -0.057367,
             info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
           }
+        elsif restaurant.id == 4
+          {
+            lat: 51.5205,
+            lng: 0.1014,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
         elsif restaurant.id == 5
           {
             lat: 51.5384,
             lng: -0.07592,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 7
+          {
+            lat: 51.5499,
+            lng: 0.1090,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 8
+          {
+            lat: 51.5226,
+            lng: 0.1060,
             info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
           }
         elsif restaurant.id == 12
@@ -81,10 +99,28 @@ class RestaurantsController < ApplicationController
             lng: -0.057367,
             info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
           }
+        elsif restaurant.id == 4
+          {
+            lat: 51.5205,
+            lng: 0.1014,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
         elsif restaurant.id == 5
           {
             lat: 51.5384,
             lng: -0.07592,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 7
+          {
+            lat: 51.5499,
+            lng: 0.1090,
+            info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
+          }
+        elsif restaurant.id == 8
+          {
+            lat: 51.5226,
+            lng: 0.1060,
             info_window: render_to_string(partial: "shared/popup", locals: { restaurant: restaurant })
           }
         elsif restaurant.id == 12
