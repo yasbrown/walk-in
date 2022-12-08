@@ -38,17 +38,16 @@
                     item_wrapper_class: 'filter',
                     input_html: {class: 'filter-check'},
                     collection:  {"£" => 1, "££" => 2, "£££" => 3}
-                  %>
-                  <%= f.hidden_field :address, value: @params[:address] %>
-                  <%= f.hidden_field :date, value: @params[:date] %>
-                  <%= f.hidden_field :opening_time, value: @params[:opening_time] %>
-                  <%= f.hidden_field :closing_time, value: @params[:closing_time] %>
-                  <%= f.hidden_field :total_seats_available, value: @params[:total_seats_available] %>
-                  <div class="modal-footer">
-                    <%= f.submit "Apply", class: "button purple" %>
-                  </div>
-                </div>
-              <% end %>
+                     %>
+              </div>
+              <%= f.hidden_field :address, value: @params[:address] %>
+              <%= f.hidden_field :date, value: @params[:date] %>
+              <%= f.hidden_field :opening_time, value: @params[:opening_time] %>
+              <%= f.hidden_field :closing_time, value: @params[:closing_time] %>
+              <%= f.hidden_field :total_seats_available, value: @params[:total_seats_available] %>
+              <div class="modal-footer"></div>
+              <%= f.submit "Apply", class: "button purple" %>
+            <% end %>
           </div>
         </div>
       </div>

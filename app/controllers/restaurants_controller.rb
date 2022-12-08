@@ -22,7 +22,6 @@ class RestaurantsController < ApplicationController
 
       restaurant_ids = slots.map { |slot| slot.restaurant.id }.uniq
       @restaurants = Restaurant.where(id: restaurant_ids)
-
       @params = request.query_parameters["restaurant"]
 
       @markers = @restaurants.geocoded.map do |restaurant|
@@ -164,8 +163,6 @@ class RestaurantsController < ApplicationController
           .where("date = ?", date)
           .where(cover_id: available_covers_ids).select(:start_time).distinct
 
-    # raise
-
     @markers = [{ lat: @restaurant.latitude, lng: @restaurant.longitude }]
     if all_search_params_present?
       @params = request.query_parameters["restaurant"]
@@ -190,11 +187,13 @@ class RestaurantsController < ApplicationController
     if params[:restaurant].has_key?(:cuisine) || params[:restaurant].has_key?(:price)
       cuisine = params[:restaurant][:cuisine][1] if params[:restaurant][:cuisine][1].present?
       price = params[:restaurant][:price][1] if params[:restaurant][:price][1].present?
-      if params[:restaurant].has_key?(:cuisine)
+      if params[:restaurant][:cuisine][1].present?
         restaurants = restaurants.where("cuisine LIKE ?", cuisine)
       end
-      if params[:restaurant].has_key?(:price)
-        restaurants = restaurants.where("price >= ?", price)
+
+      if params[:restaurant][:price][1].present?
+
+        restaurants = restaurants.where("price = ?", price)
       end
     end
 
