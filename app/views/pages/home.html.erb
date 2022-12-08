@@ -48,7 +48,7 @@
             <div class="form-text">
               <h4>What day?</h4><br />
               <div >
-                <%= f.date_field :date, label: false, class: "form-input" %><br />
+                <%= f.date_field :date, label: false, class: "form-input", :value => Time.now.strftime('%Y-%m-%d') %><br />
               </div>
             </div>
           </div>
