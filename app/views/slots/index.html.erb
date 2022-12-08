@@ -1,15 +1,15 @@
 <turbo-frame id="covers-index">
   <turbo-frame id="confirmation">
     <% if user_signed_in? %>
-      <% @available_slots.each do |slot| %>
+      <% @available_slots.each_with_index do |slot, index| %>
         <%= link_to slot_bookings_path(slot), data: {turbo_method: :post }  do %>
-          <p>Table <%= slot.cover_id %></p>
+          <p>Table <%= index + 1 %></p>
         <% end %>
       <% end %>
     <% else %>
       <% @available_slots.each do |slot| %>
         <%= link_to new_user_session_path  do %>
-          <p>Table <%= slot.cover_id %></p>
+          <p>Table <%= index + 1  %></p>
         <% end %>
       <% end %>
     <% end %>
