@@ -1,7 +1,8 @@
-  <div class="restaurant-images">
-    <%= cl_image_tag @restaurant.photo.key %>
-  </div>
+<div class="restaurant-images">
+  <%= cl_image_tag @restaurant.photo.key %>
+</div>
 <div class= container>
+  <div class="show-section">
     <div class="restaurant-heading">
       <h2><%= @restaurant.name %></h2>
       <div class="rating-box">
@@ -20,34 +21,35 @@
         <a href="#reviews-container" class="review-button" data-controller="scroll-to">Read reviews</a>
       </div>
     </div>
-      <div class="favourite-heart">
-          <%= link_to restaurant_favourite_restaurants_path(@restaurant), data: {turbo_method: :post} do %>
-            <% if user_signed_in? && current_user.favourite_restaurants.includes(:restaurant).where('restaurant_id = ?', @restaurant.id).present? %>
-              <i class="fa-heart fa-solid" data-controller="fill-heart" data-action="click->fill-heart#animation"></i>
-            <% else %>
-              <i class="fa-regular fa-heart" data-controller="fill-heart" data-action="click->fill-heart#animation"></i>
-            <% end %>
-          <% end %>
-      </div>
+  </div>
+  <div class="favourite-heart heart-background">
+      <%= link_to restaurant_favourite_restaurants_path(@restaurant), data: {turbo_method: :post} do %>
+        <% if user_signed_in? && current_user.favourite_restaurants.includes(:restaurant).where('restaurant_id = ?', @restaurant.id).present? %>
+          <i class="fa-heart fa-solid" data-controller="fill-heart" data-action="click->fill-heart#animation"></i>
+        <% else %>
+          <i class="fa-regular fa-heart" data-controller="fill-heart" data-action="click->fill-heart#animation"></i>
+        <% end %>
+      <% end %>
+  </div>
 
 
-    <div class="modal fade" id="restaurantFilterModal" aria-hidden="true" aria-labelledby="restaurantFilterModalLabel" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalToggleLabel2">Location</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <%= render "shared/map" %>
-          </div>
+  <div class="modal fade" id="restaurantFilterModal" aria-hidden="true" aria-labelledby="restaurantFilterModalLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalToggleLabel2">Location</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= render "shared/map" %>
         </div>
       </div>
     </div>
+  </div>
 
-    <button type="button" class="button purple" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Select a time
-    </button>
+  <button type="button" class="button purple time-select" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Select a time
+  </button>
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
@@ -77,35 +79,38 @@
           </div>
         </div>
 
-
-      <div class="restaurant-description">
-        <p><%= @restaurant.description %></p>
-      </div>
-
-  <div class="reviews" id="reviews-container">
-    <div class="reviews-header"><h2>See what people are saying:</h2></div>
-    <p>Number of reviews: <%= @restaurant.reviews.count %></p>
-    <p><% @restaurant.reviews.each do |review| %></p>
-      <div class="reviews-details">
-        <div class="review-name-rating">
-          <div>
-            <p><strong><%= review.user.name %></strong></p>
-          </div>
-          <div class="review-stars">
-            <% rand(3..4).times do %>
-            <%= image_tag("Star.png") %>
-            <% end %>
-          </div>
-        </div>
-        <div class="review-content"><p><%= review.content %></p></div>
-      </div>
-      <% end %>
+  <div class="show-section">
+    <div class="restaurant-description">
+      <p><%= @restaurant.description %></p>
     </div>
-
+  </div>
+  <div class="show-section">
+    <div class="reviews" id="reviews-container">
+      <div class="reviews-header"><h2>See what people are saying:</h2></div>
+      <p><%= @restaurant.reviews.count %> reviews</p>
+      <p><% @restaurant.reviews.each do |review| %></p>
+        <div class="reviews-details">
+          <div class="review-name-rating">
+            <div>
+              <p><strong><%= review.user.name %></strong></p>
+            </div>
+            <div class="review-stars">
+              <% rand(3..4).times do %>
+              <%= image_tag("Star.png") %>
+              <% end %>
+            </div>
+          
+          <div class="review-content"><p><%= review.content %></p></div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="show-section">
     <div class="more-restaurants">
       <div class="more-restaurants-header"><h2>More tables at</h2></div>
       <div class="restaurant-cards-small row">
         <%= render "shared/index_card_show_page" %>
       </div>
     </div>
+  </div>
 </div>
