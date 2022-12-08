@@ -2,7 +2,7 @@
 <div class="footer" data-controller="footer" data-action="click->footer#active">
   <div class="footer-icon">
     <%= link_to restaurants_path(restaurant: @params) do %>
-      <i class="<%= "btn-active" if current_page?('/restaurants') %> fa-solid fa-magnifying-glass"></i>
+      <i class="<%= "btn-active" if params[:controller] == 'restaurants' %> fa-solid fa-magnifying-glass"></i>
     <% end %>
   </div>
 
@@ -15,7 +15,7 @@
   <div class="footer-icon">
     <% if user_signed_in? %>
       <%= link_to user_path(current_user) do %>
-        <i class="fa-regular fa-user"></i>
+        <i class="<%= "btn-active" if params[:controller] == 'users'  %> fa-regular fa-user"></i>
       <% end %>
       <% else %>
         <i class="fa-regular fa-user"></i>
