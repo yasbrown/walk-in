@@ -1,38 +1,39 @@
 <% if @favourites.empty? %>
   <p>Why not favourite some restaurants to be the first to hear when they have an available seat!</p>
 <% end %>
-<div class="cards">
+<div class="slider" data-controller="swipe">
   <% @favourites.each do |favourite| %>
-    <%= link_to restaurant_path do %>
-
-    <div class="favourite_card d-flex">
-      <%= cl_image_tag favourite.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
-      <div class="d-flex align-items-start flex-column" style="height: 20px; padding-top: 10px; padding-left: 18px">
-        <div class="d-flex justify-content-between align-items-center favourite_name" style="width: 8em;">
-          <h4><strong><%= favourite.restaurant.name %></strong></h4>
-          <%= link_to favourite_restaurant_path(favourite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-         <i class="fa-regular fa-trash-can"></i>
-        <% end %>
-        </div>
-        <div><% (favourite.restaurant.price).times do %>
-          <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
-        <% end %>
-        <% (3 - favourite.restaurant.price).times do %>
-          <i class="fa-solid fa-sterling-sign" id="price-light"></i>
-        <% end %>
-        </div>
-        <div class="d-flex justify-content-between rating">
-          <div>
-            <%= favourite.restaurant.cuisine %>
-          </div>
-          <div class="yes-you-can">
-            <%= favourite.restaurant.rating %>
-            <%= image_tag("Star.png") %>
+    <%= link_to restaurant_path(favourite.restaurant.id) do %>
+      <div class="slide">
+        <div class="favourite_card d-flex">
+          <%= cl_image_tag favourite.restaurant.photo.key, height: 100, width: 100, crop: :fill %>
+          <div class="d-flex align-items-start flex-column" style="height: 20px; padding-top: 10px; padding-left: 18px">
+            <div class="d-flex justify-content-between align-items-center favourite_name" style="width: 8em;">
+              <h4><strong><%= favourite.restaurant.name %></strong></h4>
+              <%= link_to favourite_restaurant_path(favourite), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+            </div>
+            <div>
+              <% (favourite.restaurant.price).times do %>
+                <i class="fa-solid fa-sterling-sign" id="price-dark"></i>
+              <% end %>
+              <% (3 - favourite.restaurant.price).times do %>
+                <i class="fa-solid fa-sterling-sign" id="price-light"></i>
+              <% end %>
+            </div>
+            <div class="d-flex justify-content-between rating">
+              <div>
+                <%= favourite.restaurant.cuisine %>
+              </div>
+              <div class="yes-you-can">
+                <%= favourite.restaurant.rating %>
+                <%= image_tag("Star.png") %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
     <% end %>
   <% end %>
 </div>
