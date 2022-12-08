@@ -38,25 +38,33 @@
 }
 
 .form-input {
-  width: 230px;
+  width: auto;
   height: 40px;
   padding-left: 10px;
   border-radius: 5px;
   border: none;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   background-color: #FAF9F9;
-  color: #CDCCCC;
   font-weight: bold;
   font-size: 18px;
-  .placeholder {
-    color: #CDCCCC;
-  }
+  color: #b7b4b4;
 }
 
-:root {
-  $input-placeholder-color: #CDCCCC;
+#restaurant_date {
+  color: #8f8d8d;
 }
 
+#opening_time {
+  color: #8f8d8d;
+}
+
+#closing_time {
+  color: #8f8d8d;
+}
+
+#restaurant_total_seats_available {
+  color: #8f8d8d;
+}
 
 .short-form-box {
   display: flex;
@@ -77,11 +85,7 @@
   border-radius: 5px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   background-color: #FAF9F9;
-  color: #CDCCCC;
+  // color: #CDCCCC;
   font-weight: bold;
   font-size: 18px;
-}
-
-#location-input ::placeholder {
-  color: #CDCCCC;
 }
