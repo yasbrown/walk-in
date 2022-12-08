@@ -185,15 +185,16 @@ class RestaurantsController < ApplicationController
   private
 
   def filter_by_cuisine_and_rating(restaurants)
-    if params[:restaurant].has_key?(:cuisine) || params[:restaurant].has_key?(:price)
-      cuisine = params[:restaurant][:cuisine][1] if params[:restaurant][:cuisine][1].present?
-      price = params[:restaurant][:price][1] if params[:restaurant][:price][1].present?
+    return restaurants if !params[:restaurant]
 
-      if params[:restaurant][:cuisine][1].present?
+    if params[:restaurant].has_key?(:cuisine) || params[:restaurant].has_key?(:rating)
+      cuisine = params[:restaurant][:cuisine][1] if params[:restaurant][:cuisine][1].present?
+      rating = params[:restaurant][:rating] if params[:restaurant][:rating].present?
+      if params[:restaurant].has_key?(:cuisine)
         restaurants = restaurants.where("cuisine LIKE ?", cuisine)
       end
-      if params[:restaurant][:price][1].present?
-        restaurants = restaurants.where("price = ?", price)
+      if params[:restaurant].has_key?(:rating)
+        restaurants = restaurants.where("rating >= ?", rating)
       end
     end
 
