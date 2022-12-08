@@ -21,6 +21,22 @@
   top: 15px;
 }
 
+.favourite-heart {
+  i {
+    color:white;
+    font-size: 25px;
+  }
+}
+
+.heart-background {
+  .fa-heart {
+    background-color: #cbc2ffab;
+    padding: 10px;
+    border-radius: 50%;
+    text-shadow: 2px 2px 4px rgba(84, 85, 84, 0.77);
+  }
+}
+
 .fa-star {
   width: 20px;
   height: 20px;

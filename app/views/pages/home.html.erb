@@ -24,7 +24,7 @@
   <div class="container">
     <div class="form home" id="home-form">
       <div class="home-copy-text">
-        <p>WalkIn let's you see available restaurants all in one place. Tap into the hottest new food spots near you.</p>
+        <p>WalkIn lets you see available restaurants all in one place. Tap into the hottest new food spots near you.</p>
         <p>Let's get started!</p>
       </div>
       <div id="form-home-container">
@@ -35,7 +35,7 @@
             </div>
             <div class="form-text">
               <h4>Where do you want to eat?</h4><br />
-              <div >
+              <div id="location-input">
                 <%= f.text_field :address, placeholder: "London", label: false, class: "form-input" %><br />
               </div>
             </div>
@@ -48,7 +48,9 @@
             <div class="form-text">
               <h4>What day?</h4><br />
               <div >
-                <%= f.date_field :date, placeholder: "09/12/2022", label: false, class: "form-input" %><br />
+
+                <%= f.date_field :date, :value => Time.now.strftime('%Y-%m-%d'), label: false, class: "form-input" %><br />
+
               </div>
             </div>
           </div>

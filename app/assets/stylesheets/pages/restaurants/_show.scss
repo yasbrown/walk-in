@@ -4,11 +4,15 @@
 
 .restaurant-times {
   display: flex;
-  justify-content: center;
+  // justify-content: center;
 }
 
 .restaurant-times-grid {
   margin: 10px auto;
+}
+
+.time-select {
+  margin: 25px auto;
 }
 
 .time-slot {
@@ -24,6 +28,10 @@
 
 .time-slot.active {
   background-color: $light-purple;
+}
+
+.show-section {
+  margin: 20px 15px;
 }
 
 .restaurant-description {
@@ -43,7 +51,6 @@
 }
 
 .restaurant-heading {
-  padding-top: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -69,6 +76,7 @@
     color: #565D70;
   }
 }
+
 #covers-index {
   display: flex;
   justify-content: center;
@@ -85,8 +93,8 @@
 }
 
 #confirmation {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  // justify-content: center;
   a {
     width: 109px;
     height: 53px;
@@ -109,13 +117,6 @@
 
 #confirmation-modal-btn {
   padding-top: 0px !important;
-}
-
-.favourite-heart {
-  i {
-    color:white;
-    font-size: 30px;
-  }
 }
 
 .more-restaurants {
