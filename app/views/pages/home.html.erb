@@ -48,7 +48,7 @@
             <div class="form-text">
               <h4>What day?</h4><br />
               <div >
-                <%= f.date_field :date, placeholder: "pick a day", label: false, class: "form-input" %><br />
+                <%= f.date_field :date, label: false, class: "form-input" %><br />
               </div>
             </div>
           </div>
@@ -140,3 +140,17 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  const changeColor = (event) => {
+    event.currentTarget.style.color = "black"
+  }
+
+  document.getElementById('restaurant_address').addEventListener('click', changeColor)
+  document.getElementById('closing_time').addEventListener('click', changeColor)
+  document.getElementById('opening_time').addEventListener('click', changeColor)
+  document.getElementById('restaurant_date').addEventListener('click', changeColor)
+  document.getElementById('restaurant_total_seats_available').addEventListener('click', changeColor)
+
+</script>
