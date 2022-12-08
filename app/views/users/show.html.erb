@@ -44,7 +44,9 @@
 
 <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
 
-<a href="#" class="direction">
+<a
+href="<%= url ="https://www.google.com/maps/dir/?api=1&destination=#{@last_booking.restaurant.latitude},#{@last_booking.restaurant.longitude}&travelmode=walking" %>"
+class="direction">
   <span><i class="fa-solid fa-route fa-2xl" style="color: #9382FF;"></i></span>
   <div class="liquide maps-button" data-bs-toggle="modal" data-bs-target="#restaurantFilterModal"></div>
 </a>

@@ -8,5 +8,7 @@ class UsersController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
 
     @markers = [{ lat: @last_booking.restaurant.latitude, lng: @last_booking.restaurant.longitude }]
+
+    @url ="https://www.google.com/maps/dir/?api=1&#{@last_booking.restaurant.latitude}"
   end
 end
