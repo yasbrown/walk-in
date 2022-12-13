@@ -37,9 +37,19 @@ How many times have you asked your friends for a restaurant reccommendation and 
 
 *How it works*
 1. Tell WalkIn your location, group size, date and the time of your ideal reservation
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/115090869/207398081-f6658762-ff1b-4a2d-8ef8-c2c344d9ae43.gif" height="400"> 
+</p>
+
 2. Browse available restaurants that match your search, or
-3. Narrow down your search further by filtering by cuisine and price                                                
-4. Make an account to secure your reservation!
+3. Narrow down your search further by filtering by cuisine and price  
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/115090869/207413775-ca48146a-d538-4e6d-b8f8-4cbd87277b11.gif" height="400"> 
+</p>
+
+4. Check the restaurant details
+
+4. Secure your reservation!
 
 ### Cool Features
 
