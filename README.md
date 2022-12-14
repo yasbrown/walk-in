@@ -42,30 +42,35 @@ How many times have you asked your friends for a restaurant reccommendation and 
 </p>
 
 2. Browse available restaurants that match your search, or
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/115090869/207628127-2f40bf43-f66c-4eba-bcd6-a3a319bd5c0a.gif" height="400"> 
+</p>
+
 3. Narrow down your search further by filtering by cuisine and price  
 <p align="center">
   <img src="https://user-images.githubusercontent.com/115090869/207413775-ca48146a-d538-4e6d-b8f8-4cbd87277b11.gif" height="400"> 
 </p>
 
 4. Check the restaurant details
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/115090869/207629602-ea424f75-e38d-4535-a2f0-f2585c49d100.gif" height="400"> 
+</p>
 
-4. Secure your reservation!
+5. Secure your reservation!
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/115090869/207631412-9134bd10-1dc5-4dc3-aef0-51e9ec916807.gif" height="400"> 
+</p>
 
 ### Cool Features
 
-**See all** the restaurants that match your search:
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/115090869/207359217-843621d1-bfeb-4fe2-ad7f-cf850138cb97.mov"> 
-</p>
-
 Not sure how to get to your restaurant? Use **directions**:
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/93719632/175898937-fe03be18-359d-48f2-8943-edf57f71b9da.gif">
+  <img src="https://user-images.githubusercontent.com/115090869/207632205-c4ee2837-b567-468d-a4ff-ede26e7c3923.gif" height="400">
 </p>
 
 **Favourite** restaurants to be the first to hear when they have available tables:
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/93719632/175898890-51f5001a-4b0c-45b5-81a1-dbdf303e5a32.gif">
+  <img src="https://user-images.githubusercontent.com/115090869/207633622-bc4ebe83-544b-40ed-82a1-7bd752a63858.gif" height="400">
 </p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -159,7 +164,7 @@ Created as part of the Le Wagon Full Stack Web Development bootcamp. Feel free t
 ## Acknowledgments and Contact
 
 Made with love by: 
-* [Yasmin Brown](https://github.com/adrianHards)
+* [Yasmin Brown](https://github.com/yasbrown)
 * [Lydia Ratto](https://github.com/lydia-ratto)
 * [John Romero](https://github.com/JanJanR)
 * [Francisco Goicoechea](https://github.com/frang9)
@@ -169,6 +174,6 @@ Made with love by:
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <p align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=adrianHards/whippet-good" id="counter">
+  <img src="https://visitor-badge.laobi.icu/badge?page_id=yasbrown/walk-in" id="counter">
 </p>
 
