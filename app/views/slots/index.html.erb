@@ -7,9 +7,9 @@
         <% end %>
       <% end %>
     <% else %>
-      <% @available_slots.each do |slot| %>
-        <%= link_to new_user_session_path  do %>
-          <p>Table <%= index + 1  %></p>
+      <% @available_slots.each_with_index do |slot, index| %>
+        <%= link_to new_user_registration_path do %>
+        <p>Table <%= index + 1 %></p>
         <% end %>
       <% end %>
     <% end %>
