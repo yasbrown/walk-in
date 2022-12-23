@@ -9,6 +9,7 @@
     <p><%= @user.location %></p>
   </div>
 </div>
+
 <div class="background_color">
   <div class="booking">
     <div class="booking_title">
@@ -30,6 +31,15 @@
         <% end %>
       <% end %>
     </div>
+
+    <div>
+      <a
+      href="<%= url ="https://www.google.com/maps/dir/?api=1&destination=#{@last_booking.restaurant.latitude},#{@last_booking.restaurant.longitude}&travelmode=walking" %>"
+      class="direction">
+      <span><i class="fa-solid fa-location-dot fa-2xl" style="color: #9382FF;"></i></span>
+      <div class="liquide maps-button" data-bs-toggle="modal" data-bs-target="#restaurantFilterModal"></div>
+      </a>
+    </div>
   </div>
 
   <div class="favorites">
@@ -40,28 +50,8 @@
       <%= render "shared/index_card_favourites" %>
     </div>
   </div>
-</div>
 
-<%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff" %>
-<div>
-  <a
-  href="<%= url ="https://www.google.com/maps/dir/?api=1&destination=#{@last_booking.restaurant.latitude},#{@last_booking.restaurant.longitude}&travelmode=walking" %>"
-  class="direction">
-  <span><i class="fa-solid fa-location-dot fa-2xl" style="color: #9382FF;"></i></span>
-  <div class="liquide maps-button" data-bs-toggle="modal" data-bs-target="#restaurantFilterModal"></div>
-  </a>
-</div>
-
-<%# <div class="modal fade" id="restaurantFilterModal" aria-hidden="true" aria-labelledby="restaurantFilterModalLabel" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalToggleLabel2">Location</h2>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= render "shared/map" %>
-      <%# </div>
-    </div>
+  <div id="logout-btn">
+    <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "button_logoff"  %>
   </div>
-</div> %>
+</div>
