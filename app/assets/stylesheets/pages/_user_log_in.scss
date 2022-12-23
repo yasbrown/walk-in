@@ -1,0 +1,55 @@
+.log-in-header {
+  background-color: #9382FF;
+  height: 80px;
+  border-radius: 0 0 100px 100px;
+  box-shadow: 0px 2px 5px 3px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  padding-top: 30px;
+  h2 {
+    color: white;
+  }
+}
+
+.log-in-form {
+  justify-content: center;
+  display: flex;
+  height: 58vh;
+  padding-top: 11%;
+}
+
+.form-inputs {
+  width: 230px;
+  height: 40px;
+  padding-left: 10px;
+  font-size: 18px;
+  color: rgb(108, 117, 125);
+  .mb-3 {
+    margin-bottom: 0.7rem !important;
+  }
+}
+
+.session-log-in-btn {
+  margin-bottom: 12px;
+  .form-actions > input {
+    font-weight: bold;
+    color: white;
+  }
+}
+
+.session-btn-options {
+  text-align: center;
+  a:first-child {
+    background-color: $light-purple;
+    color: $dark-grey;  display: block;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    padding: 10px 15px;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+    text-decoration: none;
+    font-family: 'Raleway';
+  }
+}
